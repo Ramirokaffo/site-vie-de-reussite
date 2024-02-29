@@ -1,0 +1,98 @@
+:root {
+    --main-color: rgb(202, 154, 58);
+    --main-color: #481a00;
+    --main-color: rgb(0, 102, 83);
+    --main-font-family: Verdana, Geneva, Tahoma, sans-serif;
+    --footer-color: rgb(1, 27, 22);
+
+
+    --title-font-family: Montserrat, sans-serif;
+    --subtitle-font-family: Montserrat, sans-serif;
+    --content-font-family: Montserrat, sans-serif;
+    
+
+    --color1: rgb(3, 6, 55);
+    --color2: rgb(60, 7, 83);
+    --color3: rgb(114, 4, 85);
+    --color4: rgb(145, 10, 103);
+    
+
+    --color1: #481a00;
+    --color2: #bb5302;
+    --color3: #ffc51b;
+    --color4: #ffea85;
+
+    --second-color1: #04344d;
+    --second-color2: #00638d;
+    --second-color3: #00bfff;
+    --second-color4: #75deff;
+
+}
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: var(--second-color1);
+    overflow: hidden;
+
+}
+
+main {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+}
+
+.container {
+    position: relative;
+    background: white;
+    height: 50vh;
+  }
+  
+  .wave {
+    position: absolute;
+    height: 70px;
+    width: 100%;
+    background: white;
+    bottom: 0;
+  }
+  
+  .wave::before, .wave::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+  }
+  
+  .wave::before {
+    width: 55%;
+    height: 109%;
+    background-color: white;
+    right: -1.5%;
+    top: 60%;
+  }
+  .wave::after {
+    width: 55%;
+    height: 100%;
+    background-color: var(--second-color1);
+    left: -1.5%;
+    top: 40%;
+  }

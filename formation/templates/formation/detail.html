@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'formation/details.css' %}">
+
+<main class="formation-main">
+
+    <div class="sup-formation-banner" style="background-image: url('{{ formation.illustration_image.url }}');">
+        <div class="formation-banner">
+            <div class="formation-banner-text-div">
+                <h1>{{ formation.title }}</h1>
+                <p class="formation-subtitle">{{ formation.subtitle }}</p>
+            </div>
+            <div class="formation-banner-card">
+                <div class="formation-banner-card-header">
+                    <span class="formation-banner-card-title">
+                        <div>{{ formation.promo_price }}</div>|
+                        <div>XAF</div>
+                    </span>
+                    <span class="formation-banner-card-price">{{ formation.normal_price }}</span>
+                </div>
+                <p class="desc">Cette formation inclus ces éléments :</p>
+                <ul class="lists">
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span>{{ formation.video_count }} vidéos</span>
+                    </li>
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span>{{ formation.course_duration }} minutes de cours au total</span>
+                    </li>
+                    <li class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Un support de cours pdf</span>
+                    </li>
+                </ul>
+                <button type="button" class="action">Acheter cette formation</button>
+            </div>
+        </div>
+
+    </div>
+
+    <article class="ebook-content">
+        {% if formation.illustration_video %}
+        <h2>PRESENTATION</h2>
+        <hr>
+        <div class="video-frame">
+            <iframe class="ebook-illustration_video" src="{{ formation.illustration_video }}"
+                uk-video="autoplay: false"></iframe>
+        </div>
+        {% endif %}
+        <h2>À PROPOS</h2>
+        <hr>
+        <p class="ebook-description">
+            {{ formation.description|safe }}
+        </p>
+        <section class="second-cta-buy-ebook">
+            <div class="left-cta-buy">
+                <div class="cta-image-ebook" style="background-image: url('{{formation.illustration_image.url}}');">
+                </div>
+            </div>
+            <div class="right-cta-buy">
+                <div class="right-cta-buy-price-area">
+                    <h4>XAF</h4>
+                    <h3>{{ formation.promo_price }}</h3>
+
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="left-side">
+                        <div class="card">
+                            <div class="card-line"></div>
+                            <div class="buttons"></div>
+                        </div>
+                        <div class="post">
+                            <div class="post-line"></div>
+                            <div class="screen">
+                                <div class="dollar">$</div>
+                            </div>
+                            <div class="numbers"></div>
+                            <div class="numbers-line2"></div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="new">Acheter cette formation</div>
+
+                        <svg viewBox="0 0 451.846 451.847" height="512" width="512" xmlns="http://www.w3.org/2000/svg"
+                            class="arrow">
+                            <path fill="var(--color3)" data-old_color="#000000" class="active-path"
+                                data-original="#000000"
+                                d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z">
+                            </path>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-ebook-div">
+            <h2>D'autres formations qui pourraient vous interesser...</h2>
+            <hr>
+            {% for formation in related_formation_category %}
+            <a class="one_related_ebook" href="{% url 'formation:detail' formation.id %}">
+                <img src="{{ formation.illustration_image.url }}" alt="" class="related_ebook-img">
+                <div class="formation">
+                    <h3>{{ formation.title }}</h3>
+                    <p>{{ formation.subtitle }}</p>
+                    <hr>
+                </div>
+            </a>
+            {% endfor %}
+
+        </section>
+
+    </article>
+
+
+
+</main>
+
+
+
+
+{% endblock %}

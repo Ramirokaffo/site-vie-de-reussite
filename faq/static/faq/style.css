@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,400i,700");
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+body{
+  font-family: "Poppins", sans-serif;
+  /* background-color: red;
+  padding: 20px; */
+}
+
+.main-faq {
+    /* background-color: red; */
+    padding: 40px 10%;
+}
+
+
+
+div.c{
+  position: relative;
+  margin:2em;
+  transition: 0.5s all ease;
+}
+input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity:0;
+  visibility: 0;
+  transition: 0.5s all ease;
+
+}
+h1{
+  background:var(--second-color2);
+  color:white;
+  padding:1em;
+  position: relative;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+label::before{
+  content:"";
+  display: inline-block;
+  border: 15px solid transparent;
+  border-left:20px solid white;
+}
+label{
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+div.p{
+  max-height:0px;
+  overflow: hidden;
+  transition:max-height 0.5s;
+  background-color: white;
+  box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+div.p p {
+  padding:2em;
+  /* padding: 20px; */
+
+}
+input:checked ~ h1 label::before{
+  border-left:15px solid transparent;
+  border-top:20px solid white;
+  margin-top:12px;
+  margin-right:10px;
+  /* transition: 0.5s all ease; */
+
+}
+input:checked ~ h1 ~ div.p{
+  max-height: max-content;
+  /* transition: 0.5s all ease; */
+
+}
+a{
+  color:steelblue;
+}

@@ -1,0 +1,47 @@
+<!-- templates/base.html -->
+
+{% load static %}
+{% load myfilter %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'js/uikit.js' %}"></script>
+    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+          $.ajaxSetup({
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('X-CSRFToken', $('input[name="csrfmiddlewaretoken"]').val());
+            }
+          });
+        });
+      </script>
+</head>
+
+<body>
+    {% include "appointment_modal.html" %}
+    <div class="uk-section-secondary uk-background-cover uk-preserve-color">
+
+        {% include "component/header.html" %}
+        <div id="test-color"  uk-parallax="start: 100%; end: 100%; background-color: white,#f5f0ee;">
+
+            <!-- <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-target; start: 100%; end: 100%; color: #0f0;">Headline</h1> -->
+        
+        <section id="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </div>
+
+        {% include "component/footer.html" %}
+    </div>
+</body>
+
+</html>

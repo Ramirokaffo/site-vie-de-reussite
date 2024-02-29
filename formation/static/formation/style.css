@@ -1,0 +1,188 @@
+
+
+
+.main-formation {
+    /* height: 500px; */
+    padding: 20px 5%;
+}
+
+.formation-category-name-div {
+    display: flex;
+    /* justify-content: ; */
+    /* background-color: aqua; */
+}
+
+.formation-category-name {
+    color: var(--color3);
+    font-weight: bold;
+}
+
+.formation-category-name-div div:first-child {
+    display: flex;
+    gap: 10px;
+    /* background-color: yellow; */
+}
+
+.formation-category-name-div div:first-child h2 {
+    display: block;
+    margin: 0px;
+}
+
+
+.formation-category-name-div div:last-child {
+    /* background-color: red; */
+    height: 5px;
+    /* width: 50%; */
+    align-self: stretch;
+    justify-self: stretch;
+    /* flex-shrink: 3; */
+}
+
+
+.formation-card {
+    height: 550px;
+    width: 300px;
+    /* background-color: red; */
+    display: block;
+    margin-bottom: 30px;
+    background-color: white;
+    gap: 2px;
+    margin: 30px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+
+}
+
+.formation-card:hover {
+    text-decoration: none;
+}
+.formation-sous-card {
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+
+}
+
+.formation-image-div {
+    /* height: 100px;
+    width: 100px; */
+    flex: 1;
+    position: relative;
+}
+
+.formation-image-div img {
+    z-index: -1;
+}
+
+.formation-image-div:hover:before {
+    top: 0px;
+    content: "Voir plus...";
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.3s all ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.formation-card-body {
+    flex: 1;
+    /* background: green; */
+    padding: 3px;
+
+}
+
+.formation-card-title {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    /* background-color: rebeccapurple; */
+    color: var(--second-color1);
+}
+
+.formation-card-subtitle {
+    margin: 0px;
+    color: black;
+    /* opacity: 0.5; */
+}
+
+.formation-card-body hr {
+    margin: 5px 0px;
+}
+
+.see-more-btn {
+    position: relative;
+    /* margin-top: 10px; */
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .see-more-btn:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: var(--second-color1);
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+  }
+  
+  .see-more-btn span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--second-color1);
+    transition: all 0.3s ease;
+
+  }
+
+  .see-more-btn:hover span {
+    color: white;
+    transition: all 0.3s ease;
+
+  }
+  
+  .see-more-btn svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #234567;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .see-more-btn:hover:before {
+    width: 100%;
+    background: var(--second-color1);
+    transition: all 0.3s ease;
+  }
+  
+  .see-more-btn:hover svg {
+    transform: translateX(0);
+    stroke: white;
+
+  }
+  
+  .see-more-btn:active {
+    transform: scale(0.95);
+  }
+  
+

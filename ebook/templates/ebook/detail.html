@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'ebook/detail.css' %}">
+
+<main class="ebook-main">
+
+    <div class="sup-ebook-banner" style="background-image: url('{{ ebook.illustration_image.url }}');">
+        <div class="ebook-banner">
+            <div class="book">
+                <p class="ebook-subtitle">{{ ebook.subtitle }}</p>
+                <div class="cover" style="background-image: url('{{ ebook.illustration_image.url }}');">
+                </div>
+            </div>
+            <div>
+                <h1>{{ ebook.title }}</h1>
+                <div class="price-div">
+                    <div>XAF</div>
+                    <div class="mini-price-div">
+                        <s>{{ ebook.normal_price }} </s>
+                        <h3>{{ ebook.promo_price }} </h3>
+                    </div>
+                </div>
+                <div class="sub-buy-btn-div">
+                    <button class="buy-btn">Acheter ce livre</button>
+                    <svg height="512" width="512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="var(--color4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 11h2v5m-2 0h4m-2.6-8.5h0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    {% if ebook.availability == 'both' %}
+                    <p>Disponible en version physique et numérique</p>
+                    {% elif ebook.availability == 'numeric' %}
+                    <p>Disponible en version numérique uniquement</p>
+                    {% else %}
+                    <p>Disponible en version physique uniquement</p>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <article class="ebook-content">
+        {% if ebook.illustration_video %}
+        <h2>PRESENTATION</h2>
+        <hr>
+        <div class="video-frame">
+            <iframe class="ebook-illustration_video" src="{{ ebook.illustration_video }}"
+                uk-video="autoplay: false"></iframe>
+        </div>
+        {% endif %}
+        <h2>À PROPOS</h2>
+        <hr>
+        <p class="ebook-description">
+            {% comment %} {% autoescape on %} {% endcomment %}
+            {{ ebook.description|safe }}
+            {% comment %} {% endautoescape %} {% endcomment %}
+        </p>
+        <section class="second-cta-buy-ebook">
+            <div class="left-cta-buy">
+                <div class="cta-image-ebook" style="background-image: url('{{ebook.illustration_image.url}}');"></div>
+            </div>
+            <div class="right-cta-buy">
+                <div class="right-cta-buy-price-area">
+                    <h4>XAF</h4>
+                    <h3>{{ ebook.promo_price }}</h3>
+
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="left-side">
+                        <div class="card">
+                            <div class="card-line"></div>
+                            <div class="buttons"></div>
+                        </div>
+                        <div class="post">
+                            <div class="post-line"></div>
+                            <div class="screen">
+                                <div class="dollar">$</div>
+                            </div>
+                            <div class="numbers"></div>
+                            <div class="numbers-line2"></div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="new">Acheter ce livre</div>
+
+                        <svg viewBox="0 0 451.846 451.847" height="512" width="512" xmlns="http://www.w3.org/2000/svg"
+                            class="arrow">
+                            <path fill="var(--color3)" data-old_color="#000000" class="active-path"
+                                data-original="#000000"
+                                d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z">
+                            </path>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-ebook-div">
+            <h2>Consulter aussi...</h2>
+            <hr>
+            {% for ebook in related_ebook_category %}
+            <a class="one_related_ebook" href="{% url 'ebook:detail' ebook.id %}">
+                <img src="{{ ebook.illustration_image.url }}" alt="" class="related_ebook-img">
+                <div class="related_ebook_content">
+                    <h3>{{ ebook.title }}</h3>
+                    <p>{{ ebook.subtitle }}</p>
+                    <hr>
+                </div>
+            </a>
+            {% endfor %}
+
+        </section>
+
+    </article>
+
+
+
+</main>
+
+
+
+
+{% endblock %}

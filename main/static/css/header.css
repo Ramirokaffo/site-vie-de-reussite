@@ -1,0 +1,109 @@
+
+.sup-main-nav-bar {
+    background-color: var(--second-color1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+
+}
+
+.uk-navbar-container {
+    padding: 0px 50px;
+    /* background-color: red; */
+}
+
+.header-site-logo {
+    height: 50px !important;
+    width: 50px;
+}
+
+
+
+
+.first-action-button {
+    cursor: pointer;
+    font-weight: 700;
+    font-family: Helvetica,"sans-serif";
+    transition: all .2s;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background: var(--second-color2);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: var(--color2);
+    color: white;
+  }
+  
+  .first-action-button:hover {
+    background: var(--second-color3);
+    color: white;
+    text-decoration: none;
+
+  }
+  
+  .first-action-button > svg {
+    width: 34px;
+    margin-left: 10px;
+    transition: transform .3s ease-in-out;
+  }
+  
+  .first-action-button:hover svg {
+    transform: translateX(5px);
+  }
+  
+  .first-action-button:active {
+    transform: scale(0.95);
+  }
+  
+  
+
+
+  .connect-button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: var(--color1);
+    background-size: 400%;
+    color: var(--color4);
+    border: 1px solid var(--color3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .connect-button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .connect-button-content {
+    position: relative;
+    z-index: 1;
+    color: var(--color3);
+    font-weight: bold;
+    /* background-color: blue; */
+    /* color: ; */
+  }
+  
+  .connect-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      var(--color1) 10.8%,
+      var(--color2) 94.3%
+    );
+    transition: all 0.475s;
+  }
+  
+
+

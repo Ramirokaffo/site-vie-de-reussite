@@ -1,0 +1,43 @@
+
+{% extends "auth/base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'auth/register.css' %}">
+
+<div class="form-div">
+<form class="form" method="post" action="register">
+{% csrf_token %}
+    <p class="title">Création de compte </p>
+    <p class="message">Signup now and get full access to our app. </p>
+        <div class="flex">
+        <label>
+            <input class="input" type="text" name="firstname" placeholder="" required >
+            <span>Nom</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" placeholder="" name="lastname">
+            <span>Prénom</span>
+        </label>
+    </div>  
+            
+    <label>
+        <input class="input" type="email" placeholder="" required name="email">
+        <span>Email</span>
+    </label> 
+        
+    <label>
+        <input class="input" type="password" placeholder="" required name="password">
+        <span>Mot de passe</span>
+    </label>
+    <label>
+        <input class="input" type="password" placeholder="" required name="password1">
+        <span>Confirmer le mot de passe</span>
+    </label>
+    <button class="submit">Créer mon compte</button>
+    <p class="signin">Vous avez déjà un compte ? <a href="{% url 'auth:login' %}">Connexion</a> </p>
+</form>
+</div>
+
+{% endblock %}

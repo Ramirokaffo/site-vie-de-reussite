@@ -1,0 +1,102 @@
+
+.blog-navigation {
+    background-color: var(--second-color2);
+    padding: 10px;
+    margin: 0px;
+}
+
+.blog-navigation a {
+    color: white;
+
+}
+
+.blog-navigation a:hover {
+    color: var(--color3);
+  }
+
+.post-main-div {
+    display: flex;
+    background-color: white;
+}
+
+
+.left-section {
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+
+}
+
+.left-section .semi-line {
+    height: 5px;
+    width: 100%;
+    background-color: var(--color3);
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+.left-section ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+
+
+.middle-section {
+    flex: 3;
+    padding: 10px 20px;
+}
+
+.middle-section h1 {
+    padding: 30px 0px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+    border: 1px solid var(--second-color2);
+    color: var(--second-color1);
+
+}
+
+
+.one-post-card-content-div {
+    padding: 10px 0px;
+    margin: 10px;
+
+}
+
+
+.one-post-card-img {
+    height: 500px;
+    border-radius: 10px;
+    margin: 20px 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.one-post-card-bottom-div {
+    padding: 10px;
+
+}
+
+.one-post-card-bottom-div > p {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.right-section {
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+
+}
+
+
+
+
+

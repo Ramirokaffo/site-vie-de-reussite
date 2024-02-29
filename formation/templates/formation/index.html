@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'formation/style.css' %}">
+
+<main class="main-formation">
+    {% for category in formation_category_list %}
+    <div class="formation-category-name-div">
+        <div>
+            <h2>Notre pack</h2>
+        <h2 class="formation-category-name">{{ category.name }}</h2>
+        </div>
+        <div></div>
+    </div>
+    <hr>
+    <div class="ebook-collection">
+        {% for formation in formations %}
+        {% if formation.category == category %}
+        <!-- <label>{{ formation.illustration_image.url }}</label> -->
+
+        <a href="{% url 'formation:detail' formation.id %}" class="uk-card formation-card">
+            <div class="formation-sous-card">
+                <div class="formation-image-div">
+                    <img src="{{ formation.illustration_image.url }}" alt="">
+                </div>
+                <div class="formation-card-body">
+                    <h3 class="formation-card-title">{{ formation.title }}</h3>
+                    <p class="formation-card-subtitle" >{{ formation.subtitle }}</p>
+                    <hr>
+                    <button class="see-more-btn">
+                        <span>En savoir plus</span>
+                        <svg width="15px" height="10px" viewBox="0 0 13 10">
+                          <path d="M1,5 L11,5"></path>
+                          <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                      </button>
+                      
+                </div>
+            </div>
+            <!-- <div class="formation-image" style="background-image: url('{{ formation.illustration_image.url }}');">
+
+            </div>
+            <div class="details">
+                <label>{{ formation.video_count }} / {{ formation.title }}</label>
+                <hr>
+                <p>
+                    {{ formation.subtitle }}
+
+                </p>
+            </div>
+            <div class="price-badge"><s class="normal_price">{{ formation.normal_price }} XAF</s>|<div
+                    class="promo_price">{{ ebook.promo_price }} XAF</div>
+            </div> -->
+        </a>
+
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

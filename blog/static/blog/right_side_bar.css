@@ -1,0 +1,133 @@
+
+.reserve-coaching-button {
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    background-color: var(--color3);
+    color: black;
+    border-radius: 10rem;
+    font-weight: 600;
+    padding: .75rem 1.5rem;
+    padding-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color .3s;
+  }
+  
+  .button__icon-wrapper {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    color: var(--color3);
+    background-color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  
+  .reserve-coaching-button:hover {
+    background-color: var(--color1);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .reserve-coaching-button:hover .button__icon-wrapper {
+    color: #000;
+  }
+  
+  .button__icon-svg--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+  }
+  
+  .reserve-coaching-button:hover .button__icon-svg:first-child {
+    transition: transform .3s ease-in-out;
+    transform: translate(150%, -150%);
+  }
+  
+  .reserve-coaching-button:hover .button__icon-svg--copy {
+    transition: transform .3s ease-in-out .1s;
+    transform: translate(0);
+  }
+
+  .pub-formation {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+    margin: 20px 0px;
+    padding: 5px;
+  }
+
+.pub-formation-text {
+  border-top: 5px solid var(--second-color1);
+  color: var(--second-color1);
+  color: black;
+}
+
+
+.mini-formation-div {
+  display: flex;
+  gap: 5px;
+}
+
+.one-mini-formation-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.one-mini-formation-div > div {
+  /* flex: 1; */
+}
+
+.mini-formation-img {
+  width: 100%;
+  height: 100px;
+  background-color: rebeccapurple;
+  background-size: cover;
+}
+
+.mini-formation-bottom {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.mini-formation-bottom h3 {
+  color: var(--second-color1);
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.mini-formation-bottom > a {
+  /* background-color: green; */
+  font-size: 10px;
+
+}
+
+.more-formation-btn {
+  color: var(--second-color1);
+  border: 1px solid var(--second-color1);
+  text-align: center;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 2px 0px;
+  margin-top: 5px;
+  transition: 0.3s all ease-in;
+} 
+
+
+.more-formation-btn:hover {
+  background-color: var(--second-color1);
+  color: white;
+  text-decoration: none;
+}

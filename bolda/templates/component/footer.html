@@ -1,0 +1,119 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+<footer>
+    <div class="global-footer-div">
+
+        <div class="footer-left-div">
+            <img class="footer-site-logo" src="{% static 'images/logo_site_vie_reussie.jpeg' %}" alt="">
+            <p>Prenez le contrôle de votre vie et réalisez vos aspirations avec notre soutien et nos outils de
+                développement personnel.</p>
+            <a href="#appointment-modal-overflow" uk-toggle>
+                <div id="pulsa" class="pulsa">
+                    <button id="cta" class="cta">
+                        Reserver mon coaching<div class="star a"></div>
+                        <div class="star b"></div>
+                        <div class="star c"></div>
+                        <div class="star d"></div>
+                        <div class="star e"></div>
+                        <div class="star f"></div>
+                        <div class="star g"></div>
+                        <svg version="1.1" viewBox="0 0 1024 1024" width="24px" class="rocket">
+                            <path fill="#3A7EB9"
+                                d="M662.72 462.784l136.448 169.408v173.248l-136.448-48.32zM342.72 457.344L206.272 626.816v173.248l136.448-48.384z">
+                            </path>
+                            <path fill="#D48171"
+                                d="M570.688 418.688l-142.848 1.152a266.496 266.496 0 0 1-20.288-0.576l3.712 448.64c0.256 28.928 94.272 130.048 94.272 130.048s93.888-102.656 93.632-131.584l-3.712-448.96a344.64 344.64 0 0 1-24.768 1.28z">
+                            </path>
+                            <path fill="#E9DF92"
+                                d="M531.456 599.296l-63.04 0.576c-3.008 0-5.952-0.064-8.96-0.384l2.176 257.792c0.128 16.64 41.728 74.816 41.728 74.816s41.344-58.944 41.28-75.52l-2.176-257.92c-3.648 0.384-7.296 0.64-11.008 0.64z">
+                            </path>
+                            <path fill="#B5D5EB"
+                                d="M554.304 93.568a324.352 324.352 0 0 0-110.592 1.728L342.72 240.768v584.512c13.824-0.96 27.968-1.536 42.368-1.536h245.248c11.84 0 23.36 0.384 34.816 1.024V253.312L554.304 93.568z">
+                            </path>
+                            <path fill="#3A7EB9"
+                                d="M541.44 94.144L500.416 35.008l-45.696 59.136v29.504h89.024v-29.504zM459.456 288.64h88.96v88.896h-88.96zM459.456 467.456h88.96v88.96h-88.96zM459.456 634.176h88.96v88.896h-88.96zM364.928 788.736h277.76v44.352h-277.76z">
+                            </path>
+                        </svg>
+                    </button>
+
+                </div>
+            </a>
+        </div>
+        <div class="footer-middle-div">
+            <h3>Plan du site</h3>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="{% url 'ebook:index' %}">Livres</a></li>
+                <li><a href="{% url 'formation:index' %}">Formations</a></li>
+                <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                <li><a href="{% url 'event:index' %}">Évènements</a></li>
+                <li><a href="">À propos</a></li>
+                <li><a href="{% url 'faq:index' %}">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-right-div">
+            <h3>Réseaux sociaux</h3>
+            <div class="main">
+                <div class="up">
+                    <button class="card1">
+                        <svg class="instagram" fill-rule="nonzero" height="30px" width="30px" viewBox="0,0,256,256"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                            <g style="mix-blend-mode: normal" text-anchor="none" font-size="none" font-weight="none"
+                                font-family="none" stroke-dashoffset="0" stroke-dasharray="" stroke-miterlimit="10"
+                                stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1" stroke="none"
+                                fill-rule="nonzero">
+                                <g transform="scale(8,8)">
+                                    <path
+                                        d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                    <button class="card2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24"
+                            class="facebook" width="24">
+                            <path
+                                d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="down">
+                    <button class="card3">
+                        <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            class="whatsapp">
+                            <path
+                                d="M19.001 4.908A9.817 9.817 0 0 0 11.992 2C6.534 2 2.085 6.448 2.08 11.908c0 1.748.458 3.45 1.321 4.956L2 22l5.255-1.377a9.916 9.916 0 0 0 4.737 1.206h.005c5.46 0 9.908-4.448 9.913-9.913A9.872 9.872 0 0 0 19 4.908h.001ZM11.992 20.15A8.216 8.216 0 0 1 7.797 19l-.3-.18-3.117.818.833-3.041-.196-.314a8.2 8.2 0 0 1-1.258-4.381c0-4.533 3.696-8.23 8.239-8.23a8.2 8.2 0 0 1 5.825 2.413 8.196 8.196 0 0 1 2.41 5.825c-.006 4.55-3.702 8.24-8.24 8.24Zm4.52-6.167c-.247-.124-1.463-.723-1.692-.808-.228-.08-.394-.123-.556.124-.166.246-.641.808-.784.969-.143.166-.29.185-.537.062-.247-.125-1.045-.385-1.99-1.23-.738-.657-1.232-1.47-1.38-1.716-.142-.247-.013-.38.11-.504.11-.11.247-.29.37-.432.126-.143.167-.248.248-.413.082-.167.043-.31-.018-.433-.063-.124-.557-1.345-.765-1.838-.2-.486-.404-.419-.557-.425-.142-.009-.309-.009-.475-.009a.911.911 0 0 0-.661.31c-.228.247-.864.845-.864 2.067 0 1.22.888 2.395 1.013 2.56.122.167 1.742 2.666 4.229 3.74.587.257 1.05.408 1.41.523.595.19 1.13.162 1.558.1.475-.072 1.464-.6 1.673-1.178.205-.58.205-1.075.142-1.18-.061-.104-.227-.165-.475-.29Z">
+                            </path>
+                        </svg>
+                    </button>
+                    <button class="card4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="linkedin" height="1.6em" viewBox="0 0 448 512">
+                            <path
+                                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="extra-right-footer">
+            <h3>Newsletter</h3>
+            <div class="subscribe">
+                <p>Souscrire</p>
+                <input placeholder="Votre adresse mail" class="subscribe-input" name="email" type="email">
+                <br>
+                <div class="submit-btn">Envoyer</div>
+              </div>
+            
+        </div>
+    </div>
+    <div class="bottom-footer-div">
+        {% now "Y" as current_year %}
+        <em> &copy; {{ current_year }}. Tous droits réservés</em>
+
+    </div>
+</footer>

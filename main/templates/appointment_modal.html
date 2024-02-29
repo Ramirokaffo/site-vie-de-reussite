@@ -1,0 +1,90 @@
+{% load static %}
+{% load myfilter %}
+<link rel="stylesheet" href="{% static 'css/appointment_modal.css' %}">
+
+
+                       
+
+
+<div id="appointment-modal-overflow" uk-modal>
+    <div class="uk-modal-dialog">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">RESERVER UN RENDEZ-VOUS</h2>
+        </div>
+
+        <div class="uk-modal-body" uk-overflow-auto>
+            <section class="my-container">
+                <!-- <header>Registration Form</header> -->
+                <form class="form" action="appointment/add" method="post">
+                    {% csrf_token %}
+                    <div class="input-box">
+                        <label>Nom complet</label>
+                        <input required placeholder="Entrez votre nom complet" type="text" name="full_name">
+                    </div>
+                    <div class="column">
+                        <div class="input-box">
+                            <label>Numéro de téléphone</label>
+                            <input required placeholder="Entrez votre numéro de téléphone" type="telephone"
+                                name="phone_number">
+                        </div>
+                        <div class="input-box">
+                            <label>Date souhaitée du rendez-vous</label>
+                            <input required="" placeholder="Entrez une date" type="date" name="my_date">
+                        </div>
+                    </div>
+                    <div class="gender-box">
+                        <label>Sexe</label>
+                        <div class="gender-option">
+                            <div class="gender">
+                                <input checked="" name="gender" id="check-male" type="radio" value="M">
+                                <label for="check-male">Homme</label>
+                            </div>
+                            <div class="gender">
+                                <input name="gender" id="check-female" type="radio" value="F">
+                                <label for="check-female">Femme</label>
+                            </div>
+                            <div class="gender">
+                                <input name="gender" id="check-other" type="radio" value="A">
+                                <label for="check-other">Ne pas indiquer</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-box address">
+                        <label>Objectif du rendez-vous</label>
+                        <textarea name="objectif" id="" cols="30" rows="10"
+                            placeholder="De quoi voulez-vous qu'on discute lors du rendez-vous ?" required></textarea>
+                        <!-- <input required="" placeholder="Enter street address" type="text"> -->
+
+                        <div class="column">
+                            <div class="select-box">
+                                <select name="country" required>
+                                    <option hidden="">Pays</option>
+                                    
+                            {% for country in "t"|country_list %}
+                              <option value="{{ country }}">{{ country }}</option>
+                            {% endfor %}
+                                </select>
+                            </div>
+                            <input required placeholder="Entrez votre ville" type="text" name="city">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Adresse mail</label>
+                        <input required placeholder="Entrez votre adresse mail" type="email" name="email">
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </section>
+
+        </div>
+
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close cancel-button" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+
+    </div>
+</div>

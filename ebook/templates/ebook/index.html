@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'ebook/style.css' %}">
+<main class="main-ebook">
+    {% for category in post_category_list %}
+    <div class="ebook-category-name-div">
+        <h2>Nos livres sur</h2>
+        <h2 class="ebook-category-name">{{ category.name }}</h2>
+    </div>
+    <div class="ebook-collection">
+        {% for ebook in ebooks %}
+        {% if ebook.category == category %}
+        <a href="{% url 'ebook:detail' ebook.id %}" class="uk-box-shadow-small ebook-card">
+            <div class="ebook-image" style="background-image: url('{{ ebook.illustration_image.url }}');">
+
+            </div>
+            <div class="details">
+                <label>{{ ebook.title }}</label>
+                <hr>
+                <p>
+                    {{ ebook.subtitle }}
+                </p>
+            </div>
+            <div class="price-badge"><s class="normal_price">{{ ebook.normal_price }} XAF</s>|<div class="promo_price">
+                    {{ ebook.promo_price }} XAF</div>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

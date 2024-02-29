@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+{% block content %}
+<!-- <script async id="slcLiveChat" src="https://widget.sonetel.com/SonetelWidget.min.js"
+    data-account-id="208441708"></script> -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<script src="{% static 'js/script.js' %}"></script>
+<div class="welcome-bg-image" style="background-image: url('static/images/african-investment.jpg');">
+    <div class="welcome-glass-cart">
+        <H1 class="welcome-main-activity">
+            Coaching & developpement personnel
+        </H1>
+        <h3>
+            Découvrez votre potentiel illimité et atteignez vos objectifs avec notre accompagnement en développement
+            personnel.
+        </h3>
+        <!-- <a class="luminous-card">
+            <h2>RESERVER UN RENDEZ-VOUS</h2>
+        </a> -->
+        <!-- <a class="codepen-button"><span>Start Coding</span></a> -->
+        <a class="second-action-button" href="#appointment-modal-overflow" uk-toggle>
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                    fill="currentColor"></path>
+            </svg>
+            <span>Prendre un rendez-vous</span>
+        </a>
+
+    </div>
+</div>
+<!-- <svg viewBox="0 0 1440 320"><path fill="#000b76" fill-opacity="1" d="M0,256L34.3,245.3C68.6,235,137,213,206,218.7C274.3,224,343,256,411,272C480,288,549,288,617,256C685.7,224,754,160,823,160C891.4,160,960,224,1029,256C1097.1,288,1166,288,1234,282.7C1302.9,277,1371,267,1406,261.3L1440,256L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg> -->
+<!-- </div> -->
+
+
+<div class="business-presentation-div">
+    <div class="presentation-div-left-side">
+        <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">QUI EST DR. TARA BOLDA ?</h2>
+        <i>
+            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200">
+                <!-- <Q> -->
+                Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il
+                trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le
+                rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à
+                un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en
+                étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable
+                du Lorem
+                <!-- </Q> -->
+            </p>
+        </i>
+    </div>
+    <div class="presentation-div-right-side">
+        <img uk-scrollspy="cls: uk-animation-fade; delay: 200" src="{% static 'images/femme-affaires-689x1024.png' %}"
+            alt="">
+
+    </div>
+</div>
+
+<div class="best-seller-book-div" uk-parallax="start: 100%; end: 100%; background-color: #00bfff,#75deff;">
+    <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">NOS LIVRES POPULAIRES</h2>
+    <div class="global-best-seller-book-div">
+        {% for ebook in ebooks %}
+        <a class="one-best-seller-book-div" href="{% url 'ebook:detail' ebook.id %}">
+            <div class="one-best-seller-book-sous-div">
+                <div class="front-content" style="background-image: url('{{ ebook.illustration_image.url }}');">
+                </div>
+                <div class="content">
+                    <div class="one-best-seller-book-content-img"
+                        style="background-image: url('{{ ebook.illustration_image.url }}');"></div>
+                    <div class="one-best-seller-book-content-bottom">
+                        <h3 class="heading">{{ ebook.title }}</h3>
+                        <p>{{ ebook.subtitle }}</p>
+                        <button class="learn-more-mini-ebook-btn">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">En savoir plus</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </a>
+        {% empty %}
+        <div class="no-ebook">Au livre disponible</div>
+        {% endfor %}
+
+    </div>
+    <!-- <hr> -->
+    <div class="all-ebook-btn-div">
+        <a class="more-post-button all-ebook-btn" href="{% url 'ebook:index' %}"
+            uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
+            <span class="hover-underline-animation">Consulter tous les ouvrages</span>
+            <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
+                <path id="Path_10" data-name="Path 10"
+                    d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)">
+                </path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div class="sup-last-post-div">
+    <div class="last-post-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+        <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">DERNIERES PUBLICATIONS</h2>
+        <hr>
+        <div class="global-mini-post-div">
+            {% for post in posts %}
+            <div class="mini-post-div">
+                <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
+                <img src="{{ post.illustration_image.url }}" alt=" image {{ post.title }}"
+                    uk-scrollspy="cls: uk-animation-fade; delay: 200">
+                <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">{{ post.subtitle }}
+                </p>
+
+                <a class="more-post-button" href="{% url 'blog:detail' post.id %}"
+                    uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
+                    <span class="hover-underline-animation"> Lire la suite </span>
+                    <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10"
+                        viewBox="0 0 46 16">
+                        <path id="Path_10" data-name="Path 10"
+                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                            transform="translate(30)"></path>
+                    </svg>
+                </a>
+
+            </div>
+            {% empty %}
+            <p>Aucune publication disponible</p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="sub-formation-div">
+    <div class="formation-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+        <h2>NOS FORMATIONS</h2>
+
+        <div class="sous-formation-div">
+            <div class="sous-formation-div-text">
+                <p uk-scrollspy="cls: uk-animation-slide-top; delay: 100">{% lorem %}</p>
+                <a href="{% url 'formation:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">Voir
+                    toutes les formations</a>
+            </div>
+            <div class="sous-formation-div-list">
+                {% for formation in formations %}
+                <a href="{% url 'formation:detail' formation.id %}">
+                    <div class="sub-one-formation-card">
+                        <div class="one-formation-card">
+                            <div class="formation-img-div"
+                                style="background-image: url('{{ formation.illustration_image.url }}');"></div>
+                            <div class="one-formation-content">
+                                <h3>{{ formation.title }}</h3>
+                                <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200">{{ formation.subtitle }}
+                                </p>
+                                <button>En savoir plus</button>
+                                <!-- <a href="{% url 'formation:detail' formation.id %}">En savoir plus</a> -->
+                            </div>
+                            <!-- <img src="{{ formation.illustration_image.url }}" alt=""> -->
+
+                        </div>
+                    </div>
+                </a>
+                {% empty %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% if events %}
+
+<div class="sub-incomming-event-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+    <div class="incomming-event-div">
+        <h2>EVENEMENTS</h2>
+        <div class="uk-slider-container-offset" uk-slider>
+
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+
+                <ul class="uk-slider-items uk-child-width-1-3@s uk-grid event-grid">
+
+                    {% for event in events %}
+                    <li class="one-event-card">
+                        <a href="{% url 'event:detail' event.id %}">
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-media-top">
+                                    <img src='{{ event.illustration_image.url }}' width="1800" height="1200" alt="">
+                                </div>
+                                <div class="uk-card-body event-card-body">
+                                    <h3 class="uk-card-title">{{ event.title }}</h3>
+                                    <p>{{ event.subtitle }}</p>
+                                    <div class="event-card-bottom">
+                                        <button class="event-details-btn">
+                                            En savoir plus
+                                        </button>
+                                        <span>{{ event.start_at|event_status:event.end_at }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% empty %}
+                    <p>Aucun évènement disponible</p>
+                    {% endfor %}
+
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous
+                    uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next
+                    uk-slider-item="next"></a>
+
+            </div>
+
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<div class="parallax-div">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex img-parallax-div" uk-parallax="bgy: -500"
+        style="background-image: url('static/images/african-investment.jpg');">
+        <div class="black-opacity">
+            <div class="in-black-opacity" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+                <h1>Osez le changement et découvrez une nouvelle version de vous-même grâce à notre accompagnement
+                    personnalisé.</h1>
+                <a class="parallax-action-button" href="#appointment-modal-overflow" uk-toggle>
+                    Reserver mon coaching
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="contact-us-div">
+    <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">CONTACT</h2>
+    <div class="sous-contact-us-div">
+        <div class="contact-left-side" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
+            <h3>Vous souhaitez nous laisser un message ?</h3>
+            <p>Vous pouvez nous laisser un message anonyme</p>
+        </div>
+        <div class="contact-right-side" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" id="message-form-id"
+            message_url="{% url 'message:add' %}">
+            {% csrf_token %}
+            <p class="contact-heading">Message</p>
+
+            <div class="contact-input-div">
+                <input class="contact-input" type="text" placeholder="Nom" name="name" id="name-id">
+            </div>
+            <div class="contact-input-div">
+                <input type="email" class="contact-input" placeholder="Email" name="email" id="email-id">
+            </div>
+
+            <div class="contact-input-div">
+                <Textarea class="contact-input" type="text" placeholder="Votre message" required name="message"
+                    id="message-id"></Textarea>
+            </div>
+            <div class="contact-button-div">
+                
+                <button class="contact-submit" id="contact-submit-id">
+                   
+                    <div class="dot-spinner" id="dot-spinner-message">
+                        {% for _ in "xxxxxxxxxx"|rjust:"9" %}
+                        <div class="dot-spinner__dot"></div>
+
+                        {% endfor %}
+                    </div>
+                    <span id="contact-submit-text">Envoyer</span>
+                </button>
+            </div>
+            </>
+        </div>
+
+    </div>
+
+    <div class="testimony-div">
+        <div uk-slider="parallax: true;">
+            <ul
+                class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-light testimony-ul">
+
+                {% for testimony in last_testimony_list %}
+                <li>
+                    <div class="testimony-card">
+                        <div class="header">
+                            <div class="image"></div>
+                            <div>
+                                <div class="stars">
+                                    {% for _ in "xxxxx"|rjust:"5" %} <svg fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                        </path>
+                                    </svg>
+                                    {% endfor %}
+                                </div>
+                                <p class="name">John Doe</p>
+                            </div>
+                        </div>
+                        <p class="message"><i><q>{{ testimony.content }}</q></i></p>
+                    </div>
+                </li>
+                {% empty %}
+
+                {% endfor %}
+
+                <!-- {% for a in "xxxxxxxxxx"|rjust:"10" %}
+            <li>
+                <div class="testimony-card">
+                    <div class="header">
+                        <div class="image"></div>
+                        <div>
+                            <div class="stars">
+                                {% for _ in "xxxxx"|rjust:"5" %} <svg fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                {% endfor %}
+                            </div>
+                            <p class="name">John Doe</p>
+                        </div>
+                    </div>
+                    <p class="message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+                        voluptatem alias ut provident sapiente repellendus.
+                    </p>
+                </div>
+            </li>
+            {% endfor %} -->
+            </ul>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        </div>
+    </div>
+
+
+    {% endblock %}

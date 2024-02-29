@@ -1,0 +1,38 @@
+
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'ebook/bottom_ebook_cards.css' %}">
+
+      
+        <div class="related-ebook-div">
+            <div class="related-ebook-div-title">
+                <h3>Nos livres qui pourraient vous interesser...</h3>
+                <div class="loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <hr>
+            <div class="related-ebook-list-div">
+                {% for ebook in ebooks %}
+                <a class="one-ebook-mini-div" href="{% url 'ebook:detail' ebook.id %}">
+                    <div class="mini-ebook-img" style="background-image: url('{{ ebook.illustration_image.url }}');">
+                    </div>
+                    <div class="mini-ebook-content-div">
+                        <h4>{{ ebook.title }}</h4>
+                        <p>{{ ebook.subtitle }}</p>
+                        <hr>
+                        <span>XAF | {{ ebook.promo_price }}</span>
+                    </div>
+                </a>
+                {% empty %}
+                <p>Aucun livre disponible</p>
+                {% endfor %}
+            </div>
+            <hr>
+            <a href="{% url 'ebook:index' %}">Consulter tous nos ouvrages -></a>
+        </div>
