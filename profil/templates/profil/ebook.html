@@ -1,0 +1,13 @@
+{% extends "profil/base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="profil/component/ebook.css">
+
+{% block content %}
+  {% for ebook in ebooks %}
+    <h3>{{ ebook.title }}</h3>
+  {% empty %}
+    <p>Oups, il semble que vous n'avez pas encore acheté un ouvrage.</p>
+  {% endfor %}
+
+{% endblock content %}

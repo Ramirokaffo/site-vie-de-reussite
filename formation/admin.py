@@ -15,12 +15,8 @@ class FormationAdmin(admin.ModelAdmin):
     
     def illustration_vdeo(self, obj):
         try:
-            obj.illustration_video.url
-            return format_html(f'<video style="width:100px; height:100px;" controls> \
-                               <source src="{obj.illustration_video.url}" type="video/mp4"> \
-                               <source src="{obj.illustration_video.url}" type="video/mov"> \
-                               <source src="{obj.illustration_video.url}" type="video/avi"> \
-                                Your browser does not support the video tag.</video>')
+            return format_html(f'''<iframe width="100px" height="100px" src="https://www.youtube.com/embed/{obj.illustration_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>''')
+
         except:
                 return format_html("<div style='width:100px; height:100px; background-color: #121212'></div>")
 
@@ -40,28 +36,26 @@ class FormationVideoAdmin(admin.ModelAdmin):
     
     def vdeo(self, obj):
         try:
-            obj.video.url
-            return format_html(f'<video style="width:100px; height:100px;" controls> \
-                               <source src="{obj.video.url}" type="video/mp4"> \
-                               <source src="{obj.video.url}" type="video/mov"> \
-                               <source src="{obj.video.url}" type="video/avi"> \
-                                Your browser does not support the video tag.</video>')
+            return format_html(f'''<iframe width="100px" height="100px" src="https://www.youtube.com/embed/{obj.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>''')
         except:
                 return format_html("<div style='width:100px; height:100px; background-color: #121212'></div>")
 
-    list_display = ("title", "published", "created_at", "formation", "vdeo")
+    list_display = ("title", "formation", "published", "created_at", "vdeo")
     list_editable = ("published", )
 
 
 class VideoCommentAdmin(admin.ModelAdmin):
-
-
     list_display = ("content", "published", "created_at", "video", "author")
     list_editable = ("published", )
 
 
+class SaleFormationAdmin(admin.ModelAdmin):
+    list_display = ("formation", "user", "isPaid", "amount", "created_at")
+    # list_editable = ("published", )
+
+
 
 admin.site.register(Formation, FormationAdmin)
-admin.site.register(SaleFormation)
+admin.site.register(SaleFormation, SaleFormationAdmin)
 admin.site.register(FormationVideo, FormationVideoAdmin)
 admin.site.register(VideoComment, VideoCommentAdmin)

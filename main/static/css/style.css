@@ -133,37 +133,31 @@
 
 
 .business-presentation-div {
-/* height: 700px; */
-/* background: red; */
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
-/* justify-content: center; */
-/* justify-items: center;
-align-content: center; */
 padding: 70px 10px;
+padding-bottom: 0px;
 align-items: center;
 }
 
 .presentation-div-left-side {
   width: 40%;
-  border-left: 2px solid var(--color2);
+  border-left: 2px solid var(--second-color2);
   padding-left: 20px;
 
 }
 
 .presentation-div-left-side h2 {
-  color: var(--color1);
+  color: var(--second-color1);
   font-weight: bold;
 }
 
 
 
 .presentation-div-left-side p {
-  /* color: var(--color3); */
   color: black;
   text-align: justify;
-  /* background-color: green; */
   overflow: visible;
   padding: 0px;
   margin: 0px;
@@ -205,22 +199,26 @@ align-items: center;
 
 .best-seller-book-div {
   margin: auto;
-  padding: 70px 40px;
-  padding-bottom: 100px;
+  padding: 70px 0px;
+  /* padding-bottom: 50px; */
   /* height: 800px; */
   border-top-right-radius: 60px;
   border-top-left-radius: 60px;
-  /* background-color: black; */
-  background-color: var(--second-color3);
+  background-color: white;
+  /* background-color: var(--second-color3); */
 
 }
 
 
 .best-seller-book-div h2 {
-  color: white;
+  color: var(--second-color1);
   font-size: 60px;
   text-align: center;
   padding: 40px 0px;
+  background-color: #f5f0ee;
+  margin-bottom: 70px;
+  border-top: 1px solid var(--second-color1);
+  border-bottom: 1px solid var(--second-color1);
 
 }
 
@@ -262,6 +260,28 @@ align-items: center;
   background-position: center;
   /* background-repeat: no-repeat; */
   background-size: cover;
+
+  
+}
+
+.front-content-blur {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(5px) saturate(200%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.one-best-seller-book-content-sous-img {
+  height: 85%;
+  width: 85%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* display: none; */
+  /* width: 100px;
+  height: 100px; */
 }
 
 .one-best-seller-book-sous-div .front-content p {
@@ -316,6 +336,8 @@ align-items: center;
   background-size: cover;
   
 }
+
+
 
 .one-best-seller-book-content-bottom {
   padding: 15px;
@@ -449,6 +471,7 @@ align-items: center;
 .all-ebook-btn-div {
   display: flex;
   justify-content: end;
+  margin-top: 30px;
 }
 
 .all-ebook-btn {
@@ -457,6 +480,13 @@ align-items: center;
   font-weight: bold;
 }
 
+.all-ebook-btn .hover-underline-animation {
+  color: var(--second-color1) !important;
+}
+
+.all-ebook-btn svg {
+  fill: var(--second-color1) !important;
+}
 
 /* 
 .one-best-seller-book-div .parent {
@@ -584,19 +614,17 @@ align-items: center;
 
 
 .sup-last-post-div {
-  background-color: var(--second-color3);
+  /* background-color: var(--second-color3); */
   /* background-color: red; */
   padding: 70px 40px;
+  padding-top: 20px;
 
 }
 
 
   .last-post-div {
     margin: auto;
-    /* margin-top: 300px; */
-    /* text-align: center; */
     padding: 40px;
-    /* height: 800px; */
     border-top-right-radius: 60px;
     border-top-left-radius: 60px;
     background-color: var(--color1);
@@ -612,17 +640,13 @@ align-items: center;
 
 
   .global-mini-post-div {
-    /* margin: auto; */
     display: flex;
     align-items: center;
-
-
 
   }
 
   .mini-post-div {
     width: 30%;
-    /* background-color: red; */
     padding: 30px 10px;
     margin: 0px 10px;
   }
@@ -643,17 +667,6 @@ align-items: center;
     scale: 1.05;
     transition: 0.8s all ease-out;
   }
-
-  /* .mini-post-div p {
-    height: 350px;
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.5);
-    padding: 20px 0px;
-    font-size: 20px;
-    line-height: 30px;
-
-  } */
-
 
   .mini-post-div p {
     overflow: hidden;
@@ -712,7 +725,7 @@ align-items: center;
   .more-post-button svg {
     transform: translateX(-8px);
     transition: all 0.3s ease;
-    fill: var(--color4) !important;
+    fill: var(--color4);
 
   }
   
@@ -759,7 +772,7 @@ align-items: center;
 
 
 .sub-formation-div {
-  background-color: var(--second-color3);
+  /* background-color: var(--second-color3); */
 }
 
 
@@ -1369,9 +1382,35 @@ align-items: center;
 
 
   /**************************************************************************
+      PARTIE DES VIDEOS PUBLIQUES
+  ************************************************************************** */
+
+
+.home-list-videos {
+  padding: 90px 10px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+  /**************************************************************************
       PARTIE DES TEMOIGNAGES
   ************************************************************************** */
 
+  .sup-testimony-div {
+    background-color: white;
+  }
+
+  .sup-testimony-div > h3 {
+    color: black;
+    text-align: center;
+    margin: auto;
+    /* padding: 50px 0px; */
+    padding-top: 50px;
+    /* background-color: red; */
+    font-size: 50px;
+    /* font-weight: bold; */
+  } 
 
 .testimony-div {
   /* height: 500px; */
@@ -1465,3 +1504,24 @@ align-items: center;
 
 
 
+
+
+
+
+
+
+@media screen and (max-width: 901px) {
+
+
+  .business-presentation-div {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .business-presentation-div > div {
+    width: 100%;
+  }
+
+
+
+}

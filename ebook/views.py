@@ -11,24 +11,12 @@ from django.core.paginator import Paginator
 
 def index(request: WSGIRequest):
 
-    # category_id = request.GET.get("category_id")
     category_list = CategoryModel.objects.filter(ebookmodel__isnull=False)
     context = {}
-    # if category_id is not None:
-    #     ebook_list = EbookModel.objects.filter(category=category_id)
-    #     target_category = [cat for cat in category_list if cat.id == int(category_id)]
-    #     if len(target_category) != 0:
-    #         context["category"] = target_category[0]
-    # else:
-    # ebook_list = 
-        
-    # paginator = Paginator(latest_ebook_list, 6)
 
-    # page_number = request.GET.get("page")
-    # page_obj = paginator.get_page(page_number if page_number is not None else 1)
     context["ebooks"] = EbookModel.objects.all().order_by("category")
     context["post_category_list"] = category_list
-    # context["categories"] = categories
+    context["title"] = "Ebooks | Site vie de réussite"
     return render(request, "ebook/index.html", context)
 
 def detail(request, ebook_id):
@@ -39,6 +27,7 @@ def detail(request, ebook_id):
 
     context = {
         "ebook": target_ebook,
+        "title": target_ebook.title,
         "related_ebook_category": related_ebook_category,
     }
     

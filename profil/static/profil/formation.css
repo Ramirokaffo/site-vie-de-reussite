@@ -1,0 +1,80 @@
+
+
+.main-div {
+    padding: 40px;
+    /* background-color: blue; */
+}
+
+h1 {
+    color: var(--second-color1);
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+hr {
+    color: red;
+    fill: green;
+    background-color: yellow;
+}
+
+.no-formation-p {
+    background-color: white;
+    display: inline-flex;
+    gap: 20px;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 3px, rgba(0, 0, 0, 0.2) -1px -1px 3px;
+    align-items: center;
+}
+
+.one-formation-card {
+    background-color: white;
+    display: inline-flex;
+    align-items: stretch;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 3px, rgba(0, 0, 0, 0.2) -1px -1px 3px;
+    flex-direction: column;
+    transition: 0.3s all ease;
+    /* margin-bottom: 30px; */
+    margin-right: 20px;
+
+}
+
+.one-formation-card h4 {
+    font-weight: bold;
+}
+
+.one-formation-card:hover {
+    scale: 1.005;
+    transition: 0.3s all ease;
+
+}
+
+.one-formation-card-header {
+    padding: 40px;
+
+}
+
+.formation-info-line {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.one-formation-card > a {
+    background-color: var(--second-color2);
+    padding: 10px 40px;
+    display: block;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.3s all ease;
+}
+
+.one-formation-card > a:hover {
+    background-color: var(--second-color1);
+    text-decoration: none;
+    transition: 0.3s all ease;
+
+}

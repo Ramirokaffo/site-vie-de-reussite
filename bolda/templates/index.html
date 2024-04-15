@@ -58,18 +58,25 @@
 
     </div>
 </div>
-
-<div class="best-seller-book-div" uk-parallax="start: 100%; end: 100%; background-color: #00bfff,#75deff;">
+<!-- <svg id="10015.io" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="svg-pattern" x="0" y="0" width="62" height="62" patternUnits="userSpaceOnUse" patternTransform="translate(30, 30) rotate(0) skewX(0)"><svg width="32" height="32" viewBox="0 0 100 100"><g fill="#47d3ff" opacity="1"><path d="M28.1954 99.6973C29.4258 100.305 30.9206 99.9781 31.7829 98.8967L78.6579 40.1076C79.3594 39.2277 79.495 38.0238 79.0067 37.01C78.5184 35.9961 77.4926 35.3516 76.3672 35.3516H57.6584L73.1313 4.23418C73.5829 3.32598 73.5327 2.24883 72.9983 1.38672C72.4643 0.524609 71.5219 0 70.5079 0H35.3516C34.0061 0 32.8336 0.916406 32.5086 2.22188L20.7899 49.2922C20.5721 50.1672 20.7694 51.0937 21.3245 51.8041C21.8797 52.5146 22.7313 52.9297 23.6329 52.9297H37.4625L26.6495 96.3625C26.3165 97.6994 26.96 99.0875 28.1954 99.6973V99.6973ZM44.054 50.7078C44.2717 49.8328 44.0745 48.9063 43.5194 48.1959C42.9641 47.4854 42.1125 47.0703 41.211 47.0703H27.3813L37.6413 5.85938H65.779L50.3061 36.9768C49.8545 37.885 49.9047 38.9621 50.4391 39.8242C50.9731 40.6865 51.9155 41.2109 52.9295 41.2109H70.284L35.5829 84.732L44.054 50.7078Z"></path></g></svg></pattern></defs><rect x="0" y="0" width="100%" height="100%" fill="rgba(71, 74, 255, 0)"></rect><rect x="0" y="0" width="100%" height="100%" fill="url(#svg-pattern)"></rect></svg> -->
+<div class="best-seller-book-div" uk-parallax="start: 100%; end: 100%; background-color: white;">
     <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">NOS LIVRES POPULAIRES</h2>
     <div class="global-best-seller-book-div">
         {% for ebook in ebooks %}
         <a class="one-best-seller-book-div" href="{% url 'ebook:detail' ebook.id %}">
             <div class="one-best-seller-book-sous-div">
                 <div class="front-content" style="background-image: url('{{ ebook.illustration_image.url }}');">
+                    <div class="front-content-blur">
+                        <div class="one-best-seller-book-content-sous-img"
+                            style="background-image: url('{{ ebook.illustration_image.url }}');">
+                        </div>
+                    </div>
                 </div>
                 <div class="content">
                     <div class="one-best-seller-book-content-img"
-                        style="background-image: url('{{ ebook.illustration_image.url }}');"></div>
+                        style="background-image: url('{{ ebook.illustration_image.url }}');">
+
+                    </div>
                     <div class="one-best-seller-book-content-bottom">
                         <h3 class="heading">{{ ebook.title }}</h3>
                         <p>{{ ebook.subtitle }}</p>
@@ -137,7 +144,7 @@
 
 </div>
 
-
+{% if formations %}
 <div class="sub-formation-div">
     <div class="formation-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
         <h2>NOS FORMATIONS</h2>
@@ -176,11 +183,13 @@
 
 </div>
 
+{% endif %}
+
 {% if events %}
 
 <div class="sub-incomming-event-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
     <div class="incomming-event-div">
-        <h2>EVENEMENTS</h2>
+        <h2>ÉVÈNEMENTS</h2>
         <div class="uk-slider-container-offset" uk-slider>
 
             <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
@@ -270,9 +279,9 @@
                     id="message-id"></Textarea>
             </div>
             <div class="contact-button-div">
-                
+
                 <button class="contact-submit" id="contact-submit-id">
-                   
+
                     <div class="dot-spinner" id="dot-spinner-message">
                         {% for _ in "xxxxxxxxxx"|rjust:"9" %}
                         <div class="dot-spinner__dot"></div>
@@ -282,21 +291,34 @@
                     <span id="contact-submit-text">Envoyer</span>
                 </button>
             </div>
-            </>
+            <!-- </> -->
         </div>
 
     </div>
+</div>
+<div class="home-list-videos">
+{% include "core/site_videos.html" %}
 
+</div>
+{% if last_testimony_list %}
+<div class="sup-testimony-div">
+    <h3>DES RETOURS À PROPOS DE NOUS ?</h3>
     <div class="testimony-div">
         <div uk-slider="parallax: true;">
             <ul
                 class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-light testimony-ul">
-
                 {% for testimony in last_testimony_list %}
                 <li>
                     <div class="testimony-card">
                         <div class="header">
-                            <div class="image"></div>
+                            <div class="image">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
                             <div>
                                 <div class="stars">
                                     {% for _ in "xxxxx"|rjust:"5" %} <svg fill="currentColor" viewBox="0 0 20 20"
@@ -307,7 +329,7 @@
                                     </svg>
                                     {% endfor %}
                                 </div>
-                                <p class="name">John Doe</p>
+                                <p class="name">{{testimony.author.last_name}} {{testimony.author.first_name}}</p>
                             </div>
                         </div>
                         <p class="message"><i><q>{{ testimony.content }}</q></i></p>
@@ -316,36 +338,14 @@
                 {% empty %}
 
                 {% endfor %}
-
-                <!-- {% for a in "xxxxxxxxxx"|rjust:"10" %}
-            <li>
-                <div class="testimony-card">
-                    <div class="header">
-                        <div class="image"></div>
-                        <div>
-                            <div class="stars">
-                                {% for _ in "xxxxx"|rjust:"5" %} <svg fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                {% endfor %}
-                            </div>
-                            <p class="name">John Doe</p>
-                        </div>
-                    </div>
-                    <p class="message">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-                        voluptatem alias ut provident sapiente repellendus.
-                    </p>
-                </div>
-            </li>
-            {% endfor %} -->
             </ul>
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
         </div>
     </div>
+</div>
+
+{% endif %}
 
 
-    {% endblock %}
+
+{% endblock %}

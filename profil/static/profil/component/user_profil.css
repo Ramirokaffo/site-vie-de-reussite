@@ -1,0 +1,22 @@
+
+
+
+.header-right-div {
+    /* background-color: blue; */
+    display: flex !important;
+    gap: 20px;
+    align-items: center;
+    /* background-color: red; */
+    padding: 0px 20px;
+    background-color: var(--second-color1);
+    margin: 3px 0px;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    /* height: 100%; */
+}
+
+.header-right-div > p {
+    padding: 0px;
+    margin: 0px;
+    color: var(--color3);
+}

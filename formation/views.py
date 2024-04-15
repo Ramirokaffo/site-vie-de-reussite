@@ -3,12 +3,16 @@ from django.shortcuts import render
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from .models import Formation, SaleFormation
+from .models import Formation, SaleFormation, VideoComment, FormationVideo
 from django.template import loader
 from django.urls import reverse
 from core.models import CategoryModel
 from django.core.paginator import Paginator
 from django.db.models import Count
+import json
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+from django.core.serializers import serialize
 
 
 def index(request: WSGIRequest):
@@ -19,6 +23,7 @@ def index(request: WSGIRequest):
     )
     context["formations"] = formation_list
     context["formation_category_list"] = category_list
+    context["title"] = "Formations | Site vie de réussite"
     return render(request, "formation/index.html", context)
 
 def detail(request, formation_id):
@@ -31,7 +36,18 @@ def detail(request, formation_id):
         related_formation_category = Formation.objects.all().exclude(id=target_formation.id)[:4]
     context = {
         "formation": target_formation,
+        "title": target_formation.title,
         "related_formation_category": related_formation_category,
     }
     return render(request, "formation/detail.html", context)
 
+
+def comment(request: WSGIRequest):
+    data = request.body.decode()
+    data = json.loads(data)
+    videoComment = VideoComment(content=data["userComment"], author=User(id=data["userId"]), video=FormationVideo(data["videoId"]))
+    videoComment.save()
+    videoComment.author = request.user
+    # serialized_comment = serialize('json', [videoComment])
+    serialized_user = serialize('json', [request.user])
+    return JsonResponse({"status": "1", "comment": {"content": videoComment.content}, "author": serialized_user}, content_type='application/json')

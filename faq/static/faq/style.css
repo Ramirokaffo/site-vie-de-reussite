@@ -15,14 +15,37 @@ body{
     padding: 40px 10%;
 }
 
+.faq-head-div {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* border-radius: 20px; */
+  padding: 20px 0px;
+  gap: 20px;
+  border-right: 10px solid var(--second-color2);
+  border: 1px solid var(--second-color2);
+  /* background-color: var(--color4); */
+}
+
+.faq-head-div hr {
+  background-color: var(--second-color1);
+  color: var(--second-color1);
+  fill: var(--second-color1);
+}
+
+.main-faq h2 {
+  font-size: 40px;
+  color: var(--second-color1);
+  font-weight: bold;
+}
 
 
-div.c{
+
+.main-faq div.c{
   position: relative;
-  margin:2em;
+  /* margin:2em; */
   transition: 0.5s all ease;
 }
-input{
+.main-faq input{
   position: absolute;
   left: 0;
   top: 0;
@@ -33,7 +56,7 @@ input{
   transition: 0.5s all ease;
 
 }
-h1{
+.main-faq h1{
   background:var(--second-color2);
   color:white;
   padding:1em;
@@ -41,31 +64,31 @@ h1{
   border: 2px solid black;
   border-radius: 3px;
 }
-label::before{
+.main-faq label::before{
   content:"";
   display: inline-block;
   border: 15px solid transparent;
   border-left:20px solid white;
 }
-label{
+.main-faq label{
   cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
 }
-div.p{
+.main-faq div.p{
   max-height:0px;
   overflow: hidden;
   transition:max-height 0.5s;
   background-color: white;
   box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
-div.p p {
+.main-faq div.p p {
   padding:2em;
   /* padding: 20px; */
 
 }
-input:checked ~ h1 label::before{
+.main-faq input:checked ~ h1 label::before{
   border-left:15px solid transparent;
   border-top:20px solid white;
   margin-top:12px;
@@ -73,11 +96,11 @@ input:checked ~ h1 label::before{
   /* transition: 0.5s all ease; */
 
 }
-input:checked ~ h1 ~ div.p{
+.main-faq input:checked ~ h1 ~ div.p{
   max-height: max-content;
   /* transition: 0.5s all ease; */
 
 }
-a{
+.main-faq a{
   color:steelblue;
 }

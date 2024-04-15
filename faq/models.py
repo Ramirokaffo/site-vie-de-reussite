@@ -34,7 +34,6 @@ class FaqModel(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     created_at = models.DateField(blank=True, null=True, auto_created=True, auto_now_add=True)
     category = models.CharField(choices=FAQ_CATEGORY, verbose_name="Catégorie de Faq", max_length=20)
-    # faq_category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="catégorie")
 
     class Meta:
         ordering = ['-created_at']

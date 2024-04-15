@@ -15,7 +15,7 @@ class BlogPost(models.Model):
     last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date de publication")
     published = models.BooleanField(default=True, verbose_name="Publié")
-    content = HTMLField(blank=True, verbose_name="Contenu")
+    content = HTMLField(max_length=5000000, blank=True, verbose_name="Contenu")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/post/%Y/%m/%d', verbose_name="Image d'illustration")
     
 

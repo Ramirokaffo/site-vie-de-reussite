@@ -6,17 +6,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'auth/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
+    <script src="{% static 'js/uikit.js' %}"></script>
+    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
     {% block title %}
-    <title>Document</title>
+    <title>Connexion</title>
     {% endblock title %}
 </head>
 
 <body>
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1">
-        <path fill="#0099ff" fill-opacity="1"
-            d="M0,128L80,122.7C160,117,320,107,480,128C640,149,800,203,960,202.7C1120,203,1280,149,1360,122.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-        </path>
-    </svg> -->
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'success' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'danger' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'warning' })
+    </script>
+    {% else %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'primary' })
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
      <section class="container">
             <div class="wave"></div>
           </section>

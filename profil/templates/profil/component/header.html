@@ -1,0 +1,16 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'profil/component/header.css' %}">
+
+<header>
+    {% if profil_title %}
+      <h4>Formation: {{ profil_title }}</h4>
+    {% else %}
+    <h3>Mon portail privé</h3>
+      
+    {% endif %}
+    
+    <!-- <h3>Bienvenue sur votre dashboard</h3> -->
+    {% include "profil/component/user_profil.html" %}
+</header>

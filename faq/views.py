@@ -8,5 +8,5 @@ def index(request: WSGIRequest):
 
     questions = FaqModel.objects.all()
     context["questions"] = questions
-    return render(request, "appointment/add_success.html", context)
+    context["title"] = "Foire aux questions | Site vie de réussite"
     return render(request, "faq/index.html", context)

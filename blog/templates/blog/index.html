@@ -17,7 +17,8 @@
 
 <main class="blog-main">
     <section class="blog-left-section">
-        {% if post_category_list %}
+        <div class="sup-category-list">
+            {% if post_category_list %}
         <ol class="category-type-list">
             {% if category %}
             <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
@@ -38,6 +39,7 @@
         {% else %}
         <p>No post category available.</p>
         {% endif %}
+        </div>
     </section>
 
 

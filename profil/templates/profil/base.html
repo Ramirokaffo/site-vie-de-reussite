@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Profil</title>
+    {% endblock title %}
+    <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'profil/style.css' %}">
+    <script src="{% static 'js/uikit.js' %}"></script>
+    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'success' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'danger' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'warning' })
+    </script>
+    {% else %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'primary' })
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <section class="profil-left-section">
+    {% include "profil/component/left_side_bar.html" %}
+    </section>
+    <section class="profil-right-section">
+        {% include "profil/component/header.html" %}
+
+        <main>
+    
+            {% block content %}
+              <!-- <p>Le contenu</p> -->
+            {% endblock content %}
+        </main>
+        {% include "profil/component/footer.html" %}
+        
+    </section>
+</body>
+</html>

@@ -9,28 +9,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}{% endblock %}
+    <!-- {% block title %} -->
+    <title>{{ title }}</title>
+    <!-- {% endblock %} -->
     <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'js/uikit.js' %}"></script>
     <script src="{% static 'js/uikit-icons.min.js' %}"></script>
-    <script>
-        $(document).ready(function() {
-          $.ajaxSetup({
-            beforeSend: function(xhr) {
-              xhr.setRequestHeader('X-CSRFToken', $('input[name="csrfmiddlewaretoken"]').val());
-            }
-          });
-        });
-      </script>
+
 </head>
 
 <body>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'success' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'danger' })
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'warning' })
+    </script>
+    {% else %}
+    <script>
+        UIkit.notification({ message: '{{ message }}', status: 'primary' })
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     {% include "appointment_modal.html" %}
     <div class="uk-section-secondary uk-background-cover uk-preserve-color">
 
         {% include "component/header.html" %}
-        <div id="test-color"  uk-parallax="start: 100%; end: 100%; background-color: white,#f5f0ee;">
+        <div id="test-color"  
+        uk-parallax="start: 100%; end: 100%; background-color: white,white;"
+        >
 
             <!-- <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-target; start: 100%; end: 100%; color: #0f0;">Headline</h1> -->
         

@@ -1,0 +1,90 @@
+
+.sup-list-video-site {
+    
+}
+
+.sup-list-video-site h2 {
+    font-weight: bold;
+    font-size: 60px;
+
+}
+
+.list-video-site {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.mini-video-frame {
+    display: inline;
+    margin: 10px;
+    /* padding: 10px; */
+    /* display: -moz-popup; */
+}
+.mini-video-frame iframe {
+    height: 250px;
+    width: 400px;
+    border-radius: 5px;
+}
+
+
+
+
+.follow-on-yt-btn {
+    position: relative;
+    width: 300px;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 50px;
+    background-color: white;
+    border: 2px #cd201f solid;
+    display: block;
+    margin: auto;
+    color: black;
+    font-weight: bold;
+    padding-left: 20px;
+    transition: all 0.5s ease;
+    
+  }
+  
+
+.show-on-hover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: all 0.5s ease;
+    background-color: #cd201f;
+    border-radius: 50px;
+    width: 55px;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+  .follow-on-yt-btn:hover {
+    text-decoration: none;
+    color: black;
+    scale: 1.02;
+    transition: all 0.5s ease;
+
+  }
+
+  .follow-on-yt-btn:hover .show-on-hover {
+    width: 100%;
+    transition: all 0.5s ease;
+
+  }
+
+ .yt-followers-count {
+    display: none;
+    transition: 0.3s all ease-in 0.2s;
+
+  }
+
+
+
+
+  .follow-on-yt-btn:hover .yt-followers-count {
+    display: inline;
+    transition: 0.3s all ease-in 0.2s;
+
+  }

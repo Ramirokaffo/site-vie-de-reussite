@@ -1,10 +1,33 @@
 
+.head-block {
+    text-align: center;
+    padding: 40px 20%;
+    margin: auto;
+    background-color: rgba(4, 52, 77, 1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    /* background-color: var(--second-color2); */
+}
 
+.head-block h1 {
+    color: var(--second-color1);
+    color: white;
+    font-weight: bold;
+}
+
+.head-block p {
+    opacity: 0.8;
+    /* color: white; */
+  color: var(--color4);
+
+}
 
 .main-formation {
     /* height: 500px; */
     padding: 20px 5%;
 }
+
+
+
 
 .formation-category-name-div {
     display: flex;

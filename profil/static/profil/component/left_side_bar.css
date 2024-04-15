@@ -1,0 +1,110 @@
+
+.profil-left-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 10px 10px;
+
+}
+
+
+.logo-div {
+    /* height: 150px; */
+    width: 100%;
+    flex-basis: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-div > a img {
+    height: 90px;
+    width: 90px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.left-section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    flex-grow: 1;
+    padding-bottom: 20px;
+
+}
+
+.action-ul {
+
+    /* background-color: green; */
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+
+    /* flex-grow: ; */
+
+}
+
+.action-ul li {
+    margin: 0px;
+    padding: 0px;
+    margin: 15px 5px;
+    display: block;
+    box-sizing: content-box;
+
+}
+
+.action-ul li > a {
+    background-color: rgba(255, 197, 27, 0.3);
+    background-color: rgba(0, 99, 141, 0.3);
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    box-sizing: content-box;
+    border-radius: 3px;
+    color: white;
+
+}
+
+.action-ul li > a:hover {
+    text-decoration: none;
+
+    background-color: rgba(0, 99, 141, 0.5);
+}
+
+
+.selected-tab {
+    background-color: var(--second-color2);
+    border-radius: 3px;
+    border-left: 3px solid var(--color3);
+
+}
+
+.bottom-log-out-btn {
+    background-color: red;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.8) 3px 3px 10px;
+}
+
+.bottom-log-out-btn:hover {
+    scale: 1.005;
+    text-decoration: none;
+    opacity: 0.9;
+    color: white;
+}
+
+.deconnexion-confirm-btn {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+}
+
+.deconnexion-confirm-btn:hover {
+    text-decoration: none;
+    opacity: 0.8;
+    color: white;
+}
