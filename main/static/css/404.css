@@ -1,0 +1,215 @@
+
+.main-404-div {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+
+.div-404-animated {
+    background-color: red;
+}
+
+
+
+.obj {
+    position: relative;
+    width: 200px;
+    height: 200px;
+      /* background-color: rgb(96, 96, 232); */
+    transform-style: preserve-3d;
+    transition: 0.5s all;
+    transform: rotateX(-25deg) rotateY(20deg);
+    /* background-color: red; */
+
+
+  }
+  
+  .objchild {
+    animation: rotate 4s infinite linear;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+      /* background:linear-gradient( to top,rgb(11, 11, 102),rgb(96, 96, 232) ) ; */
+      /* background-color: red; */
+    
+    }
+  
+  .objchild::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+      /* background: rgb(37, 101, 230); */
+      /* background: radial-gradient(center center, farthest-side , #9993, transparent); */
+    filter: blur(20px);
+    box-shadow: 0 0 200px 15px white;
+    transform: rotateX(90deg) scale(1.1) translateZ(-120px);
+    /* background-color: red; */
+
+  }
+  
+  .inn1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    filter: blur(2px);
+    transform: translateZ(-250px);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 100px;
+    color: white;
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+    background-color: var(--second-color1);
+  
+}
+  
+  .inn2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(100px);
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+    /* background-color: red; */
+    /* background-color: var(--second-color1); */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+
+  }
+  
+  .inn3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100px) rotateY(90deg);
+    /* background: linear-gradient( to top,rgb(11, 11, 102),rgb(96, 96, 232) ); */
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+    /* background-color: red; */
+
+  }
+  
+  .inn4 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100px) rotateY(90deg);
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+    /* background-color: red; */
+
+  }
+  
+  .inn5 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(10, 10, 79);
+    transform: rotateX(90deg) translateZ(-100px);
+    /* background-color: red; */
+    
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+
+
+  }
+  
+  .inn6 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(46, 46, 46);
+    transform: rotateX(90deg) translateZ(100px);
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 100px;
+    color: white;
+    background: linear-gradient( to top,var(--second-color1),var(--second-color2) );
+
+
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate3d(0,1,0,0deg);
+    }
+  
+    100% {
+      transform: rotate3d(0,1,0,360deg);
+    }
+  }
+
+  span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+
+  .main-404-div h1 {
+    width: 60%;
+    text-align: center;
+    color: var(--second-color1);
+    font-weight: bold;
+    /* background-color: blue; */
+    /* color: var(--color2); */
+}
+
+
+  .backward-btn {
+    background: linear-gradient(-45deg, var(--color4), #9f69fe, #27c8b7, #3f00b5);
+    background-size: 800% 400%;
+    padding: 1em 2em;
+    display: inline-block;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 2px 2px 2px black;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    transition: all .5s ease-in-out;
+    animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+  }
+  
+  .backward-btn:hover {
+    animation: gradient 3s infinite;
+    transform: scale(1.05);
+    text-decoration: none;
+  }
+  
+  .backward-btn:active {
+    animation: gradient 3s infinite;
+    transform: scale(0.8);
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+
+
+
+

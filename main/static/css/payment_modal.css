@@ -1,0 +1,63 @@
+
+
+.payemnt-modal-div h3 {
+    font-weight: bold;
+}
+
+.payemnt-modal-div a {
+    color: var(--color3);
+    border: 1px solid var(--color3);
+    border-left: 5px solid var(--color3);
+    display: block;
+    padding: 20px;
+    margin: 10px 0px;
+    font-size: 25px;
+    color: var(--second-color2);
+    border: 1px solid var(--second-color2);
+    border-left: 5px solid var(--second-color2);
+
+}
+
+#to-modal-payment-command {
+    color: var(--color3);
+    border: 1px solid var(--color3);
+    border-left: 5px solid var(--color3);
+}
+
+.payemnt-modal-div a:hover {
+    text-decoration: none;
+    background-color: var(--second-color2);
+    background-color: rgba(4, 52, 77, 0.1);
+    /* color: white; */
+}
+
+.close-payement-btn {
+    color: white !important;
+}
+
+
+.command-form {
+    display: flex;
+    gap: 20px;
+}
+
+.command-form input {
+    padding: 10px;
+    border: 1px solid var(--second-color1);
+    width: 40%;
+}
+
+.command-form input:focus {
+    border: 2px solid var(--second-color1);
+}
+
+.command-form button {
+    background-color: var(--second-color1);
+    padding: 10px 40px;
+    color: white;
+    border-style: inherit;
+}
+
+.command-form button:hover {
+    cursor: pointer;
+}

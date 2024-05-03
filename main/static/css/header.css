@@ -2,12 +2,21 @@
 .sup-main-nav-bar {
     background-color: var(--second-color1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+    /* background-color: red; */
 
+}
+
+.first-header-line {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--second-color3) 50%, var(--color4) 60%);
+  /* background-color: red; */
+  /* background: linear-gradient(0deg, #ff0000 0%, #ffffff 100%); */
 }
 
 .uk-navbar-container {
     padding: 0px 50px;
-    padding-right: 0px;
+    /* padding-right: 0px; */
 }
 
 .header-site-logo {
@@ -32,6 +41,7 @@
     font-size: 15px;
     color: var(--color2);
     color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9)
   }
   
   .first-action-button:hover {
@@ -67,11 +77,13 @@
     background: var(--color1);
     background-size: 400%;
     color: var(--color4);
-    border: 1px solid var(--color3);
+    /* border: 1px solid var(--color3); */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9)
+
   }
   
   .connect-button:hover::before {
@@ -113,23 +125,30 @@
     /* background-color: var(--color2); */
     display: flex;
     border-radius: 40px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     align-items: center;
     gap: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+    transition: 0.2s all ease;
+
 
   }
 
   .header-right-div:hover {
     text-decoration: none;
+    background-color: var(--second-color3);
+    transition: 0.2s all ease;
+
   }
 
   .header-right-div p {
     padding: 0px;
-    color: var(--color3);
+    color: var(--color4);
     margin: 0px;
   }
 
   .public-user-profil {
+    /* box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.9) */
 
   }
 
@@ -138,7 +157,12 @@
 
   @media screen and (max-width: 901px) {
 
-    .sup-main-nav-bar {
+    /* .header-pc-div {
       display: none;
-    } 
+    }  */
+
+    /* .header-mobile-div {
+      display: inline;
+    } */
+
   }

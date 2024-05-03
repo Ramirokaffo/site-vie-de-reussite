@@ -39,7 +39,7 @@ def index(request):
         "formations": top_2_formations,
         "posts": latest_post_list,
         "site_videos": site_videos,
-        "title": "Page d'accueil|vie réussie",
+        "title": "Accueil | Site vie de réussite",
     }
     return render(request=request, template_name="index.html", context=context)
 
@@ -50,3 +50,4 @@ def about(request):
         "title": "À propos de nous"
     }
     return render(request=request, template_name="about.html", context=context)
+    # return render(request=request, template_name="404.html", context=context)

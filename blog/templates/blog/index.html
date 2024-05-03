@@ -14,35 +14,17 @@
     {% endif %}
 </ul>
 
-
-<main class="blog-main">
-    <section class="blog-left-section">
-        <div class="sup-category-list">
-            {% if post_category_list %}
-        <ol class="category-type-list">
-            {% if category %}
-            <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
-            {% else %}
-            <li class="selected-category"><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
-
-            {% endif %}
-
-            {% for myCategory in post_category_list %}
-            {% if myCategory.id == category.id %}
-            <li class="selected-category"><a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{ myCategory.name }}</a></li>
-            {% else %}
-            <li><a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{ myCategory.name }}</a></li>
-            {% endif %}
-
-            {% endfor %}
-        </ol>
-        {% else %}
-        <p>No post category available.</p>
-        {% endif %}
-        </div>
+<div class="blog-head-div">
+    <h1>Bienvenue sur notre blog</h1>
+    <section class="search-section">
+        <form action="" method="get">
+            {% csrf_token %}
+            <input uk-search-input type="search" placeholder="Keyword..." name="search_input" value="{{ search_input }}" required>
+            <button type="submit">Rechercher</button>
+        </form>
     </section>
-
-
+</div>
+<main class="blog-main">
     <section class="blog-center-section">
         {% if page_obj %}
         <div class="uk-grid-small uk-child-width-1-2@s uk-flex-center uk-text-center" uk-grid>
@@ -107,10 +89,34 @@
 
 
     <section class="blog-right-section">
+        <div class="sup-category-list">
+            {% if post_category_list %}
+            <ol class="category-type-list">
+                {% if category %}
+                <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
+                {% else %}
+                <li class="selected-category"><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
+
+                {% endif %}
+
+                {% for myCategory in post_category_list %}
+                {% if myCategory.id == category.id %}
+                <li class="selected-category">
+                    <a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{myCategory.name }}</a>
+                </li>
+                {% else %}
+                <li><a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{ myCategory.name }}</a></li>
+                {% endif %}
+
+                {% endfor %}
+            </ol>
+            {% else %}
+            <p>No post category available.</p>
+            {% endif %}
+        </div>
+        <hr>
         {% include "blog/right_side_bar.html" %}
     </section>
-
-
 </main>
 
 {% endblock %}

@@ -1,0 +1,50 @@
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/payment_modal.css' %}">
+
+<div id="modal-payment" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">{{ rsrc_title }}</h2>
+        </div>
+        <div class="uk-modal-body payemnt-modal-div">
+            <h3>Veuillez choisir une option...</h3>
+            <a href="">Acheter la version numérique</a>
+            <a id="to-modal-payment-command" href="#modal-payment-command" uk-toggle>Commander la version physique</a>
+        </div>
+        <div class="uk-modal-footer uk-text-left">
+            <button class="uk-button uk-button-default uk-modal-close close-payement-btn" type="button">Cancel</button>
+            <!-- <a href="#modal-group-2" class="uk-button uk-button-primary" uk-toggle>Next</a> -->
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-payment-command" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Commander : {{ rsrc_title }}</h2>
+        </div>
+        <div class="uk-modal-body">
+            <p>Vous avez choisi la version physique de votre livre, et c'est un excellent choix ! Le livre papier offre une expérience de lecture unique et enrichissante.</p>
+            <p>Contactez l'un des numéros ci-dessous pour commander votre ouvrage</p>
+            <ul>
+                <li><a href="">+237 672 27 99 46</a></li>
+                <li><a href="">+237 696 55 26 73</a></li>
+            </ul>
+            <p>Vous pouvez aussi nous laisser votre contact et on se chargera de vous contacter</p>
+        <form class="command-form" action="" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Entrez votre numéro de téléphone" required>
+            <button type="submit">Envoyer</button>
+        </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close close-payement-btn" type="button">Cancel</button>
+            <a href="#modal-payment" class="uk-button uk-button-primary" uk-toggle>Précédent</a>
+        </div>
+    </div>
+    </div>

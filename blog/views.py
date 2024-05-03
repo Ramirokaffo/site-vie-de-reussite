@@ -1,20 +1,24 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from .models import BlogPost, BlogComment
 from django.template import loader
-from django.urls import reverse
 from core.models import CategoryModel
 from django.core.paginator import Paginator
 from formation.models import Formation
 from ebook.models import EbookModel
 from django.db.models import Count
+from django.db.models import Q
 
 def index(request: WSGIRequest):
     category_id = request.GET.get("category_id")
+    search_input = request.GET.get("search_input")
     post_category_list = CategoryModel.objects.order_by("-created_at")
     context = {}
-    if category_id is not None:
+
+    if search_input is not None:
+        latest_post_list = BlogPost.objects.filter(Q(title__icontains=search_input) | Q(subtitle__icontains=search_input))
+    elif category_id is not None:
         latest_post_list = BlogPost.objects.filter(category=category_id)
         target_category = [cat for cat in post_category_list if cat.id == int(category_id)]
         if len(target_category) != 0:
@@ -44,6 +48,7 @@ def index(request: WSGIRequest):
     context["ebooks"] = top_3_ebooks
     context["formations"] = formation_list
     context["page_obj"] = page_obj
+    context["search_input"] = search_input if search_input is not None else ""
     context["title"] = "Blog | site vie de réussite"
     context["post_category_list"] = post_category_list
     return render(request, "blog/index.html", context)

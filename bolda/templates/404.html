@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load myfilter %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/404.css' %}">
+
+<div class="main-404-div">
+
+    <div class="div-404-animated">
+        <div class="obj">
+            <div class="objchild">
+                <span class="inn1">404</span>
+                <span class="inn2">Page Not Found</span>
+                <span class="inn3"></span>
+                <span class="inn4"></span>
+                <span class="inn5"></span>
+                <span class="inn6">404</span>
+            </div>
+        </div>
+    </div>
+
+    <span>
+        <h1>Nous sommes désolé ! La page que vous recherchez est introuvable.</h1>
+    <a href="/" class="backward-btn"> Revenir à la page d'accueil</a>
+    </span>
+</div>
+
+
+{% endblock %}

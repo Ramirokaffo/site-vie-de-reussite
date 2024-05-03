@@ -4,62 +4,87 @@
 
 <div class="sup-main-nav-bar"
     uk-sticky="start: 170; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light; end: ! *; offset: 0">
-    <nav class="uk-navbar-container" id="main-nav-bar">
-        <div class="uk-navbar-left">
-            <div uk-navbar>
-                <ul class="uk-navbar-nav">
-                    <a href="/" class="uk-navbar-item uk-logo">
-                        <img class="header-site-logo" src="{% static 'images/logo_site_vie_reussie.jpeg' %}" alt="logo site vie de réussite">
-                    </a>
-                    <li class="uk-active"><a href="/">Accueil</a></li>
-                    <li>
-                        <a href="#">Produits et services<span uk-navbar-parent-icon></span></a>
-                        <div uk-dropdown="animation: slide-top; animate-out: true; duration: 700">
-                            <ul class=" uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-active"><a href="{% url 'ebook:index' %}">Ebook</a></li>
-                                <li><a href="{% url 'formation:index' %}">Formation</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="{% url 'blog:index' %}">Blog</a></li>
-                    <li><a href="{% url 'event:index' %}">Évènements</a></li>
-                    <li><a href="/about">À propos</a></li>
-                    <li><a href="{% url 'faq:index' %}">Faq</a></li>
-                </ul>
-            </div>
-            <div class="uk-navbar-right">
-                <a class="first-action-button" href="#appointment-modal-overflow" uk-toggle>
-                    <span>Reserver mon rendez-vous</span>
-                    <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="37" cy="37" r="35.5" stroke="white" stroke-width="3"></circle>
-                        <path
-                            d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
-                            fill="white"></path>
-                    </svg>
-                </a>
-                {% if request.user.is_authenticated %}
-                <div class="public-user-profil">
-                    <a href="{% url 'profil:index' %}" class="header-right-div">
-                        {% if request.user.first_name or request.user.last_name %}
-                        <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
-                        {% else %}
-                        <p>Mon compte</p>
-                        <!-- <p>{{ request.user.username }}</p> -->
-                        {% endif %}
-
-                        <svg height="45" width="45" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
-                                clip-rule="evenodd" />
+    <div class="first-header-line"></div>
+    <div class="header-pc-div">
+        <nav class="uk-navbar-container" id="main-nav-bar">
+            <div class="uk-navbar-left">
+                <div uk-navbar>
+                    <ul class="uk-navbar-nav">
+                        <a href="/" class="uk-navbar-item uk-logo">
+                            <img class="header-site-logo" src="{% static 'images/logo_site_vie_reussie.jpeg' %}"
+                                alt="logo site vie de réussite">
+                        </a>
+                        <li class="uk-active"><a href="/">Accueil</a></li>
+                        <li>
+                            <a href="#">Produits et services<span uk-navbar-parent-icon></span></a>
+                            <div uk-dropdown="animation: slide-top; animate-out: true; duration: 700">
+                                <ul class=" uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-active"><a href="{% url 'ebook:index' %}">Ebook</a></li>
+                                    <li><a href="{% url 'formation:index' %}">Formation</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                        <li><a href="{% url 'event:index' %}">Évènements</a></li>
+                        <li><a href="/about">À propos</a></li>
+                        <li><a href="{% url 'faq:index' %}">Faq</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <a class="first-action-button" href="#appointment-modal-overflow" uk-toggle>
+                        <span>Reserver mon rendez-vous</span>
+                        <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="37" cy="37" r="35.5" stroke="white" stroke-width="3"></circle>
+                            <path
+                                d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+                                fill="white"></path>
                         </svg>
                     </a>
+                    {% if request.user.is_authenticated %}
+                    <div class="public-user-profil">
+                        <a href="{% url 'profil:index' %}" class="header-right-div">
+                            {% if request.user.first_name or request.user.last_name %}
+                            <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                            {% else %}
+                            <p>Mon compte</p>
+                            <!-- <p>{{ request.user.username }}</p> -->
+                            {% endif %}
+    
+                            <svg height="45" width="45" xmlns="http://www.w3.org/2000/svg" fill="var(--color4)"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                    {% else %}
+                    <a class="connect-button" href="{% url 'auth:login' %}">
+                        <span class="connect-button-content">Connexion</span>
+                    </a>
+                    {% endif %}
                 </div>
-                {% else %}
-                <a class="connect-button" href="{% url 'auth:login' %}">
-                    <span class="connect-button-content">Connexion</span>
-                </a>
-                {% endif %}
             </div>
-    </nav>
+        </nav>
+    </div>
+    <div class="header-mobile-div">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+                <div uk-navbar>
+        
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon href="#"></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>

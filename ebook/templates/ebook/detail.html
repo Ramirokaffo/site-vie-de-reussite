@@ -4,7 +4,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'ebook/detail.css' %}">
-
+{% include 'payment_modal.html' with rsrc_title=ebook.title %}
 <main class="ebook-main">
 
     <div class="sup-ebook-banner" style="background-image: url('{{ ebook.illustration_image.url }}');">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="sub-buy-btn-div">
-                    <button class="buy-btn">Acheter ce livre</button>
+                    <a class="buy-btn" href="#modal-payment" uk-toggle>Acheter ce livre</a>
                     <svg height="512" width="512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke="var(--color4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,7 +72,7 @@
 
                 </div>
                 <hr>
-                <div class="container">
+                <a class="container" href="#modal-payment" uk-toggle>
                     <div class="left-side">
                         <div class="card">
                             <div class="card-line"></div>
@@ -88,19 +88,19 @@
                         </div>
                     </div>
                     <div class="right-side">
-                        <div class="new">Acheter ce livre</div>
+                        <div class="new">Acheter ce livre</d>
 
-                        <svg viewBox="0 0 451.846 451.847" height="512" width="512" xmlns="http://www.w3.org/2000/svg"
-                            class="arrow">
-                            <path fill="var(--color3)" data-old_color="#000000" class="active-path"
-                                data-original="#000000"
-                                d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z">
-                            </path>
-                        </svg>
+                            <svg viewBox="0 0 451.846 451.847" height="512" width="512"
+                                xmlns="http://www.w3.org/2000/svg" class="arrow">
+                                <path fill="var(--color3)" data-old_color="#000000" class="active-path"
+                                    data-original="#000000"
+                                    d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z">
+                                </path>
+                            </svg>
 
+                        </div>
                     </div>
-                </div>
-            </div>
+                </a>
         </section>
 
         <section class="related-ebook-div">
@@ -120,7 +120,6 @@
         </section>
 
     </article>
-
 
 
 </main>

@@ -1,13 +1,48 @@
 {% extends "profil/base.html" %}
 {% load static %}
 
-<link rel="stylesheet" href="profil/component/ebook.css">
-
 {% block content %}
-  {% for ebook in ebooks %}
-    <h3>{{ ebook.title }}</h3>
-  {% empty %}
-    <p>Oups, il semble que vous n'avez pas encore acheté un ouvrage.</p>
-  {% endfor %}
+<link rel="stylesheet" href="{% static 'profil/ebook.css' %}">
 
+<div class="main-div">
+
+  <h1>
+    <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)" viewBox="0 0 24 24">
+      <path fill-rule="evenodd"
+        d="M4.9 3C3.9 3 3 3.8 3 4.9V9c0 1 .8 1.9 1.9 1.9H9c1 0 1.9-.8 1.9-1.9V5c0-1-.8-1.9-1.9-1.9H5Zm10 0c-1 0-1.9.8-1.9 1.9V9c0 1 .8 1.9 1.9 1.9H19c1 0 1.9-.8 1.9-1.9V5c0-1-.8-1.9-1.9-1.9h-4Zm-10 10c-1 0-1.9.8-1.9 1.9V19c0 1 .8 1.9 1.9 1.9H9c1 0 1.9-.8 1.9-1.9v-4c0-1-.8-1.9-1.9-1.9H5Zm10 0c-1 0-1.9.8-1.9 1.9V19c0 1 .8 1.9 1.9 1.9H19c1 0 1.9-.8 1.9-1.9v-4c0-1-.8-1.9-1.9-1.9h-4Z"
+        clip-rule="evenodd" />
+    </svg> Les ouvrages que vous avez acheté
+  </h1>
+  <hr>
+  <section class="content-section">
+    {% for ebook in ebooks %}
+
+    <a href="{{ ebook.ebook_file.url }}" class="profil-ebook-card">
+      <div class="profil-ebook-img-div" style="background-image: url('{{ ebook.illustration_image.url }}');">
+
+      </div>
+      <h5>{{ ebook.title }}</h5>
+    </a>
+    {% empty %}
+    <p class="no-formation-p">
+      <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 11h2v5m-2 0h4m-2.6-8.5h0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>Vous n'avez pas encore acheté un ouvrage pour le moment <a href="{% url 'ebook:index' %}">Parcourir
+        nos différents ouvrages</a>
+    </p>
+    {% endfor %}
+  </section>
+  {% if ebooks %}
+  <hr>
+  <a class="profil-consult-other-ebook" href='{% url "ebook:index" %}'>Consulter les autres ouvrages
+    <svg height="20" width="20"
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path stroke="var(--second-color1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="m7 16 4-4-4-4m6 8 4-4-4-4" />
+      </svg>
+  </a>
+  {% endif %}
+
+</div>
 {% endblock content %}

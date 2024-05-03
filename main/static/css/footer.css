@@ -11,7 +11,8 @@ footer {
 .global-footer-div {
     display: flex;
     justify-content: space-between;
-    padding: 20px 5%;
+    padding: 40px 5%;
+    padding-top: 70px;
 }
 
 .footer-left-div {
