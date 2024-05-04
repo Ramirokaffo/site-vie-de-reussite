@@ -19,7 +19,6 @@ class Formation(models.Model):
     published = models.BooleanField(default=True, verbose_name="Publié")
     illustration_image = models.ImageField(blank=False, null=False, upload_to='images/formation/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(max_length=20, blank=True, null=True, verbose_name="Identifiant de la vidéo d'illustration")
-    # illustration_video = models.CharField(blank=True, null=True, validators=[validate_video_file], verbose_name="Vidéo d'illustration")
     normal_price = models.FloatField(verbose_name="Prix normal", null=False)
     promo_price = models.FloatField(verbose_name="Prix promotionnel")
     course_duration = models.IntegerField(verbose_name="Durée totale des cours (en minutes)")
