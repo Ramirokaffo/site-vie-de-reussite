@@ -4,6 +4,13 @@
 <link rel="stylesheet" href="{% static 'profil/component/header.css' %}">
 
 <header>
+    <div class="header-nav-mobile-btn uk-button uk-button-default uk-margin-small-right" uk-toggle="target: #offcanvas-nav-mobile">
+      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+      </svg>
+    </div>
+
+    
     {% if profil_title %}
       <h4>Formation: {{ profil_title }}</h4>
     {% else %}
@@ -13,4 +20,17 @@
     
     <!-- <h3>Bienvenue sur votre dashboard</h3> -->
     {% include "profil/component/user_profil.html" %}
+
+
+    <div id="offcanvas-nav-mobile" uk-offcanvas="overlay: true;">
+      
+      <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+  
+    {% include "profil/component/left_side_bar.html" %}
+
+      </div>
+  </div>
+  
+
 </header>

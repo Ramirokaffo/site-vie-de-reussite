@@ -1,0 +1,25 @@
+
+footer {
+    display: flex;
+    padding: 10px;
+
+}
+
+
+
+
+@media screen and (max-width: 901px) {
+
+
+footer {
+    justify-content: center;
+    background-color: var(--second-color2);
+    
+}
+
+    footer a {
+        margin: auto;
+        color: var(--color3);
+        
+    }
+}

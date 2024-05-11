@@ -9,7 +9,7 @@
 <script id="video-script" src="{% static 'profil/script.js' %}"></script>
 <div class="main-content">
     <section class="left-section">
-        <div class="video-frame" style="width: 100%; height: 600px;">
+        <div class="video-frame">
 
             <div class="video-loader" id="video-loader">Loading
                 <span></span>
@@ -18,7 +18,61 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></div>
         </div>
-        <h2 class="current_video_title">{{ current_video.title }}</h2>
+        <h2 class="current_video_title">{{ current_video.title }}
+            <span id="myBtn">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                        d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
+                </svg>
+
+            </span>
+            <!-- Trigger/Open The Modal -->
+            <!-- <button id="myBtn">Open Modal</button> -->
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id="modalContent">
+                    <div class="modal-header">
+                        <h2>Liste de lecture</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        {% include "profil/component/right_list_videos.html" %}
+                    </div>
+                </div>
+            </div>
+        </h2>
+
+        <div class="next-prev-div">
+
+            {% if prev_video %}
+            <a id="prev_video-a"
+                href="{% url 'profil:detail' prev_video.formation_id %}?current_v_index={{ prev_video.id }}">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m17 16-4-4 4-4m-6 8-4-4 4-4" />
+                </svg>
+                <span class="title-span">{{ prev_video.title }}</span><span class="next-prev-span">Précédent</span>
+            </a>
+            {% endif %}
+
+            {% if next_video %}
+            <a id="next-video-a"
+                href="{% url 'profil:detail' next_video.formation_id %}?current_v_index={{ next_video.id }}">
+                <span class="title-span">{{ next_video.title }}</span> <span class="next-prev-span">Suivant</span> <svg
+                    class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m7 16 4-4-4-4m6 8 4-4-4-4" />
+                </svg>
+            </a>
+            {% endif %}
+
+        </div>
         <hr>
         <section class="bottom-section">
             <div class="tab-bar-div">
@@ -26,41 +80,44 @@
                 <button class="comment-btn-tab" id="commentBtnId">Commentaire</button>
             </div>
             <div class="video-descriptiion" id="video-descriptiion">
-            {% if current_video.decription %}
-            <!-- </div> -->
-            {{ current_video.decription|safe }}
-            {% else %}
-            <p>Aucune desciption disponible pour cette vidéo</p>
-            {% endif %}
-            <a id="shortcut_to_comment" onclick="showComment()">Afficher les commentaires</a>
-        </div>
+                {% if current_video.decription %}
+                <!-- </div> -->
+                {{ current_video.decription|safe }}
+                {% else %}
+                <p>Aucune desciption disponible pour cette vidéo</p>
+                {% endif %}
+                <a id="shortcut_to_comment" onclick="showComment()">Afficher les commentaires</a>
+            </div>
             <div class="comment-div" id="comment-div">
                 <div id="comment-list">
 
                     {% for comment in video_comments %}
                     <div class="one-comment-div">
-                        <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
+                        <div class="one-comment-icon-div">
+                            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
                                 d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
                                 clip-rule="evenodd" />
                         </svg>
+                        </div>
                         <div class="one-comment-div-right">
                             <div class="one-comment-div-right-header">
                                 {% if comment.author.id == request.user.id %}
                                 <h5>Vous</h5>
 
                                 {% else %}
+                                {% if comment.author.firstname or comment.author.lastname or comment.author.is_staff %}
                                 <h5>{{ comment.author }} </h5>
-
+                                {% else %}
+                                <h5>Inconnu</h5>
+                                {% endif %}
                                 {% endif %}
 
                                 <i>{{ comment.created_at }}</i>
-
                             </div>
                             <p>{{ comment.content }}</p>
                             <hr>
-
                         </div>
 
                     </div>
@@ -87,36 +144,12 @@
                 </div>
             </div>
         </section>
+        {% include "profil/component/footer.html" %}
 
     </section>
     <section class="right-section">
-        {% if next_video %}
-        <a style="visibility: hidden;" id="next-video-a"
-            href="{% url 'profil:detail' next_video.formation_id %}?current_v_index={{ next_video.id }}"></a>
-
-        {% endif %}
-        <ul>
-            {% for video in videos %}
-
-            {% if current_video.id == video.id %}
-            <li class="current_video" id="current_video_li">
-                <a href="{% url 'profil:detail' video.formation_id %}?current_v_index={{ video.id }}">
-                    {{ video.title }}</a>
-            </li>
-
-            {% else %}
-            <li>
-                <a href="{% url 'profil:detail' video.formation_id %}?current_v_index={{ video.id }}">
-                    {{ video.title }}</a>
-            </li>
-
-            {% endif %}
-
-            <hr>
-            {% empty %}
-            <p>Aucune vidéo disponible</p>
-            {% endfor %}
-        </ul>
+        {% include "profil/component/right_list_videos.html" %}
     </section>
+
 </div>
 {% endblock content %}

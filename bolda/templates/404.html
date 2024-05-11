@@ -2,6 +2,18 @@
 {% load static %}
 {% load myfilter %}
 
+{% block meta %}
+
+<meta name="description" content="La page recherchée n'existe pas/plus sur le site" />
+<meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:alt" content="Le logo du site" />
+<!-- <meta property="og:video" content="https://example.com/movie.swf" /> -->
+<!-- <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />       -->
+
+
+{% endblock meta %}
+
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/404.css' %}">

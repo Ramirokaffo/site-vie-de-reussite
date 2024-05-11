@@ -91,6 +91,7 @@
     padding: 30px;
     gap: 20px;
     margin-bottom: 0px;
+    box-sizing: border-box;
 
 }
 
@@ -139,7 +140,10 @@
     flex: 3;
     padding: 10px 0px;
     padding-top: 0px;
-    border-radius: 30px;
+    /* border-radius: 30px; */
+    box-sizing: border-box;
+    /* background-color: red; */
+
 
 }
 
@@ -156,21 +160,15 @@
 
 
 .one-post-card-content-div {
-    /* padding: 10px 0px; */
     margin: 10px;
 
 }
 
-
-.one-post-card-img {
-    height: 500px;
-    border-radius: 10px;
-    margin: 20px 10px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 0px;
+.one-post-card-content-div img {
+    border-radius: 20px;
+    padding: 10px;
 }
+
 
 .one-post-card-bottom-div {
     padding: 10px;
@@ -180,6 +178,8 @@
 .one-post-card-bottom-div > p {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+    /* background-color: yellow; */
 }
 
 
@@ -197,5 +197,72 @@
 
 
 
+@media screen and (max-width: 901px) {
 
+    .post-title-breadcrumb {
+        display: none;
+    }
+
+
+    .post-head-div {
+        align-items: start;
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    .post-head-div-first-line {
+        display: none;
+    }
+    .card-post-site-logo {
+        /* scale: 0.5; */
+        /* background-color: red; */
+    }
+    .post-site-logo {
+        height: 60px;
+        width: 60px;
+    }
+
+.card-post-site-autor-date h3 {
+    font-size: 15px;
+}
+
+.card-post-site-autor-date p {
+    font-size: 10px;
+
+
+}
+
+.card-post-site-autor-date svg {
+    scale: 0.8;
+}
+
+
+.post-main-div {
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 0px;
+    margin: 0px;
+    background-color: white;
+    gap: 10px;
+    box-sizing: border-box;
+    /* align-items: center; */
+
+}
+
+.one-post-card-content-div {
+    box-sizing: border-box;
+}
+
+.one-post-card-content-div img {
+    border-radius: 15px;
+
+
+}
+
+.right-section {
+    border-radius: 0px;
+    margin: 0px;
+}
+
+  }
 

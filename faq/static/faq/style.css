@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing:border-box;
 }
+
 body{
   font-family: "Poppins", sans-serif;
   /* background-color: red;
@@ -42,7 +43,6 @@ body{
 
 .main-faq div.c{
   position: relative;
-  /* margin:2em; */
   transition: 0.5s all ease;
 }
 .main-faq input{
@@ -93,14 +93,58 @@ body{
   border-top:20px solid white;
   margin-top:12px;
   margin-right:10px;
-  /* transition: 0.5s all ease; */
 
 }
 .main-faq input:checked ~ h1 ~ div.p{
   max-height: max-content;
-  /* transition: 0.5s all ease; */
 
 }
 .main-faq a{
   color:steelblue;
+}
+
+
+
+
+@media screen and (max-width: 901px) {
+
+.faq-head-div {
+  padding: 10px 0px;
+  margin-bottom: 20px;
+}
+
+.main-faq div.c{
+ 
+padding: 0px !important;
+margin: 0px;
+box-sizing: border-box;
+}
+
+
+  .faq-head-div h2 {
+    font-size: 15px;
+  }
+
+  .faq-head-div p {
+    font-size: 10px;
+    margin: 0px;
+    padding: 0px;
+    padding-right: 5px;
+
+  }
+
+
+.main-faq h1{
+  font-size: 20px;
+  padding: 7px;
+  margin: 8px 0px;
+
+}
+
+
+.main-faq div.p p {
+  padding: 10px;
+  margin: 0px;
+}
+
 }

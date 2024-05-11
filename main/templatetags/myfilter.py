@@ -114,4 +114,4 @@ def event_status(startDate, endDate):
     if startDate > now:
         return "Évènement à venir"
     else:
-        return "Évènement passée" 
+        return "Évènement passé" 

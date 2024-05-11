@@ -63,7 +63,7 @@
 
 
 .formation-card {
-    height: 550px;
+    /* height: 550px; */
     width: 300px;
     /* background-color: red; */
     display: block;
@@ -91,7 +91,7 @@
 .formation-image-div {
     /* height: 100px;
     width: 100px; */
-    flex: 1;
+    /* flex: 1; */
     position: relative;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .formation-card-body {
-    flex: 1;
+    /* flex: 1; */
     /* background: green; */
     padding: 3px;
 
@@ -212,3 +212,64 @@
   }
   
 
+
+
+
+
+
+
+
+  @media screen and (max-width: 901px) {
+
+.head-block {
+    padding: 20px 10%;
+
+}
+
+.head-block h1 {
+    font-size: 30px;
+
+}
+
+.head-block p {
+    font-size: 12px;
+}
+
+.formation-category-name-div h2 {
+    font-size: 18px;
+}
+
+
+
+.formation-card {
+width: 100%;
+/* padding-bottom: 20px; */
+/* height: 600px; */
+
+
+}
+
+.see-more-btn {
+    margin: 5px 0px;
+}
+
+.see-more-btn span {
+    color: white;
+    transition: all 0.3s ease;
+
+  }
+
+  .see-more-btn:before {
+    width: 100%;
+    background: var(--second-color1);
+    transition: all 0.3s ease;
+  }
+  
+  .see-more-btn svg {
+    transform: translateX(0);
+    stroke: white;
+
+  }
+  
+
+  }

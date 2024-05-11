@@ -1,7 +1,4 @@
 
-.sup-list-video-site {
-    
-}
 
 .sup-list-video-site h2 {
     font-weight: bold;
@@ -44,6 +41,7 @@
     font-weight: bold;
     padding-left: 20px;
     transition: all 0.5s ease;
+    /* background-color: yellow; */
     
   }
   
@@ -58,7 +56,9 @@
     width: 55px;
     overflow-x: hidden;
     height: 100%;
+
   }
+
 
   .follow-on-yt-btn:hover {
     text-decoration: none;
@@ -78,6 +78,7 @@
     display: none;
     transition: 0.3s all ease-in 0.2s;
 
+
   }
 
 
@@ -86,5 +87,44 @@
   .follow-on-yt-btn:hover .yt-followers-count {
     display: inline;
     transition: 0.3s all ease-in 0.2s;
+
+  }
+
+
+
+
+  @media screen and (max-width: 901px) {
+
+    .list-video-site {
+      flex-direction: column;
+    }
+
+    .mini-video-frame iframe {
+      width: 95%;
+  }
+
+  .follow-on-yt-btn {
+    background-color: #cd201f;
+    color: white;
+  }
+
+  .show-on-hover-first-path {
+    fill: white;
+  }
+
+  .show-on-hover-second-path {
+    fill: #cd201f;
+  }
+
+
+  .show-on-hover-third-path {
+    fill: white;
+  }
+
+  .show-on-hover {
+    border-radius: 50%;
+
+  }
+
 
   }

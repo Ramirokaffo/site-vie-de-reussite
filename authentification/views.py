@@ -53,6 +53,7 @@ def register(request):
         print(firstname, lastname, password, password1, email)
         myUser = User.objects.create_user(email=email, username=email, password=password, last_name=lastname, first_name=firstname)
         # myUser.is_active = False
+        # myUser.is_staff
         myUser.save()
         messages.success(request, "Votre compte a été créé avec succès !")
     #     subject = "Bienvenue sur notre application"

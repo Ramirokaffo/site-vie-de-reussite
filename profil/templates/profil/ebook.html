@@ -24,7 +24,7 @@
       <h5>{{ ebook.title }}</h5>
     </a>
     {% empty %}
-    <p class="no-formation-p">
+    <p class="no-ebook-p">
       <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 11h2v5m-2 0h4m-2.6-8.5h0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -36,13 +36,16 @@
   {% if ebooks %}
   <hr>
   <a class="profil-consult-other-ebook" href='{% url "ebook:index" %}'>Consulter les autres ouvrages
-    <svg height="20" width="20"
-        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <path stroke="var(--second-color1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="m7 16 4-4-4-4m6 8 4-4-4-4" />
-      </svg>
+    <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke="var(--second-color1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="m7 16 4-4-4-4m6 8 4-4-4-4" />
+    </svg>
   </a>
   {% endif %}
+  <hr>
+<div class="ebook-foot-div">
+  {% include "profil/component/footer.html" %}
 
+</div>
 </div>
 {% endblock content %}

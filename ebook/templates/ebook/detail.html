@@ -2,6 +2,16 @@
 {% load static %}
 {% load myfilter %}
 
+{% block meta %}
+
+<meta property="og:title" content="Ouvrage: {{ ebook.title }}" />
+<meta name="description" content="{{ ebook.subtitle }}" />
+<meta property="og:image" content="{{ ebook.illustration_image.url }}" />
+<meta property="og:image:alt" content="Image de : {{ ebook.title }}" />
+<meta property="og:video" content="https://www.youtube.com/embed/{{ ebook.illustration_video }}" />
+
+{% endblock meta %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'ebook/detail.css' %}">
 {% include 'payment_modal.html' with rsrc_title=ebook.title %}
@@ -25,18 +35,20 @@
                 </div>
                 <div class="sub-buy-btn-div">
                     <a class="buy-btn" href="#modal-payment" uk-toggle>Acheter ce livre</a>
-                    <svg height="512" width="512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke="var(--color4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 11h2v5m-2 0h4m-2.6-8.5h0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    {% if ebook.availability == 'both' %}
-                    <p>Disponible en version physique et numérique</p>
-                    {% elif ebook.availability == 'numeric' %}
-                    <p>Disponible en version numérique uniquement</p>
-                    {% else %}
-                    <p>Disponible en version physique uniquement</p>
-                    {% endif %}
+                    <div>
+                        <svg height="512" width="512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="var(--color4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 11h2v5m-2 0h4m-2.6-8.5h0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        {% if ebook.availability == 'both' %}
+                        <p>Disponible en version physique et numérique</p>
+                        {% elif ebook.availability == 'numeric' %}
+                        <p>Disponible en version numérique uniquement</p>
+                        {% else %}
+                        <p>Disponible en version physique uniquement</p>
+                        {% endif %}
+                    </div>
 
                 </div>
 
@@ -101,6 +113,7 @@
                         </div>
                     </div>
                 </a>
+            </div>
         </section>
 
         <section class="related-ebook-div">

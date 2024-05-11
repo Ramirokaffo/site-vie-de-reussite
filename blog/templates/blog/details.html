@@ -2,6 +2,16 @@
 {% load static %}
 {% load myfilter %}
 
+{% block meta %}
+
+<meta property="og:title" content="Post: {{ post.title }}" />
+<meta name="description" content="{{ post.subtitle }}" />
+<meta property="og:image" content="{{ post.illustration_image.url }}" />
+<meta property="og:image:alt" content="Image de : {{ post.title }}" />
+
+{% endblock meta %}
+
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'blog/details.css' %}">
 
@@ -10,7 +20,7 @@
         <li><a href="{% url 'blog:index' %}">Blog</a></li>
         {% if post.category %}
         <li><a href="{% url 'blog:index' %}?category_id={{ post.category.id}}">{{ post.category.name }}</a></li>
-        <li><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></li>
+        <li class="post-title-breadcrumb"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></li>
         {% else %}
         <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
         {% endif %}
@@ -52,8 +62,9 @@
             <div class="one-post-card-content-div">
                 {% if post.illustration_image %}
                 <a href="{{ post.illustration_image.url }}">
-                    <div class="one-post-card-img" style="background-image: url('{{ post.illustration_image.url }}');">
-                    </div>
+                    <!-- <div class="one-post-card-img" style="background-image: url('{{ post.illustration_image.url }}');">
+                    </div> -->
+                    <img src="{{ post.illustration_image.url }}" alt="">
                 </a>
                 {% else %}
                 <div class="one-post-card-empty-img"></div>

@@ -1,0 +1,22 @@
+<ul>
+    {% for video in videos %}
+
+    {% if current_video.id == video.id %}
+    <li class="current_video" id="current_video_li">
+        <a href="{% url 'profil:detail' video.formation_id %}?current_v_index={{ video.id }}">
+            {{ video.title }}</a>
+    </li>
+
+    {% else %}
+    <li>
+        <a href="{% url 'profil:detail' video.formation_id %}?current_v_index={{ video.id }}">
+            {{ video.title }}</a>
+    </li>
+
+    {% endif %}
+
+    <hr>
+    {% empty %}
+    <p>Aucune vidéo disponible</p>
+    {% endfor %}
+</ul>

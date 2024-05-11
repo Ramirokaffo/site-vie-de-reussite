@@ -2,6 +2,17 @@
 {% load static %}
 {% load myfilter %}
 {% block content %}
+
+{% block meta %}
+
+<meta property="og:title" content="{{ title }}" />
+<meta name="description" content="Vous trouverez dans cette page tous les évènements que la Coach organise regulièrement" />
+<meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:alt" content="Le logo du site" />
+
+{% endblock meta %}
+
 <link rel="stylesheet" href="{% static 'event/index.css' %}">
 <main>
     <div class="events-banner" style="background-image: url('{% static "/images/conference-evenement-unsplash.jpg" %}')">
@@ -26,12 +37,15 @@
                     <div class="event-description">
                         <h2>{{ event.title }}</h2>
                         <p>{{ event.subtitle }}</p>
-                        <button>En savoir plus</button>
+                        <div class="event-last-line">
+                            <button>En savoir plus</button>
+                        <p>{{ event.start_at|event_status:event.end_at }}</p>
+                        </div>
                     </div>
                 </li>
             </a>
             {% empty %}
-              <p>Aucun évènement disponible</p>
+              <p>Aucun évènement disponible pour le moment</p>
             {% endfor %}
             <hr>
             <div class="pagination">

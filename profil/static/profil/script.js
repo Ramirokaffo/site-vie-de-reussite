@@ -35,6 +35,7 @@ class VideoComment {
 
 
 
+
 sendComment = async (sendMessageSpinner) => {
     commentList = document.getElementById("comment-list")
     onComment = document.createElement("div")
@@ -89,7 +90,7 @@ showDescription = (commentBtn, descriptionBtn, commentDiv, videoDescription) => 
     descriptionBtn.classList.add("selected-tab");
     commentBtn.classList.remove("selected-tab");
     commentDiv.style.display = "none";
-    videoDescription.style.display = "inline";
+    videoDescription.style.display = "block";
     
 
 }
@@ -99,12 +100,43 @@ showComment = (commentBtn, descriptionBtn, commentDiv, videoDescription) => {
     commentBtn.classList.add("selected-tab");
     descriptionBtn.classList.remove("selected-tab");
     videoDescription.style.display = "none";
-    commentDiv.style.display = "inline";
+    commentDiv.style.display = "block";
 
 }
 
 
 window.onload = (event) => {
+
+
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
 const sendMessageSpinner = document.getElementById("dotSpinnerComment");
 
     submitBtn = document.getElementById("sendCommentBtn");

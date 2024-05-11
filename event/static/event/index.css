@@ -94,6 +94,13 @@ main {
     font-weight: bold;
 }
 
+.event-last-line {
+    display: flex;
+    /* background-color: red; */
+    align-items: center;
+    gap: 10px;
+}
+
 .event-description button {
     padding: 5px 25px;
     border-radius: 15px;
@@ -107,6 +114,18 @@ main {
     color: white;
 }
 
+.event-odd .event-description .event-last-line {
+
+}
+
+.event-last-line p {
+    /* color: var(--color4); */
+    background-color: rgba(255, 234, 133, 0.2);
+    border-radius: 20px;
+    padding: 2px 5px;
+    font-size: 15px;
+}
+
 .event-even .event-description button {
     color: white;
     background-color: var(--second-color1);
@@ -117,7 +136,57 @@ main {
     color: var(--second-color1);
 }
 
-.event-even .event-description p {
+.event-even .event-description > p {
     color: rgba(0, 0, 0, 0.5);
+    display: inline;
 }
 
+
+
+@media screen and (max-width: 901px) {
+
+.events-banner {
+height: 250px;
+}
+
+.events-banner h2 {
+    font-size: 20px;
+}
+
+
+.star-div {
+    scale: 0.7;
+}
+
+.events-ul {
+    list-style: none;
+    padding: 10px 5%;
+    /* background-color: red; */
+}
+
+.one-event-li {
+    flex-direction: column;
+    height: auto;
+    gap: 5px;
+}
+
+.event-img {
+    height: 300px;
+    width: 100%;
+}
+
+.event-description {
+    padding: 10px;
+}
+
+.event-description h2 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.event-description p {
+    margin: 5px 0px;
+
+}
+
+}

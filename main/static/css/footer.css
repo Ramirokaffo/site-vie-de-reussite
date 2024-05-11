@@ -479,3 +479,21 @@ footer h3 {
 
   }
 
+
+
+
+
+
+  @media screen and (max-width: 901px) {
+    .global-footer-div {
+      flex-direction: column;
+      gap: 20px;
+      /* align-items: center; */
+    }
+
+
+    .footer-left-div {
+      width: 95%;
+  }
+
+  }

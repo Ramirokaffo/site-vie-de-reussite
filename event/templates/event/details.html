@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% load myfilter %}
+
+{% block meta %}
+
+<meta property="og:title" content="Evènement: {{ event.title }}" />
+<meta name="description" content="{{ event.subtitle }}" />
+<meta property="og:image" content="{{ event.illustration_image.url }}" />
+<meta property="og:image:alt" content="Image de : {{ event.title }}" />
+
+{% endblock meta %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'event/details.css' %}">
 <main>
@@ -16,12 +26,14 @@
                         </svg>
                     </div>
                     <hr>
-                    <p><svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
+                    <div class="calendar-check-list">
+                        <p><svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
                                 d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm13.7-1.3a1 1 0 0 0-1.4-1.4L11 12.6l-1.8-1.8a1 1 0 0 0-1.4 1.4l2.5 2.5c.4.4 1 .4 1.4 0l4-4Z"
                                 clip-rule="evenodd" />
-                        </svg> {{ event.start_at|event_status:event.end_at }}</p>
+                        </svg> {{ event.start_at|event_status:event.end_at }}
+                    </p>
 
                     <p><svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
                             viewBox="0 0 24 24">
@@ -29,25 +41,43 @@
                                 d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm13.7-1.3a1 1 0 0 0-1.4-1.4L11 12.6l-1.8-1.8a1 1 0 0 0-1.4 1.4l2.5 2.5c.4.4 1 .4 1.4 0l4-4Z"
                                 clip-rule="evenodd" />
                         </svg> Du
-                        {{ event.start_at }}</p>
+                        {{ event.start_at }}
+                    </p>
                     <p><svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
                                 d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm13.7-1.3a1 1 0 0 0-1.4-1.4L11 12.6l-1.8-1.8a1 1 0 0 0-1.4 1.4l2.5 2.5c.4.4 1 .4 1.4 0l4-4Z"
                                 clip-rule="evenodd" />
-                        </svg> Au {{ event.end_at }}</p>
+                        </svg> Au {{ event.end_at }}
+                    </p>
+                    </div>
 
                 </div>
                 <div class="event-banner-right-side">
                     <h1>{{ event.title }}</h1>
                     <p>{{ event.subtitle }}</p>
 
-                    {% for _ in "xxxxx"|rjust:"10" %}
-                    <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)" viewBox="0 0 24 24">
-                        <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z"/>
-                      </svg>
-                      
-                    {% endfor %}
+                    <div>
+                        {% for _ in "xxxxx"|rjust:"10" %}
+                        <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
+                        </svg>
+
+                        {% endfor %}
+                    </div>
+                    {% if show_inscription_link %}
+                    <a class="button" href="{{ event.inscription_link }}">
+                        S'inscrire
+                        <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                            <path clip-rule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    {% endif %}
+
 
                 </div>
             </div>

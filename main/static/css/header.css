@@ -147,22 +147,101 @@
     margin: 0px;
   }
 
-  .public-user-profil {
-    /* box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.9) */
+     .header-mobile-div {
+      display: none;
+    } 
 
-  }
-
-
+    .header-site-mobile-logo {
+      display: none;
+    }
 
 
   @media screen and (max-width: 901px) {
 
-    /* .header-pc-div {
-      display: none;
-    }  */
+    .header-mobile-div {
+      padding: 0px;
+    margin: 0px;
+    }
 
-    /* .header-mobile-div {
+    .uk-navbar-container {
+      padding: 0px 0px;
+      height: 50px; 
+    margin: 0px;
+    background-color: white !important;
+
+  }
+
+
+  .uk-navbar-container .uk-container > div {
+    display: flex;
+    gap: 20px;
+    height: 50px !important;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+
+  .header-site-mobile-logo {
+    height: 30px !important;
+    width: 30px;
+    display: inline;
+
+}
+  
+
+    .header-pc-div {
+      display: none;
+    } 
+
+    .header-mobile-div {
       display: inline;
-    } */
+    }
+
+    .left-mobile-header {
+      display: flex;
+      /* background-color: red; */
+      gap: 0px;
+      /* justify-content: stretch !important; */
+      /* padding: 5px 0px !important; */
+      margin: 0px !important;
+      /* align-items: stretch; */
+      /* box-sizing: border-box; */
+
+    }
+
+    .left-mobile-header svg {
+      display: none;
+    }
+
+    .first-action-button, .public-user-profil, .connect-button {
+      /* scale: 0.6; */
+      /* margin: 0px !important; */
+      /* background-color: green; */
+    padding: 03px 5px !important;
+    /* margin: 0px !important; */
+    /* height: 50px !important; */
+    /* height: 3rem; */
+
+    font-size: 10px !important;
+    margin: 5px 0px;
+      box-sizing: border-box;
+    }
+
+    .first-action-button {
+      /* margin: 5px 0px; */
+      scale: 0.9;
+    }
+
+    .header-right-div {
+    margin: 0px !important;
+    /* padding: 0px !important; */
+    /* background-color: red; */
+    align-self: stretch;
+    height: 30px !important;
+
+
+    }
+
 
   }

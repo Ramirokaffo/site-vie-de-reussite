@@ -9,7 +9,7 @@ from ebook.models import EbookModel
 @login_required
 def index(request: WSGIRequest):
     # mail_admins(subject="Le mail de test Django", message="Le contenu de ce mail")
-
+    return formation(request)
     return render(request, "profil/index.html", context={"current_tab": "home"})
 
 
@@ -53,6 +53,7 @@ def detail(request, formation_id: int):
     current_v_index = request.GET.get("current_v_index")
     current_video = None
     next_video = None
+    prev_video = None
     if current_v_index is None:
         current_v_index = formation_videos[0].id if len(formation_videos) != 0 else None
     for i, vid in enumerate(formation_videos):
@@ -60,12 +61,15 @@ def detail(request, formation_id: int):
             current_video = vid
             if not i+1 == len(formation_videos):
                 next_video = formation_videos[i+1]
+            if i != 0:
+                prev_video = formation_videos[i-1]
             break
     video_comments = VideoComment.objects.filter(video__id=current_video.id, published=True)
 
     context = {
         "videos": formation_videos,
         "current_video": current_video,
+        "prev_video": prev_video,
         "next_video": next_video,
         "current_tab": "formation",
         "title": current_video.formation.title,

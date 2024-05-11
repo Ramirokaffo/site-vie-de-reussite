@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %}
-    <title>Profil</title>
+    <title>{{ title }}</title>
     {% endblock title %}
     <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'profil/style.css' %}">
@@ -47,8 +47,9 @@
             {% block content %}
               <!-- <p>Le contenu</p> -->
             {% endblock content %}
+        <!-- {% include "profil/component/footer.html" %} -->
+
         </main>
-        {% include "profil/component/footer.html" %}
         
     </section>
 </body>

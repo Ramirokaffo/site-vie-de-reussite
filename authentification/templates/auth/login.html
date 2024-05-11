@@ -2,6 +2,16 @@
 {% extends "auth/base.html" %}
 {% load static %}
 
+    {% block meta %}
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta name="description" content="Page de connexion du site de coaching et développement personnel: Vie de réussite" />
+    <meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+    <meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+    <meta property="og:image:alt" content="Le logo du site" />
+
+    {% endblock meta %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'auth/login.css' %}">
 
@@ -10,7 +20,7 @@
         {% csrf_token %}
         <div class="header">Connexion</div>
         <div class="inputs">
-            <input placeholder="Email" class="input" type="email" name="email">
+            <input placeholder="Email" class="input" type="text/email" name="email">
             <input placeholder="Password" class="input" type="password" name="password">
         <div class="checkbox-container">
             <label class="checkbox">
@@ -19,7 +29,11 @@
             <label for="checkbox" class="checkbox-text">Se souvenir de moi</label>
         </div>
         <button class="sigin-btn" type="submit">Me connecter</button>
+        <div class="forget-return-div">
+        <a class="return" href="/">Retour à l'accueil</a>
         <a class="forget" href="#">Mot de passe oublié ?</a>
+
+        </div>
         <p class="signup-link">Vous n'avez pas de compte ? <a href="{% url 'auth:register' %}">Créer-en un</a></p>
         </div>
     </form>

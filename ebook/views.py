@@ -10,7 +10,7 @@ from core.models import CategoryModel
 from django.core.paginator import Paginator
 
 def index(request: WSGIRequest):
-
+    # WSGIRequest.get_host
     category_list = CategoryModel.objects.filter(ebookmodel__isnull=False)
     context = {}
 

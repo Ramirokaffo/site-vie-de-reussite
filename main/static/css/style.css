@@ -14,6 +14,7 @@
     height: 700px;
     animation: myAnim 2s linear 0s 1 reverse both;
     position: relative;
+    /* background-color: red; */
 }
 
 @keyframes myAnim {
@@ -139,12 +140,15 @@ justify-content: space-evenly;
 padding: 70px 10px;
 padding-bottom: 0px;
 align-items: center;
+/* background-color: red; */
 }
 
 .presentation-div-left-side {
   width: 40%;
   border-left: 2px solid var(--second-color2);
   padding-left: 20px;
+  /* background-color: green; */
+  box-sizing: border-box;
 
 }
 
@@ -248,6 +252,8 @@ align-items: center;
   width: 100%;
   height: 100%;
   border-radius: inherit;
+  animation: all 0.5s ease;
+
 }
 
 .one-best-seller-book-sous-div .front-content {
@@ -424,7 +430,6 @@ align-items: center;
  
  .learn-more-mini-ebook-btn .button-text {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  /* position: absolute; */
   top: 0;
   left: 0;
   right: 0;
@@ -614,8 +619,6 @@ align-items: center;
 
 
 .sup-last-post-div {
-  /* background-color: var(--second-color3); */
-  /* background-color: red; */
   padding: 70px 40px;
   padding-top: 20px;
 
@@ -780,7 +783,7 @@ align-items: center;
   background-color: black;
   border-top-right-radius: 60px;
   border-top-left-radius: 60px;
-  height: 800px;
+  /* height: 800px; */
   padding: 30px;
 
 }
@@ -861,7 +864,7 @@ align-items: center;
 
 }
 
-.sous-formation-div-list > a:hover {
+.sous-formation-div-list a:hover {
   text-decoration: none;
 }
 
@@ -1075,12 +1078,8 @@ align-items: center;
     padding: 20px;
   }
 
-.img-parallax-div {
-  /* opacity: 0.2; */
-}
 
 .parallax-action-button {
-  /* width: 140px; */
   height: 40px;
   display: flex;
   align-items: center;
@@ -1389,7 +1388,9 @@ align-items: center;
 .home-list-videos {
   padding: 90px 10px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-color: rgba(255, 255, 255, 0.9);
+
 }
 
 
@@ -1399,9 +1400,11 @@ align-items: center;
 
   .sup-testimony-div {
     background-color: white;
+  box-sizing: border-box;
+
   }
 
-  .sup-testimony-div > h3 {
+  .sup-testimony-div > h2 {
     color: black;
     text-align: center;
     margin: auto;
@@ -1414,7 +1417,7 @@ align-items: center;
 
 .testimony-div {
   /* height: 500px; */
-  padding: 60px 0px;
+  padding: 60px 20px;
   background-color: white;
   display: flex;
   /* flex-direction: column; */
@@ -1422,6 +1425,8 @@ align-items: center;
   align-items: center;
   /* align-content: center; */
   /* background-color: rebeccapurple; */
+  box-sizing: border-box;
+
 }
 
 .testimony-ul {
@@ -1431,11 +1436,14 @@ align-items: center;
   display: flex;
   justify-content: center;
   /* display: inline !important; */
+  box-sizing: border-box;
+
 }
 
 .testimony-div li {
   padding: 0px 10px;
   /* background-color: green; */
+  box-sizing: border-box;
   /* display: flex;
   flex-direction: column;
   justify-content: center; */
@@ -1446,12 +1454,14 @@ align-items: center;
   box-sizing: border-box;
   background-color: rgba(243, 244, 246, 1);
   padding: 2rem;
-  max-width: 320px;
+  /* max-width: 320px; */
   border-radius: 5px;
   box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-sizing: border-box;
+
 }
 
 .header {
@@ -1501,7 +1511,9 @@ align-items: center;
 }
 
 
-
+.testimony-nav {
+  color: var(--second-color1) !important;
+}
 
 
 
@@ -1513,15 +1525,162 @@ align-items: center;
 @media screen and (max-width: 901px) {
 
 
+  h2 {
+    font-size: 30px !important;
+    /* text-align: center; */
+  }
+.welcome-bg-image {
+  height: 250px;
+
+}
+
+  .welcome-glass-cart {
+    width: 95%;
+    display: none;
+
+  }
+
   .business-presentation-div {
     flex-direction: column;
     gap: 20px;
+    /* padding: 10px; */
   }
 
   .business-presentation-div > div {
     width: 100%;
   }
 
+  .global-best-seller-book-div {
+    padding: 0px 10px;
+  }
+
+  .one-best-seller-book-sous-div:hover {
+    scale: 1.02;
+    animation: all 0.5s ease;
+  }
+
+  .one-best-seller-book-sous-div .content {
+    transform: translateY(0);
+  }
+  
+  .one-best-seller-book-sous-div .front-content {
+    transform: translateX(20%);
+  }
+  
+  .one-best-seller-book-sous-div .front-content p {
+    opacity: 0;
+  }
+
+
+  .all-ebook-btn-div svg {
+    scale: 0.8;
+  }
+  
+  .hover-underline-animation {
+    font-size: 10px !important;
+  }
+
+
+
+  .global-mini-post-div {
+    /* flex-direction: column; */
+    /* display: inline; */
+    /* gap: 20px; */
+    /* flex-wrap: wrap; */
+  }
+
+  .sup-last-post-div {
+    padding: 0px;
+    padding-top: 20px;
+  background-color: var(-color1);
+
+  
+  }
+  
+
+  .last-post-div {
+    padding: 30px;
+
+  }
+  
+
+  .mini-post-div {
+    width: 100%;
+  }
+
+  .mini-post-div h4 {
+    font-size: 20px;
+
+  }
+
+
+
+  .sub-formation-div {
+    background-color: var(--color1);
+  }
+
+
+  
+  
+
+
+  .sous-formation-div {
+    flex-direction: column-reverse;
+    /* align-items: center; */
+    gap: 20px;
+  }
+
+
+  .sous-formation-div-text {
+    width: 100%;
+  }
+
+  .sous-formation-div-list {
+    /* display: flex; */
+    /* justify-content: center; */
+    gap: 0px;
+    /* background-color: red; */
+  }
+
+.sub-one-formation-card {
+  width: 100%;
+}
+
+.in-black-opacity {
+  width: 70%;
+
+}
+
+  .in-black-opacity h1 {
+    font-size: 20px;
+  }
+
+  .contact-us-div {
+    padding: 20px;
+  }
+
+  .contact-left-side h3 {
+    font-size: 20px;
+  }
+
+  .sous-contact-us-div {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-right-side {
+    width: 100%;
+    box-sizing: border-box;
+    height: 22rem;
+
+  }
+
+  .sup-testimony-div > h2 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
 
 }

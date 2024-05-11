@@ -14,8 +14,6 @@ h1 {
 }
 
 hr {
-    color: red;
-    fill: green;
     background-color: yellow;
 }
 
@@ -35,7 +33,7 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 3px, rgba(0, 0, 0, 0.2) -1px -1px 3px;
     flex-direction: column;
     transition: 0.3s all ease;
-    /* margin-bottom: 30px; */
+    margin-bottom: 30px;
     margin-right: 20px;
 
 }
@@ -75,5 +73,37 @@ hr {
     background-color: var(--second-color1);
     text-decoration: none;
     transition: 0.3s all ease;
+
+}
+
+
+
+@media screen and (max-width: 901px) {
+
+h1 {
+    font-size: 15px;
+
+}
+
+.no-formation-p {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.one-formation-card {
+
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.main-div hr {
+    display: none;
+}
+
+.formation-info-line span {
+    display: flex;
+    flex-direction: column;
+}
 
 }

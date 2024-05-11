@@ -4,8 +4,6 @@
   padding: 40px 20%;
   margin: auto;
   background-color: rgba(4, 52, 77, 1);
-  /* background-color: rgba(0, 0, 0, 0.1); */
-  /* background-color: var(--second-color2); */
 }
 
 .head-block h1 {
@@ -186,3 +184,64 @@
 }
 
   
+
+
+
+
+@media screen and (max-width: 901px) {
+
+  .head-block {
+    padding: 20px 10%;
+
+  }
+
+.head-block p {
+  font-size: 12px;
+
+}
+
+
+.ebook-category-name-div {
+  /* background-color: var(--second-color2);
+  transition: 1s background-color; */
+  border-radius: 0px;
+
+}
+
+.ebook-category-name-div h2 {
+
+  /* color: white;
+  transition: 1s color; */
+
+}
+
+
+.ebook-card {
+  border-radius: 0px;
+}
+
+/* .ebook-image::before {
+  content: "Voir plus...";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  font-weight: bold;
+  transition: .2s all ease;
+ } */
+  
+
+ .ebook-card > .details {
+  height: 30%;
+  border-top: 4px solid var(--color4);
+}
+
+}

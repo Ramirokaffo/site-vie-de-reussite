@@ -131,3 +131,25 @@
   }
   
   
+
+  @media screen and (max-width: 901px) {
+
+  .related-ebook-div-title h3 {
+    font-size: 15px;
+  }
+
+  .related-ebook-list-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .one-ebook-mini-div {
+    width: 100%;
+  }
+
+.blog-right-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+  }

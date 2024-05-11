@@ -43,30 +43,61 @@
   
   #appointment-modal-overflow .my-container .form {
     /* margin-top: 5px; */
+    /* background-color: red; */
   }
   
   .form .input-box {
     width: 100%;
     margin-top: 10px;
+    box-sizing: border-box;
   }
   
   .input-box label {
     color: #000;
   }
   
-  .form :where(.input-box input, .input-box textarea, .select-box) {
+  .form :where(.input-box input, .input-box textarea, .select-box select) {
     position: relative;
     height: 35px;
     width: 100%;
     outline: none;
     font-size: 1rem;
-    color: #808080;
+    /* color: #808080; */
     margin-top: 5px;
-    border: 1px solid var(--second-color1);
+    box-sizing: border-box;
+    /* border: 1px solid var(--second-color1); */
+    border: none;
     border-radius: 6px;
-    padding-bottom: 5px;
+    padding: 5px;
     /* padding: 0 15px; */
-    /* background: var(--second-color1); */
+    background: rgba(4, 52, 77, 0.2);
+  }
+
+  .contry-city-div {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    /* background-color: red; */
+    padding: 0px !important;
+    margin-top: 5px;
+  }
+
+  .contry-city-div input {
+    flex: 1;
+    margin: 0px;
+    /* padding: 0px; */
+  }
+
+  .contry-city-div .select-box {
+    flex: 1;
+    margin: 0px;
+    /* padding: 0px; */
+
+  }
+
+ .select-box select {
+    margin: 0px;
+    /* padding: 0px; */
   }
   
   .form .input-box textarea {
@@ -84,6 +115,7 @@
   
   .form .gender-box {
     margin-top: 10px;
+    color: black;
   }
   
   .form :where(.gender-option, .gender) {
@@ -118,7 +150,7 @@
     width: 100%;
     outline: none;
     border: none;
-    color: #808080;
+    /* color: #808080; */
     font-size: 1rem;
     /* background: #FCEDDA; */
   }
@@ -148,4 +180,21 @@
 
   .cancel-button:hover {
     color: var(--second-color3);
+  }
+
+
+
+  @media screen and (max-width: 901px) {
+
+
+    .uk-modal-header h2 {
+      font-size: 20px !important;
+    
+    }
+
+  .form .column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
   }

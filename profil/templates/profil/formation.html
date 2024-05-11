@@ -20,12 +20,14 @@
     <div class="one-formation-card-header">
       <h4>{{ formation.title}}</h4>
       <div class="formation-info-line">
-        <span><svg height="40" width="40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <span>
+          <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg> {{ formation.course_duration }} heures
         </span>
-        <span><svg height="40" width="40" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)" viewBox="0 0 24 24">
+        <span>
+          <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
               d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm5 2a1 1 0 0 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z"
               clip-rule="evenodd" />
@@ -50,6 +52,7 @@
       </svg>Vous n'avez pas encore acheté une formation pour le moment <a href="{% url 'formation:index' %}">Parcourir
         nos différentes formations</a></p>
     {% endif %}
+        {% include "profil/component/footer.html" %}
 
 </div>
 {% endblock content %}

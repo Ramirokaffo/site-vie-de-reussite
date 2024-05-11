@@ -10,8 +10,33 @@
     <script src="{% static 'js/uikit.js' %}"></script>
     <script src="{% static 'js/uikit-icons.min.js' %}"></script>
     {% block title %}
-    <title>Connexion</title>
+    <title>{{ title }}</title>
     {% endblock title %}
+
+    <link rel="icon" href="{% static 'images/logo_site_vie_reussie.jpeg' %}">
+    <meta name="author" content="RAMIRO KAFFO" />
+    <meta name="copyright" content="RAMIRO KAFFO" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:video:width" content="400" />
+    <meta property="og:video:height" content="300" />  
+    <meta property="og:url" content='{{ request.build_absolute_uri }}' />
+
+
+    {% block meta %}
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta name="description" content="Page de connexion du site de coaching et développement personnel: Vie de réussite" />
+    <meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+    <meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+    <meta property="og:image:alt" content="Le logo du site" />
+    <!-- <meta property="og:video" content="https://example.com/movie.swf" /> -->
+    <!-- <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />       -->
+
+    {% endblock meta %}
+
 </head>
 
 <body>

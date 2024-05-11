@@ -25,9 +25,10 @@
     position: relative;
     background-color: black;
     border-radius: 10px;
-    /* clip-path: polygon(0px 0px, 100% 0px, 100% 90%, 50% 100%, 0px 90%); */
-    /* clip-rule: nonzero; */
-    /* clip-path: circle(); */
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    height: 600px;
+    width: 100%;
 
 }
 
@@ -35,6 +36,8 @@
     height: 600px;
     width: 100%;
     border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 
@@ -133,11 +136,38 @@
     font-weight: bold;
   }
 
+  .current_video_title span {
+    display: none;
+  }
 
 /* .left-section {
     height: 500px;
 } */
 
+
+    
+
+.next-prev-div {
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: rgba(4, 52, 77, 0.2);
+    background-color: var(--second-color1);
+
+}
+
+.next-prev-div a {
+    color: white;
+}
+
+.next-prev-span {
+    display: none;
+}
+
+#next-video-a {
+    justify-self: end;
+}
 
 .bottom-section {
     min-height: 300px;
@@ -146,8 +176,7 @@
 
 .tab-bar-div {
     display: flex;
-    /* justify-content: center; */
-    gap: 20px;
+    gap: 0px;
     padding: 10px;
 
 }
@@ -156,6 +185,7 @@
     padding: 5px 0px;
     flex: 1;
     cursor: pointer;
+    border: none;
 }
 
 .description-btn-tab {
@@ -191,18 +221,14 @@
 .one-comment-div {
     display: flex;
     gap: 10px;
-    align-items: start;
+    /* align-items: start; */
+}
+
+.one-comment-icon-div {
+    min-width: 55px;
+    /* background-color: green; */
 }
  
-.one-comment-div-right {
-    /* background-color: aqua; */
-
-    /* align-self: stretch;
-    justify-self: stretch;
-    align-content: stretch;
-    justify-content: stretch; */
-    flex-grow: 1;
-}
 
 
 
@@ -254,7 +280,7 @@
     display: flex;
     gap: 30px;
     cursor: pointer;
-    border-style: groove;
+    border: none;
 }
 
 #sendCommentBtn:hover {
@@ -328,3 +354,267 @@ border-right: 3px solid var(--color3);
     margin: 0px;
 }
 
+
+
+
+
+
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        -webkit-animation-name: fadeIn; /* Fade in the background */
+        -webkit-animation-duration: 0.4s;
+        animation-name: fadeIn;
+        animation-duration: 0.4s
+      }
+      
+      /* Modal Content */
+      .modal-content {
+        position: fixed;
+        bottom: 0;
+        background-color: #fefefe;
+        width: 100%;
+        -webkit-animation-name: slideIn;
+        -webkit-animation-duration: 0.4s;
+        animation-name: slideIn;
+        animation-duration: 0.4s;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        overflow: hidden;
+        
+      }
+
+
+      
+      
+      /* The Close Button */
+      .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      .modal-header {
+        padding: 2px 2px;
+        background-color: var(--second-color1);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        /* height: 50px; */
+        align-items: center;
+        padding-top: 8px;
+
+      }
+
+
+      .modal-header span {
+        /* background-color: green; */
+        padding: 0px;
+        margin: 0px;
+      }
+      .modal-header h2 {
+        /* background-color: red; */
+        padding: 0px;
+        margin: 0px;
+        color: white;
+        font-size: 17px;
+      }
+      
+      .modal-body {
+        padding: 2px 0px;
+        max-height: 50%;
+        overflow-y: scroll;
+    }
+    .modal-body ul {
+        list-style-type: none;
+        margin: 0px;
+        /* background-color: red; */
+        padding: 0px;
+    }
+
+    .modal-body ul li {
+        margin: 0px;
+        padding: 0px;
+        /* background-color: orange; */
+
+    }
+
+    .modal-body ul hr {
+        margin: 2px 0px;
+    }
+
+    .modal-body ul li a {
+        margin: 0px;
+        padding: 0px 3px;
+        /* color: black; */
+    }
+
+      .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+      }
+      
+      /* Add Animation */
+      @-webkit-keyframes slideIn {
+        from {bottom: -300px; opacity: 0} 
+        to {bottom: 0; opacity: 1}
+      }
+      
+      @keyframes slideIn {
+        from {bottom: -300px; opacity: 0}
+        to {bottom: 0; opacity: 1}
+      }
+      
+      @-webkit-keyframes fadeIn {
+        from {opacity: 0} 
+        to {opacity: 1}
+      }
+      
+      @keyframes fadeIn {
+        from {opacity: 0} 
+        to {opacity: 1}
+      }
+    
+
+      @keyframes slideOut {
+        from {bottom: 0; opacity: 1}
+        to {bottom: -300px; opacity: 0}
+      }
+      
+
+
+
+
+@media screen and (max-width: 901px) {
+
+    .main-content {
+        flex-direction: column;
+        padding: 20px 3px;
+    padding-bottom: 0px;
+    height: calc(100vh - 50px);
+
+
+    }
+
+
+.left-section {
+    flex: 1;
+    width: 100%;
+
+}
+
+    .video-frame {
+        height: 200px;
+
+    }
+
+    .video-frame iframe {
+        height: 200px;
+    }
+
+    .video-loader {
+        width: 75px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 10px;
+
+    }
+
+    .current_video_title {
+        font-size: 17px;
+        padding: 0px 5px;
+        display: flex;
+        justify-content: space-between;
+        /* background-color: green; */
+    }
+
+    .current_video_title span {
+        display: inline;
+        min-width: 25px;
+      }
+
+    .next-prev-div {
+        padding: 0px 5px;
+    }
+
+    .next-prev-div a {
+        /* font-size: 10px; */
+    }
+
+    .title-span {
+        display: none;
+    }
+
+    .next-prev-span {
+        display: inline;
+    }
+
+.bottom-section {
+    padding: 0px 5px;
+
+}
+
+.tab-bar-div {
+    padding: 0px;
+}
+
+.video-descriptiion {
+    padding: 0px;
+
+}
+
+.one-comment-icon-div {
+    scale: 0.8;
+}
+
+.one-comment-div-right-header h5 {
+    font-size: 13px;
+
+}
+
+
+.one-comment-div-right p {
+    font-size: 13px;
+}
+
+.one-comment-div-right i {
+    font-size: 10px;
+}
+
+
+
+.right-section {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}

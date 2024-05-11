@@ -55,3 +55,16 @@ body {
     flex: 6;
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+
+
+
+
+
+
+@media screen and (max-width: 901px) {
+
+    .profil-left-section {
+        display: none;
+    }
+}
