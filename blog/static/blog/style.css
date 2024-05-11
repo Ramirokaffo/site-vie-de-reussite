@@ -237,7 +237,9 @@
   display: flex;
 }
 
-
+.no-post-p {
+  padding: 30px 20px;
+}
 
 
 

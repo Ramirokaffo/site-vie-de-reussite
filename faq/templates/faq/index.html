@@ -41,6 +41,8 @@
             <p>{{ qa.answer }}</p>
         </div>
     </div>
+    {% empty %}
+    <p>Aucune question disponible pour le moment</p>
     {% endfor %}
 </main>
 

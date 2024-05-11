@@ -27,7 +27,7 @@
 </ul>
 
 <div class="blog-head-div">
-    <h1>Bienvenue sur notre blog</h1>
+    <h1>Bienvenue sur le blog</h1>
     <section class="search-section">
         <form action="" method="get">
             {% csrf_token %}
@@ -74,7 +74,7 @@
         </div>
 
         {% else %}
-        <p>Aucune publication disponible</p>
+        <p class="no-post-p">Aucune publication disponible</p>
         {% endif %}
 
         <div class="pagination">
