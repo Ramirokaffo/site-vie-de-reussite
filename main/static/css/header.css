@@ -56,6 +56,10 @@
     margin-left: 10px;
     transition: transform .3s ease-in-out;
   }
+
+  .first-action-button .mobile-text  {
+    display: none;
+  }
   
   .first-action-button:hover svg {
     transform: translateX(5px);
@@ -71,11 +75,11 @@
   .connect-button {
     position: relative;
     overflow: hidden;
-    height: 3rem;
+    /* height: 3rem; */
     padding: 0 2rem;
     border-radius: 1.5rem;
     background: var(--color1);
-    background-size: 400%;
+    /* background-size: 400%; */
     color: var(--color4);
     /* border: 1px solid var(--color3); */
     cursor: pointer;
@@ -201,7 +205,7 @@
     .left-mobile-header {
       display: flex;
       /* background-color: red; */
-      gap: 0px;
+      gap: 10px;
       /* justify-content: stretch !important; */
       /* padding: 5px 0px !important; */
       margin: 0px !important;
@@ -214,13 +218,13 @@
       display: none;
     }
 
-    .first-action-button, .public-user-profil, .connect-button {
+    .first-action-button, .public-user-profil, .header-right-div, .connect-button {
       /* scale: 0.6; */
       /* margin: 0px !important; */
       /* background-color: green; */
-    padding: 03px 5px !important;
+    padding: 0px 7px !important;
     /* margin: 0px !important; */
-    /* height: 50px !important; */
+    height: 30px !important;
     /* height: 3rem; */
 
     font-size: 10px !important;
@@ -230,7 +234,15 @@
 
     .first-action-button {
       /* margin: 5px 0px; */
-      scale: 0.9;
+      /* scale: 0.9; */
+    }
+
+    .first-action-button .pc-text {
+      display: none;
+    }
+
+    .first-action-button .mobile-text {
+      display: inline;
     }
 
     .header-right-div {
