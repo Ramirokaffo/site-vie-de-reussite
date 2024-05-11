@@ -9,8 +9,6 @@
 <meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
 <meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
 <meta property="og:image:alt" content="Le logo du site" />
-<!-- <meta property="og:video" content="https://example.com/movie.swf" /> -->
-<!-- <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />       -->
 
 {% endblock meta %}
 
@@ -54,18 +52,11 @@
                         <p>
                             {% if post.illustration_image %}
                             {{ post.subtitle }}...
-                            <!-- {{ post.content|wrap_content:200|safe }} -->
                             {% else %}
                             {{ post.subtitle }}...
                             {% endif %}
                         </p>
                         <a class="show-details-button" href="{% url 'blog:detail' post.id %}">Lire l'article
-                            <!-- <p>Lire l'article</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                                </path>
-                            </svg> -->
                         </a>
                     </div>
                 </div>

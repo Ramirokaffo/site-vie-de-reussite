@@ -1572,6 +1572,17 @@ align-items: center;
   }
 
 
+  .last-post-div > hr {
+    margin-bottom: 0px;
+    display: none;
+  }
+
+  .last-post-div > h2 {
+    padding: 0px;
+    margin: 0px;
+  }
+
+
   .all-ebook-btn-div svg {
     scale: 0.8;
   }
