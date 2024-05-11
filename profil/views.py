@@ -37,7 +37,7 @@ def ebook(request):
         user=F("saleebook__user__id"),
         # video_count=Count('formationvideo')
     )
-    ebooks = my_ebook.filter(user=request.user.id)
+    ebooks = my_ebook.filter(user=request.user.id, published=True)
     context = {
         "ebooks": ebooks,
         "current_tab": "ebook",
