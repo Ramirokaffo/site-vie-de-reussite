@@ -7,6 +7,8 @@
 <meta property="og:title" content="Evènement: {{ event.title }}" />
 <meta name="description" content="{{ event.subtitle }}" />
 <meta property="og:image" content="{{ event.illustration_image.url }}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ event.illustration_image.url }}" />
+
 <meta property="og:image:alt" content="Image de : {{ event.title }}" />
 
 {% endblock meta %}

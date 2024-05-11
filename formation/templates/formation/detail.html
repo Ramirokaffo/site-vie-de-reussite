@@ -6,7 +6,7 @@
 
 <meta property="og:title" content="Formation: {{ formation.title }}" />
 <meta name="description" content="{{ formation.subtitle }}" />
-<meta property="og:image" content="{{ formation.illustration_image.url }}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ formation.illustration_image.url }}" />
 <meta property="og:image:alt" content="Image de : {{ formation.title }}" />
 <meta property="og:video" content="https://www.youtube.com/embed/{{ formation.illustration_video }}" />
 

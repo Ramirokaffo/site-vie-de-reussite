@@ -6,8 +6,8 @@
 
 <meta property="og:title" content="{{ title }}" />
 <meta name="description" content="Vous trouverez dans cette page la reponse à toutes les questions qui nous sont posées regulièrement" />
-<meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
-<meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+
 <meta property="og:image:alt" content="Le logo du site" />
 
 {% endblock meta %}

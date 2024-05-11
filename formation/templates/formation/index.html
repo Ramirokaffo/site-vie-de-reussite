@@ -7,9 +7,8 @@
 <meta property="og:title" content="{{ title }}" />
 <meta name="description"
     content="Vous trouverez dans cette page toutes les formations vidéos recommandés par la Coach pour votre transformation" />
-<meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
-<meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
-<meta property="og:image:alt" content="Le logo du site" />
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+    <meta property="og:image:alt" content="Le logo du site" />
 
 {% endblock meta %}
 

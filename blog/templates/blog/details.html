@@ -6,7 +6,7 @@
 
 <meta property="og:title" content="Post: {{ post.title }}" />
 <meta name="description" content="{{ post.subtitle }}" />
-<meta property="og:image" content="{{ post.illustration_image.url }}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.illustration_image.url }}" />
 <meta property="og:image:alt" content="Image de : {{ post.title }}" />
 
 {% endblock meta %}
@@ -26,7 +26,6 @@
         {% endif %}
     </ul>
     <div class="post-head-div">
-
         <div class="post-head-div-first-line">
             Catégorie
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30"

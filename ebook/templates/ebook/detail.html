@@ -6,7 +6,7 @@
 
 <meta property="og:title" content="Ouvrage: {{ ebook.title }}" />
 <meta name="description" content="{{ ebook.subtitle }}" />
-<meta property="og:image" content="{{ ebook.illustration_image.url }}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ ebook.illustration_image.url }}" />
 <meta property="og:image:alt" content="Image de : {{ ebook.title }}" />
 <meta property="og:video" content="https://www.youtube.com/embed/{{ ebook.illustration_video }}" />
 

@@ -6,7 +6,7 @@
 
 <meta property="og:title" content="{{ title }}" />
 <meta name="description" content="Vous trouverez dans cette page la liste des ouvrages proposés par la coach pour votre transformation" />
-<meta property="og:image" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
 <meta property="og:image:alt" content="Image de : {{ post.title }}" />
 <!-- <meta property="og:video" content="https://example.com/movie.swf" /> -->
 <!-- <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />       -->

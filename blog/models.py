@@ -11,7 +11,7 @@ class BlogPost(models.Model):
     subtitle = models.CharField(max_length=255, blank=False, default="", null=False, verbose_name="Texte présentatif")
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur de la publication")
-    category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Catégorie de la publication")
+    category = models.ForeignKey(CategoryModel, on_delete=models.DO_NOTHING, null=False, blank=False, verbose_name="Catégorie de la publication")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date de publication")
     published = models.BooleanField(default=True, verbose_name="Publié")
