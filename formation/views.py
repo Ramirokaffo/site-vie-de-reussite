@@ -48,6 +48,6 @@ def comment(request: WSGIRequest):
     videoComment = VideoComment(content=data["userComment"], author=User(id=data["userId"]), video=FormationVideo(data["videoId"]))
     videoComment.save()
     videoComment.author = request.user
-    # serialized_comment = serialize('json', [videoComment])
     serialized_user = serialize('json', [request.user])
     return JsonResponse({"status": "1", "comment": {"content": videoComment.content}, "author": serialized_user}, content_type='application/json')
+

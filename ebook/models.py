@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from core.models import CategoryModel
 from tinymce.models import HTMLField
+from django.urls import reverse
 
 
 def validate_video_file(value):
@@ -46,8 +47,8 @@ class EbookModel(models.Model):
     ebook_file = models.FileField(blank=True, null=True, upload_to='ebook/pdf/%Y/%m/%d', validators=[validate_pdf_file], verbose_name="Livre au format pdf")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/ebook/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(blank=True, null=True, max_length=20, verbose_name="Identifiant vers la vidéo d'illustration")
-    normal_price = models.FloatField(verbose_name="Prix normal du livre", null=False)
-    promo_price = models.FloatField(verbose_name="Prix promotionnel")
+    normal_price = models.FloatField(verbose_name="Prix barré", null=False)
+    promo_price = models.FloatField(verbose_name="Prix de vente")
     published = models.BooleanField(default=True, verbose_name="Publié")
     availability = models.CharField(max_length=10, choices=AVAILIBILITY_TYPE, verbose_name="Version disponible", default="both")
     
@@ -57,6 +58,9 @@ class EbookModel(models.Model):
     class Meta:
         verbose_name = "E-book"
         verbose_name_plural = "E-books"
+
+    def get_absolute_url(self):
+        return reverse('ebook:detail', kwargs={'ebook_id': self.id})
 
 
 

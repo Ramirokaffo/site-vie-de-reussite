@@ -21,6 +21,8 @@ class EbookAdmin(admin.ModelAdmin):
 
     list_display = ("title", "published", "normal_price", "promo_price", "created_at", "illustration_img", "illustration_vdeo")
     list_editable = ("published", )
+    list_filter = ["category", "availability", "published"]
+
 
 
 admin.site.register(EbookModel, EbookAdmin)

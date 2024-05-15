@@ -37,7 +37,7 @@ class FaqModel(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name = "Foire aux questions"
+        verbose_name = "question reponse"
 
     def __str__(self) -> str:
         return self.question

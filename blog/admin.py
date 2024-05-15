@@ -23,6 +23,18 @@ class BlogPostAdmin(admin.ModelAdmin):
 
     list_display = ("title", "published", "created_at", "last_updated", "author", "illustration_img", )
     list_editable = ("published", )
+    date_hierarchy = "created_at"
+    exclude = ["slug"]
+    list_filter = ["category", "author", "published"]
+    radio_fields = {"category": admin.HORIZONTAL}
+    autocomplete_fields = ["category", "author"]
+    save_as = True
+    save_on_top = True
+    search_fields = ["title", "subtitle", "category__name"]
+    search_help_text = "Rechercher une publication via son titre, sous-titre ou sa catégorie"
+    # search_fields = ["category"]
+    # view_on_site = True
+    
 
 
 class BlogCommentAdmin(admin.ModelAdmin):

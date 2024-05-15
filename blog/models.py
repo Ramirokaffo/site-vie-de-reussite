@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from core.models import CategoryModel
 from tinymce.models import HTMLField
-
+from django.urls import reverse
 
 
 class BlogPost(models.Model):
@@ -32,6 +32,9 @@ class BlogPost(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'post_id': self.id})
 
 
 

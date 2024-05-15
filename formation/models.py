@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from core.models import CategoryModel
 from tinymce.models import HTMLField
+from django.urls import reverse
 
 
 def validate_video_file(value):
@@ -19,9 +20,9 @@ class Formation(models.Model):
     published = models.BooleanField(default=True, verbose_name="Publié")
     illustration_image = models.ImageField(blank=False, null=False, upload_to='images/formation/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(max_length=20, blank=True, null=True, verbose_name="Identifiant de la vidéo d'illustration")
-    normal_price = models.FloatField(verbose_name="Prix normal", null=False)
-    promo_price = models.FloatField(verbose_name="Prix promotionnel")
-    course_duration = models.IntegerField(verbose_name="Durée totale des cours (en minutes)")
+    normal_price = models.FloatField(verbose_name="Prix barré", null=False)
+    promo_price = models.FloatField(verbose_name="Prix de vente")
+    course_duration = models.IntegerField(verbose_name="Durée totale des cours (en heures)")
     
     def __str__(self):
         return self.title
@@ -29,6 +30,10 @@ class Formation(models.Model):
     class Meta:
         verbose_name = "Formation"
         verbose_name_plural = "Formations"
+
+    def get_absolute_url(self):
+        return reverse('formation:detail', kwargs={'formation_id': self.id})
+
 
 
 class FormationVideo(models.Model):

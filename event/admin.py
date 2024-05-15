@@ -19,8 +19,15 @@ class EventAdmin(admin.ModelAdmin):
         except:
                 return format_html("<div style='width:100px; height:100px; background-color: #121212'></div>")
 
-    list_display = ("title", "published", "start_at", "end_at", "created_at", "illustration_img", "illustration_vdeo")
-    list_editable = ("published", )
+    list_display = ("title", "published", "start_at", "end_at", "created_at", "illustration_img", "illustration_vdeo", "show_at_home")
+    list_editable = ("published", "show_at_home")
+    list_filter = ["category", "published"]
+    date_hierarchy = "created_at"
+    # raw_id_fields = ["category"]
+    save_as = True
+    save_on_top = True
+
+
 
 
 admin.site.register(EventModel, EventAdmin)

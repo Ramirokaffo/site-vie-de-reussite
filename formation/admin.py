@@ -22,6 +22,10 @@ class FormationAdmin(admin.ModelAdmin):
 
     list_display = ("title", "category", "published", "normal_price", "promo_price", "created_at", "illustration_img", "illustration_vdeo")
     list_editable = ("published", )
+    list_filter = ["category", "published"]
+    date_hierarchy = "created_at"
+
+
 
 
 class FormationVideoAdmin(admin.ModelAdmin):

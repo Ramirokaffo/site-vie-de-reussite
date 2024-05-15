@@ -8,7 +8,8 @@ class AppointmentAdmin(admin.ModelAdmin):
 
 
     list_display = ("full_name", "country", "city", "my_date", "phone_number", "email", "objectif", "gender")
-    # list_editable = ("my_date", )
+    date_hierarchy = "my_date"
+    list_filter = ["country", "city", "gender"]
 
 
 admin.site.register(AppointmentModel, AppointmentAdmin)

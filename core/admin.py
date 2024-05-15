@@ -14,5 +14,12 @@ class SiteVideoAdmin(admin.ModelAdmin):
     list_display = ("title", "show_where", "published", "created_at", "vdeo")
     list_editable = ("published", )
 
-admin.site.register(CategoryModel)
+
+class CategoryAdmin(admin.ModelAdmin):
+    search_fields = ["name"]
+     
+
+
+admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(SiteVideoModel, SiteVideoAdmin)
+

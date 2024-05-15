@@ -24,7 +24,7 @@
             <input placeholder="Password" class="input" type="password" name="password">
         <div class="checkbox-container">
             <label class="checkbox">
-            <input type="checkbox" id="checkbox">
+            <input type="checkbox" id="checkbox" checked >
             </label>
             <label for="checkbox" class="checkbox-text">Se souvenir de moi</label>
         </div>
@@ -34,6 +34,7 @@
         <a class="forget" href="#">Mot de passe oublié ?</a>
 
         </div>
+        <a href="{% url 'auth:authMail' %}" class="ask-activation-link-a">Besoin d'un lien d'activation de compte ?</a>
         <p class="signup-link">Vous n'avez pas de compte ? <a href="{% url 'auth:register' %}">Créer-en un</a></p>
         </div>
     </form>
