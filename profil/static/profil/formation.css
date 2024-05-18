@@ -57,6 +57,7 @@ hr {
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .one-formation-card > a {
@@ -95,10 +96,34 @@ h1 {
 
     margin: auto;
     margin-bottom: 30px;
+    width: 100%;
+}
+
+
+
+.one-formation-card-header {
+    padding: 10px;
+    text-align: center;
+
+
+}
+
+.one-formation-card h4 {
+    font-size: 15px;
+}
+
+.one-formation-card > a {
+    padding: 10px 10px;
+
 }
 
 .main-div hr {
     display: none;
+}
+
+.formation-info-line {
+
+    /* justify-content: center; */
 }
 
 .formation-info-line span {

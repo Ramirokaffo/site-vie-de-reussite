@@ -180,16 +180,13 @@ align-items: center;
 
 .presentation-div-right-side {
   width: 350px;
-  /* height: 250px; */
-  /* background: yellow; */
   position: relative;
 }
 
 .presentation-div-right-side img {
   bottom: 0px;
   right: 0px;
-  /* height: 200%; */
-  /* width: 100px; */
+
 }
 
 
@@ -657,6 +654,7 @@ align-items: center;
   .mini-post-div h4 {
     color: var(--color4);
     font-size: 40px;
+
 
   }
 
@@ -1550,6 +1548,9 @@ align-items: center;
     width: 100%;
   }
 
+.presentation-div-right-side img {
+  padding: 5px 10px;
+}
   .global-best-seller-book-div {
     padding: 0px 10px;
   }
@@ -1617,12 +1618,14 @@ align-items: center;
 
   .mini-post-div {
     width: 100%;
+
   }
 
   .mini-post-div h4 {
     font-size: 20px;
 
   }
+
 
 
 
