@@ -23,9 +23,26 @@ class EventAdmin(admin.ModelAdmin):
     list_editable = ("published", "show_at_home")
     list_filter = ["category", "published"]
     date_hierarchy = "created_at"
+    autocomplete_fields = ["category"]
+
+    search_fields = ["title", "subtitle", "category__name"]
+    search_help_text = "Rechercher un évènement via son titre, sous-titre ou sa catégorie"
     # raw_id_fields = ["category"]
     save_as = True
     save_on_top = True
+
+    actions = ["make_published", "make_no_published"]
+
+    @admin.action(description="Publier les évènements selectionnés")
+    def make_published(self, request, queryset):
+        queryset.update(published=True)
+
+
+
+    @admin.action(description="Ne pas publier les évènements selectionnés")
+    def make_no_published(self, request, queryset):
+        queryset.update(published=False)
+
 
 
 

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
+from django.db.models import Max
 
 
 def validate_video_file(value):
@@ -43,13 +44,21 @@ class FormationVideo(models.Model):
     formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Formation")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'ajout")
     published = models.BooleanField(default=True, verbose_name="Publié")
-
+    order = models.IntegerField(default=1, blank=False, null=False, verbose_name="Ordre", help_text="Ordre d'affichage de la vidéo", auto_created=True)
+    
     def __str__(self):
         return self.title
     
     class Meta:
         verbose_name = "Vidéo de formation"
         verbose_name_plural = "Vidéos de formation"
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            current_max_order = self.objects.filter(video=self.video).aggregate(Max("order", default=0)).get("order__max")
+            self.order = current_max_order
+
+        super().save(*args, **kwargs)
 
 
 
@@ -84,6 +93,6 @@ class SaleFormation(models.Model):
         return f"{self.user} - {self.formation}"
     
     class Meta:
-        verbose_name = "formation vendue"
-        verbose_name_plural = "formations vendues"
+        verbose_name = "formation commandée"
+        verbose_name_plural = "formations commandées"
 

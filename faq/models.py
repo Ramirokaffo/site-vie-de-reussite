@@ -34,6 +34,7 @@ class FaqModel(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     created_at = models.DateField(blank=True, null=True, auto_created=True, auto_now_add=True)
     category = models.CharField(choices=FAQ_CATEGORY, verbose_name="Catégorie de Faq", max_length=20)
+    published = models.BooleanField(default=True, verbose_name="Publié")
 
     class Meta:
         ordering = ['-created_at']

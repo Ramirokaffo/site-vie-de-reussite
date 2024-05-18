@@ -34,6 +34,20 @@ class BlogPostAdmin(admin.ModelAdmin):
     search_help_text = "Rechercher une publication via son titre, sous-titre ou sa catégorie"
     # search_fields = ["category"]
     # view_on_site = True
+
+    actions = ["make_published", "make_no_published"]
+
+    @admin.action(description="Publier les publications selectionnées")
+    def make_published(self, request, queryset):
+        queryset.update(published=True)
+
+
+
+    @admin.action(description="Ne pas publier les publications selectionnées")
+    def make_no_published(self, request, queryset):
+        queryset.update(published=False)
+
+
     
 
 
@@ -41,6 +55,20 @@ class BlogCommentAdmin(admin.ModelAdmin):
 
     list_display = ("content", "published", "created_at", "post", "author")
     list_editable = ("published", )
+
+    actions = ["make_published", "make_no_published"]
+
+    @admin.action(description="Publier les commentaires selectionnés")
+    def make_published(self, request, queryset):
+        queryset.update(published=True)
+
+
+
+    @admin.action(description="Ne pas publier les commentaires selectionnés")
+    def make_no_published(self, request, queryset):
+        queryset.update(published=False)
+
+
 
 
 admin.site.register(BlogPost, BlogPostAdmin)

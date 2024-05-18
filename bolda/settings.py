@@ -122,7 +122,7 @@ INSTALLED_APPS = [
     "appointment",
     "authentification",
     "message.apps.MessageConfig",
-    'django.contrib.admin',
+    "bolda.apps.MyAdminConfig",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

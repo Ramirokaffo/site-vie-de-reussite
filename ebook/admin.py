@@ -22,6 +22,21 @@ class EbookAdmin(admin.ModelAdmin):
     list_display = ("title", "published", "normal_price", "promo_price", "created_at", "illustration_img", "illustration_vdeo")
     list_editable = ("published", )
     list_filter = ["category", "availability", "published"]
+    search_fields = ["title", "subtitle", "category__name"]
+    search_help_text = "Rechercher un ouvrage via son titre, sous-titre ou sa catégorie"
+
+    actions = ["make_published", "make_no_published"]
+
+    @admin.action(description="Publier les ouvrages selectionnés")
+    def make_published(self, request, queryset):
+        queryset.update(published=True)
+
+
+
+    @admin.action(description="Ne pas publier les ouvrages selectionnés")
+    def make_no_published(self, request, queryset):
+        queryset.update(published=False)
+
 
 
 

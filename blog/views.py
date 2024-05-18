@@ -17,14 +17,14 @@ def index(request: WSGIRequest):
     context = {}
 
     if search_input is not None:
-        latest_post_list = BlogPost.objects.filter(Q(title__icontains=search_input) | Q(subtitle__icontains=search_input))
+        latest_post_list = BlogPost.objects.filter(Q(title__icontains=search_input) | Q(subtitle__icontains=search_input), published=True)
     elif category_id is not None:
-        latest_post_list = BlogPost.objects.filter(category=category_id)
+        latest_post_list = BlogPost.objects.filter(category=category_id, published=True)
         target_category = [cat for cat in post_category_list if cat.id == int(category_id)]
         if len(target_category) != 0:
             context["category"] = target_category[0]
     else:
-        latest_post_list = BlogPost.objects.all()
+        latest_post_list = BlogPost.objects.filter(published=True)
         
     paginator = Paginator(latest_post_list, 6)
 
@@ -38,7 +38,7 @@ def index(request: WSGIRequest):
         sales_count=Count('saleebook__id')
     )
     if category_id is not None:
-        top_3_ebooks = EbookModelWithSales.filter(category=category_id).order_by('-sales_count')[:3]
+        top_3_ebooks = EbookModelWithSales.filter(category=category_id, published=True).order_by('-sales_count')[:3]
         if len(top_3_ebooks) == 0:
             top_3_ebooks = EbookModelWithSales.order_by('-sales_count')[:3]
     else:
@@ -55,14 +55,14 @@ def index(request: WSGIRequest):
 
 def detail(request, post_id):
     target_post = BlogPost.objects.get(id=post_id)
-    related_post_category = BlogPost.objects.filter(category=target_post.category.id).exclude(id=target_post.id)[:20]
+    related_post_category = BlogPost.objects.filter(category=target_post.category.id, published=True).exclude(id=target_post.id)[:20]
     formation_list = Formation.objects.filter(published=True).order_by("category").annotate(
         video_count=Count('formationvideo__id'))[:2]
     
     EbookModelWithSales = EbookModel.objects.annotate(
         sales_count=Count('saleebook__id')
     )
-    top_3_ebooks = EbookModelWithSales.filter(category=target_post.category.id).order_by('-sales_count')[:3]
+    top_3_ebooks = EbookModelWithSales.filter(category=target_post.category.id, published=True).order_by('-sales_count')[:3]
     if len(top_3_ebooks) == 0:
         top_3_ebooks = EbookModelWithSales.order_by('-sales_count')[:3]
 

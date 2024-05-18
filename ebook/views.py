@@ -14,16 +14,16 @@ def index(request: WSGIRequest):
     category_list = CategoryModel.objects.filter(ebookmodel__isnull=False)
     context = {}
 
-    context["ebooks"] = EbookModel.objects.all().order_by("category")
+    context["ebooks"] = EbookModel.objects.filter(published=True).order_by("category")
     context["post_category_list"] = category_list
     context["title"] = "Ebooks | Site vie de réussite"
     return render(request, "ebook/index.html", context)
 
 def detail(request, ebook_id):
     target_ebook = EbookModel.objects.get(id=ebook_id)
-    related_ebook_category = EbookModel.objects.filter(category=target_ebook.category.id).exclude(id=target_ebook.id)[:4]
+    related_ebook_category = EbookModel.objects.filter(category=target_ebook.category.id, published=True).exclude(id=target_ebook.id)[:4]
     if len(related_ebook_category) == 0:
-        related_ebook_category = EbookModel.objects.all().order_by("-created_at").exclude(id=target_ebook.id)[:4]
+        related_ebook_category = EbookModel.objects.filter(published=True).order_by("-created_at").exclude(id=target_ebook.id)[:4]
 
     context = {
         "ebook": target_ebook,

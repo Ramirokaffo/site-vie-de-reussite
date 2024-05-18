@@ -49,7 +49,7 @@ def ebook(request):
 
 @login_required
 def detail(request, formation_id: int):
-    formation_videos = FormationVideo.objects.filter(formation__id=formation_id)
+    formation_videos = FormationVideo.objects.filter(formation__id=formation_id).order_by("order")
     current_v_index = request.GET.get("current_v_index")
     current_video = None
     next_video = None

@@ -13,7 +13,7 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.core.serializers import serialize
-
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request: WSGIRequest):
     category_list = CategoryModel.objects.filter(formation__isnull=False, formation__published=True)
@@ -42,6 +42,7 @@ def detail(request, formation_id):
     return render(request, "formation/detail.html", context)
 
 
+@csrf_exempt
 def comment(request: WSGIRequest):
     data = request.body.decode()
     data = json.loads(data)
