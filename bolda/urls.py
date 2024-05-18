@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+google_analytic_view = RedirectView.as_view(url='/static/google955276c8e840c68a.html', permanent=True)
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -41,5 +42,6 @@ urlpatterns = [
     # url(r'^newsletter/', include('newsletter.urls')),
     # path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
-    re_path(r'^favicon\.ico$', favicon_view)
+    re_path(r'^favicon\.ico$', favicon_view),
+    re_path(r'^google955276c8e840c68a\.html$', google_analytic_view)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
