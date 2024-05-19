@@ -21,13 +21,28 @@ from django.conf import settings
 from django.urls import re_path
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
+from django.contrib.sitemaps.views import sitemap
+from bolda.sitemaps import StaticViewSitemap
+from blog.sitemaps import BlogPostSitemap
+from ebook.sitemaps import EbookSitemap
+from event.sitemaps import EventSitemap
+from formation.sitemaps import FormationSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    "blog": BlogPostSitemap,
+    "ebook": EbookSitemap,
+    "event": EventSitemap,
+    "formation": FormationSitemap,
+
+}
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 google_analytic_view = RedirectView.as_view(url='/static/google955276c8e840c68a.html', permanent=True)
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("about/", views.about, name="index"),
+    path("about/", views.about, name="about"),
     path("blog/", include("blog.urls")),
     path("ebook/", include("ebook.urls")),
     path("formation/", include("formation.urls")),
@@ -38,10 +53,9 @@ urlpatterns = [
     path("message/", include("message.urls")),
     path("appointment/", include("appointment.urls")),
     path('newsfeed/', include('newsfeed.urls', namespace='newsfeed')),
-    # path('newsletter/', include('newsletter.urls')),
-    # url(r'^newsletter/', include('newsletter.urls')),
-    # path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     re_path(r'^favicon\.ico$', favicon_view),
-    re_path(r'^google955276c8e840c68a\.html$', google_analytic_view)
+    re_path(r'^google955276c8e840c68a\.html$', google_analytic_view),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps},
+    name="django.contrib.sitemaps.views.sitemap")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

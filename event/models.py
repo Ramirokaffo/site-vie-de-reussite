@@ -12,6 +12,7 @@ class EventModel(models.Model):
     start_at = models.DateTimeField(blank=False, null=True, verbose_name="date de debut")
     end_at = models.DateTimeField(blank=False, null=True, verbose_name="date de fin")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'ajout")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
     published = models.BooleanField(default=True, verbose_name="publié")
     show_at_home = models.BooleanField(default=False, blank=False, null=False, verbose_name="afficher à l'accueil")
     illustration_image = models.ImageField(blank=False, null=False, upload_to='images/events/%Y/%m/%d', verbose_name="image d'illustration")

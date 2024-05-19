@@ -130,7 +130,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
     # 'sorl.thumbnail',
-    # 'newsletter',
+    'django.contrib.sitemaps',
     'newsfeed',
     'tinymce',
     'core'

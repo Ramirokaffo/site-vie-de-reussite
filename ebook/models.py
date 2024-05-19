@@ -44,6 +44,7 @@ class EbookModel(models.Model):
     description = HTMLField(max_length=5000000, verbose_name="description du livre")
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Catégorie du livre")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'ajout")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
     ebook_file = models.FileField(blank=True, null=True, upload_to='ebook/pdf/%Y/%m/%d', validators=[validate_pdf_file], verbose_name="Livre au format pdf")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/ebook/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(blank=True, null=True, max_length=20, verbose_name="Identifiant vers la vidéo d'illustration")

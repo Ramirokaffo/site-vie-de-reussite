@@ -18,6 +18,7 @@ class Formation(models.Model):
     description = HTMLField(max_length=5000000, verbose_name="description de la formation")
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Catégorie")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'ajout")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
     published = models.BooleanField(default=True, verbose_name="Publié")
     illustration_image = models.ImageField(blank=False, null=False, upload_to='images/formation/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(max_length=20, blank=True, null=True, verbose_name="Identifiant de la vidéo d'illustration")
