@@ -41,7 +41,7 @@ def index(request):
         "formations": top_2_formations,
         "posts": latest_post_list,
         "site_videos": site_videos,
-        "title": "Accueil | Site vie de réussite",
+        "title": "Coaching et développement avec Dr. Tara Bolda | Vie de réussite",
     }
     return render(request=request, template_name="index.html", context=context)
 

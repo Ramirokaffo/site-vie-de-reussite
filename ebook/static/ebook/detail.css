@@ -154,11 +154,17 @@ padding-left: 35px;
   cursor: pointer;
   text-transform: uppercase;
   background-color: rgb(14, 14, 26);
-  color: rgb(234, 234, 234);
+  background-color: var(--second-color3);
+  /* background-color: var(--color3); */
+  /* color: rgb(234, 234, 234); */
+  color: black;
+
   font-weight: 700;
   transition: 0.6s;
-  box-shadow: 0px 0px 60px #1f4c65;
+  box-shadow: 2px 2px 60px #1f4c65;
   -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+  background: linear-gradient(180deg, var(--second-color3) 0%, var(--second-color2) 50%);
+
 }
 
 .buy-btn:active {
@@ -166,9 +172,13 @@ padding-left: 35px;
 }
 
 .buy-btn:hover {
-  background: rgb(2,29,78);
-  background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+  /* background: rgb(2,29,78); */
+  /* background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%); */
   color: rgb(4, 4, 38);
+  color: white;
+  background-color: var(--second-color2);
+  text-decoration: none;
+
 }
 
 .sub-buy-btn-div p {
@@ -308,7 +318,7 @@ width: 100%;
 .left-side {
 background-color: white;
 width: 130px;
-height: 120px;
+/* height: 120px; */
 border-radius: 4px;
 position: relative;
 display: flex;
@@ -318,6 +328,8 @@ cursor: pointer;
 transition: 0.3s;
 flex-shrink: 0;
 overflow: hidden;
+/* background-color: red; */
+box-sizing: border-box;
 }
 
 .right-side {
@@ -619,7 +631,7 @@ font-weight: bold;
 
 .buy-btn {
   padding: 1rem 0.5rem;
-  width: 100%;
+  width: 90%;
   text-align: center;
 }
 
