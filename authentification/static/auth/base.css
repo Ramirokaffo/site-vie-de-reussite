@@ -1,3 +1,4 @@
+
 :root {
     --main-color: rgb(202, 154, 58);
     --main-color: #481a00;
@@ -33,6 +34,8 @@
 * {
     padding: 0px;
     margin: 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 body {

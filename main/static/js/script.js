@@ -50,7 +50,12 @@ window.onload = (event) => {
     submitBtn = document.getElementById("contact-submit-id");
     submitBtn.addEventListener("click", (event)=>{
         sendMessage();
-    })
+    });
+
+
+    welcomeEventModal = document.getElementById("welcomeEventModal")
+
+    UIkit.modal(welcomeEventModal).show();
 }
 
 

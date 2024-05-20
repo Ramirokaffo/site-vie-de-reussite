@@ -4,15 +4,18 @@
 {% block content %}
 <!-- <script async id="slcLiveChat" src="https://widget.sonetel.com/SonetelWidget.min.js"
     data-account-id="208441708"></script> -->
-    {% block meta %}
+{% block meta %}
 
-    <meta property="og:title" content="{{ title }}" />
-    <meta name="description" content="Site de coaching et de développement personnel. On vous accompagne dans l'atteinte de vos objectifs à travers des programmes de coaching personnalisés" />
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
-    <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
-    <meta property="og:image:alt" content="Le logo du site" />
+<meta property="og:title" content="{{ title }}" />
+<meta name="description"
+    content="Site de coaching et de développement personnel. On vous accompagne dans l'atteinte de vos objectifs à travers des programmes de coaching personnalisés" />
+<meta property="og:image"
+    content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:secure_url"
+    content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image:alt" content="Le logo du site" />
 
-    {% endblock meta %}
+{% endblock meta %}
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -46,9 +49,8 @@
 <!-- </div> -->
 
 
-<div class="business-presentation-div" 
-{% comment %} uk-parallax="start: 100%; end: 100%; background-color: var(--second-color4), white" {% endcomment %}
->
+<div class="business-presentation-div" {% comment %}
+    uk-parallax="start: 100%; end: 100%; background-color: var(--second-color4), white" {% endcomment %}>
     <div class="presentation-div-left-side">
         <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">QUI EST DR. TARA BOLDA ?</h2>
         <i>
@@ -101,6 +103,17 @@
                         </button>
                     </div>
                 </div>
+                <div class="star-triangle">
+                    <div class="ebook-stars">
+                        {% for _ in "xxxxx"|rjust:"5" %} <svg fill="var(--color3)" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                            </path>
+                        </svg>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
 
         </a>
@@ -142,7 +155,8 @@
                             <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
                             <img src="{{ post.illustration_image.url }}" alt=" image {{ post.title }}"
                                 uk-scrollspy="cls: uk-animation-fade; delay: 200">
-                            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">{{ post.subtitle }}
+                            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">
+                                {{post.subtitle }}
                             </p>
 
                             <a class="more-post-button" href="{% url 'blog:detail' post.id %}"
@@ -167,7 +181,7 @@
                     <a class="uk-position-center-right uk-position-small" href uk-slidenav-next
                         uk-slider-item="next"></a>
                 </div>
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
             </div>
         </div>
@@ -225,7 +239,7 @@
                             uk-slider-item="next"></a>
 
                     </div>
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
                 </div>
             </div>
@@ -253,7 +267,8 @@
                         <a href="{% url 'event:detail' event.id %}">
                             <div class="uk-card uk-card-default">
                                 <div class="uk-card-media-top">
-                                    <img src='{{ event.illustration_image.url }}' width="1800" height="1200" alt="">
+                                    <img src='{{ event.illustration_image.url }}' width="1800" height="1200"
+                                        alt="Image de {{ event.title }}">
                                 </div>
                                 <div class="uk-card-body event-card-body">
                                     <h3 class="uk-card-title">{{ event.title }}</h3>
@@ -414,6 +429,104 @@
 
 {% endif %}
 
+<!-- <div id="welcomeEventModal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-container">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">{{ event_to_show.title }}</h2>
+        </div>
+        <div class="uk-modal-body">
+            <div class="welcomeEventModalBody">
+                <img src="{{ event_to_show.illustration_image.url }}"  width="1800" height="1200" alt="Image de {{ event_to_show.title }}">
+                
+            </div>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+    </div>
+</div> -->
 
+<div id="welcomeEventModal" class="uk-modal-container" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">{{ event_to_show.title }}</h2>
+        <div class="welcomeEventModalBody">
+            <div class="welcomeEventModalBody-top-div">
+                <img src="{{ event_to_show.illustration_image.url }}" alt="Image de {{ event_to_show.title }}">
+                <div class="welcomeEventModalBody-top-div-right"> 
+                    <p>{{ event_to_show.subtitle }}</p>
+
+                    <div class="clockcard">
+                        <div class="numbers">
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                            <span class="number"></span>
+                        </div>
+                        <div class="needles">
+                            <span class="h"></span>
+                            <span class="m"></span>
+                            <span class="s"></span>
+                            <span class="center"></span>
+                        </div>
+                        <div class="pie"></div>
+                    </div>
+                    <h4>{{ event_to_show.start_at }}</h4>
+                </div>
+            </div>
+            <div class="welcomeEventModalBody-bottom-div">
+                {% if event_to_show.inscription_link %}
+                <div class="btn-conteiner">
+                    <a class="btn-content" href="{{ event_to_show.inscription_link }}" target="_blank">
+                        <span class="btn-title">S'INSCRIRE</span>
+                        <span class="icon-arrow">
+                            <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <path id="arrow-icon-one"
+                                        d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                        fill="#FFFFFF"></path>
+                                    <path id="arrow-icon-two"
+                                        d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                        fill="#FFFFFF"></path>
+                                    <path id="arrow-icon-three"
+                                        d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                        fill="#FFFFFF"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                {% endif %}
+                
+                <a class="animated-button" href="{% url 'event:detail' event_to_show.id %}">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                      ></path>
+                    </svg>
+                    <span class="text">En savoir plus</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                      ></path>
+                    </svg>
+                  </a>
+                  
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

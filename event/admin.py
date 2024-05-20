@@ -21,7 +21,7 @@ class EventAdmin(admin.ModelAdmin):
 
     list_display = ("title", "published", "start_at", "end_at", "created_at", "illustration_img", "illustration_vdeo", "show_at_home")
     list_editable = ("published", "show_at_home")
-    list_filter = ["category", "published"]
+    list_filter = ["category", "published", "show_at_home"]
     date_hierarchy = "created_at"
     autocomplete_fields = ["category"]
 

@@ -32,12 +32,11 @@ def index(request):
     event_to_show = EventModel.objects.filter(show_at_home=True)[:1]
 
     site_videos = SiteVideoModel.objects.filter(published=True, show_where="home")[:6]
-
     context = {
         "last_testimony_list": last_testimony_list,
         "ebooks": top_3_ebooks,
         "events": event_list,
-        "event_to_show": event_to_show,
+        "event_to_show": event_to_show[0] if len(event_to_show) != 0 else None,
         "formations": top_2_formations,
         "posts": latest_post_list,
         "site_videos": site_videos,
