@@ -2211,6 +2211,8 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
 .welcomeEventModalBody-top-div {
   flex-direction: column;
   box-sizing: border-box;
+  overflow-y: scroll;
+
 
 }
 
