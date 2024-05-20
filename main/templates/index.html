@@ -447,7 +447,7 @@
         </div>
     </div>
 </div> -->
-
+{% if event_to_show %}
 <div id="welcomeEventModal" class="uk-modal-container" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -528,5 +528,7 @@
         </div>
     </div>
 </div>
+
+{% endif %}
 
 {% endblock %}
