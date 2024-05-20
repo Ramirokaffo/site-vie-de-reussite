@@ -2202,7 +2202,8 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
   .welcomeEventModalBody {
     overflow-y: scroll;
     /* overflow-x: visible; */
-    height: auto;
+    height: 100vh;
+    /* height: auto; */
   box-sizing: border-box;
 
   }
