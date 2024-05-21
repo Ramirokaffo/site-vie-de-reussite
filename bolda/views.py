@@ -6,9 +6,11 @@ from formation.models import Formation
 from event.models import EventModel
 from django.db.models import Count
 from core.models import SiteVideoModel
+from django.contrib.auth import login
+from django.core.handlers.wsgi import WSGIRequest
+from datetime import datetime, timedelta
 
-
-def index(request):
+def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
 
     # Annoter le modèle EbookModel avec le nombre de ventes
@@ -28,20 +30,31 @@ def index(request):
     top_2_formations = FormationModelWithSales.filter(published=True).order_by('-sales_count')[:2]
 
     last_testimony_list = TestimonyModel.objects.filter(is_visible=True)[:10]
+
     event_list = EventModel.objects.filter(published=True)[:8]
-    event_to_show = EventModel.objects.filter(show_at_home=True)[:1]
 
     site_videos = SiteVideoModel.objects.filter(published=True, show_where="home")[:6]
+
     context = {
         "last_testimony_list": last_testimony_list,
         "ebooks": top_3_ebooks,
         "events": event_list,
-        "event_to_show": event_to_show[0] if len(event_to_show) != 0 else None,
         "formations": top_2_formations,
         "posts": latest_post_list,
         "site_videos": site_videos,
-        "title": "Coaching et développement avec Dr. Tara Bolda | Vie de réussite",
+        "title": "Coaching et développement personnel avec Dr. Tara Bolda | Vie de réussite",
     }
+    last_navigation = request.session.get("last_navigation")
+    # print(last_navigation)
+    # request.session["last_navigation"] = None
+    # print(request.session.get("last_navigation"))
+
+    if (last_navigation is None) or (datetime.fromisoformat(last_navigation) + timedelta(days=1) < datetime.now()):
+        request.session["last_navigation"] = datetime.now().isoformat()
+        event_to_show = EventModel.objects.filter(show_at_home=True)[:1]
+        context["event_to_show"] = event_to_show[0] if len(event_to_show) != 0 else None
+    
+
     return render(request=request, template_name="index.html", context=context)
 
 

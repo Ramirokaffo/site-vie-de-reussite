@@ -92,7 +92,6 @@ def filter_selected(value, selected_type):
 
 @register.filter("value_in_list")
 def value_in_list(lites: list[dict], value: str):
-    print(lites)
     return [date_maker(val[value]) for val in lites]
 
 

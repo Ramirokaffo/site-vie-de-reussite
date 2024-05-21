@@ -72,24 +72,24 @@
             <div class="uk-container">
                 <div uk-navbar>
 
-                    <div class="uk-navbar-left">
+                    <div class="uk-navbar-left uk-inline">
                         <a class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon href="#"></a>
-                        <div class="uk-navbar-dropdown">
+                        <div uk-dropdown="animation: reveal-top; animate-out: true; duration: 700">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="/">Accueil</a></li>
-                        <li>
-                            <a href="#">Produits et services<span uk-navbar-parent-icon></span></a>
-                            <div uk-dropdown="animation: slide-top; animate-out: true; duration: 700">
-                                <ul class=" uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-active"><a href="{% url 'ebook:index' %}">Ebook</a></li>
-                                    <li><a href="{% url 'formation:index' %}">Formation</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="{% url 'blog:index' %}">Blog</a></li>
-                        <li><a href="{% url 'event:index' %}">Évènements</a></li>
-                        <li><a href="/about">À propos</a></li>
-                        <li><a href="{% url 'faq:index' %}">Faq</a></li>
+                                <!-- <li>
+                                    <a href="#">Produits et services<span uk-navbar-parent-icon></span></a>
+                                    <div uk-dropdown="animation: slide-top; animate-out: true; duration: 700">
+                                        <ul class=" uk-nav uk-navbar-dropdown-nav"> -->
+                                            <li><a href="{% url 'ebook:index' %}">Ebook</a></li>
+                                            <li><a href="{% url 'formation:index' %}">Formation</a></li>
+                                        <!-- </ul>
+                                    </div>
+                                </li> -->
+                                <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                                <li><a href="{% url 'event:index' %}">Évènements</a></li>
+                                <li><a href="/about">À propos</a></li>
+                                <li><a href="{% url 'faq:index' %}">Faq</a></li>
                             </ul>
                         </div>
                     </div>

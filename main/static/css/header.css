@@ -38,7 +38,7 @@
     font-size: 15px;
     color: var(--color2);
     color: white;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9)
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.9)
   }
   
   .first-action-button:hover {
@@ -75,13 +75,15 @@
     height: 3rem;
     padding: 0 2rem;
     border-radius: 1.5rem;
-    background: var(--color1);
-    color: var(--color4);
+    background: white;
+    /* border: 1px solid var(--second-color2); */
+    /* color: var(--color4); */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9)
+    box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5)
 
   }
   
@@ -92,7 +94,7 @@
   .connect-button-content {
     position: relative;
     z-index: 1;
-    color: var(--color3);
+    color: var(--second-color2);
     font-weight: bold;
   }
 
@@ -100,7 +102,7 @@
     text-decoration: none;
   }
   
-  .connect-button::before {
+  /* .connect-button::before {
     content: "";
     position: absolute;
     top: 0;
@@ -117,7 +119,7 @@
     );
     transition: all 0.475s;
   }
-  
+   */
 
   .header-right-div {
     background-color: var(--second-color2);
@@ -166,7 +168,7 @@
       padding: 0px 0px;
       height: 50px; 
     margin: 0px;
-    background-color: white !important;
+    /* background-color: white !important; */
 
   }
 
@@ -250,5 +252,9 @@
 
     }
 
+    .connect-button {
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4)
+
+    }
 
   }
