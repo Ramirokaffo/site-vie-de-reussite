@@ -46,7 +46,12 @@ sendMessage = async () => {
 }
 
 
+
+
 window.onload = (event) => {
+
+
+
     submitBtn = document.getElementById("contact-submit-id");
     submitBtn.addEventListener("click", (event)=>{
         sendMessage();

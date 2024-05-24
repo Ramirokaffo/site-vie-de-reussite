@@ -35,3 +35,94 @@
 }
 
 
+#myScrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    outline: none; /* Remove outline */
+    color: var(--color3); /* Text color */
+    font-size: 18px; /* Increase font size */
+
+  }
+  
+
+
+
+
+  .myScrollToTopBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--second-color3);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+    margin: auto;
+  }
+  
+  .svgIcon path {
+    fill: var(--color3);
+  }
+  
+  .myScrollToTopBtn:hover {
+    width: 120px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: var(--second-color2);
+    align-items: center;
+  }
+  
+  .myScrollToTopBtn:hover .svgIcon {
+    /* width: 20px; */
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+  }
+  
+  .myScrollToTopBtn::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Back to Top";
+    color: white;
+    /* transition-duration: .3s; */
+    font-size: 0px;
+  }
+  
+  .myScrollToTopBtn:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    /* transform: translateY(-30px); */
+    transition-duration: 0.3s;
+  }
+  
+
+
+  @media screen and (max-width: 901px) {
+    .myScrollToTopBtn {
+        width: 35px;
+        height: 35px;
+        
+      }
+
+      #myScrollToTopBtn {
+        bottom: 10px; 
+        right: 10px; 
+      }
+}
+
+
+ 

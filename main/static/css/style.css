@@ -2183,6 +2183,13 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
     font-size: 20px;
   }
 
+  .event-card-bottom span {
+    /* background-color: red; */
+    font-size: 12px;
+  }
+
+
+
   .contact-us-div {
     padding: 20px;
   }

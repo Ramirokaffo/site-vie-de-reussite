@@ -157,6 +157,23 @@
     }
 
 
+
+
+    .uk-sticky-fixed .progress-container {
+      width: 100%;
+      height: 5px;
+      background: #ccc;
+    }
+    
+    /* The progress bar (scroll indicator) */
+    .uk-sticky-fixed .progress-bar {
+      height: 5px;
+      background: var(--second-color3);
+      width: 0%;
+    }
+
+
+
   @media screen and (max-width: 901px) {
 
     .header-mobile-div {

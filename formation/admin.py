@@ -115,6 +115,7 @@ class SaleFormationAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     autocomplete_fields = ["formation", "user"]
     search_help_text = "Rechercher la commande via le nom du client ou le nom de la formation"
+    save_on_top = True
 
 
 
