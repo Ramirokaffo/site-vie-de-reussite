@@ -9,6 +9,11 @@ from core.models import SiteVideoModel
 from django.contrib.auth import login
 from django.core.handlers.wsgi import WSGIRequest
 from datetime import datetime, timedelta
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import os
+from bolda.settings import MEDIA_ROOT
+from py_script import get_images_url as get_images_url_func
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
@@ -83,3 +88,7 @@ def legal_notice(request):
     return render(request=request, template_name="legal_mention.html", context=context)
 
 
+@csrf_exempt
+def get_images_url(request: WSGIRequest):
+    image_list = get_images_url_func(os.path.join(MEDIA_ROOT, "images"))
+    return JsonResponse(image_list, content_type='application/json', safe=False)

@@ -16,21 +16,7 @@ def validate_pdf_file(value):
     if not value.name.upper().endswith(('.PDF')):
         raise ValidationError("Le fichier doit être au format pdf")
     
-
-# class EbookCategory(models.Model):
-#     name = models.CharField(max_length=255, unique=True, verbose_name="Nom")
-#     description = models.TextField(blank=True, null=True, verbose_name="description")
-#     last_updated = models.DateTimeField(auto_now=True)
-#     created_at = models.DateField(blank=True, null=True)
-
-#     class Meta:
-#         ordering = ['-created_at']
-#         verbose_name = "Catégorie de livre"
-#         verbose_name_plural = "Catégories de livre"
-
-#     def __str__(self) -> str:
-#         return self.name
-   
+ 
 
 class EbookModel(models.Model):
     AVAILIBILITY_TYPE = (
@@ -39,26 +25,26 @@ class EbookModel(models.Model):
         ("both", "Version physique et numerique disponibles",),
         )
 
-    title = models.CharField(max_length=255, unique=True, verbose_name="Titre du livre")
+    title = models.CharField(max_length=255, unique=True, verbose_name="titre du livre")
     subtitle = models.CharField(max_length=255, blank=False, default="", null=False, verbose_name="Texte présentatif")
     description = HTMLField(max_length=5000000, verbose_name="description du livre")
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Catégorie du livre")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'ajout")
-    last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
     ebook_file = models.FileField(blank=True, null=True, upload_to='ebook/pdf/%Y/%m/%d', validators=[validate_pdf_file], verbose_name="Livre au format pdf")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/ebook/%Y/%m/%d', verbose_name="Image d'illustration")
-    illustration_video = models.CharField(blank=True, null=True, max_length=20, verbose_name="Identifiant vers la vidéo d'illustration")
-    normal_price = models.FloatField(verbose_name="Prix barré", null=False)
-    promo_price = models.FloatField(verbose_name="Prix de vente")
-    published = models.BooleanField(default=True, verbose_name="Publié")
-    availability = models.CharField(max_length=10, choices=AVAILIBILITY_TYPE, verbose_name="Version disponible", default="both")
+    illustration_video = models.CharField(blank=True, null=True, max_length=20, verbose_name="identifiant vers la vidéo d'illustration")
+    normal_price = models.FloatField(verbose_name="prix barré", null=False)
+    promo_price = models.FloatField(verbose_name="prix de vente")
+    published = models.BooleanField(default=True, verbose_name="publié")
+    availability = models.CharField(max_length=10, choices=AVAILIBILITY_TYPE, verbose_name="version disponible", default="both")
     
     def __str__(self):
         return self.title
     
     class Meta:
-        verbose_name = "E-book"
-        verbose_name_plural = "E-books"
+        verbose_name = "e-book"
+        verbose_name_plural = "e-books"
 
     def get_absolute_url(self):
         return reverse('ebook:detail', kwargs={'ebook_id': self.id})
