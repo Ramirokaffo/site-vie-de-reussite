@@ -23,6 +23,15 @@ import ssl
 import stat
 import subprocess
 import sys
+from django.core.files.storage import default_storage
+from os import path
+from pathlib import Path
+from .info import *
+import os
+import environ
+# from .py_script import get_images_url
+# from django.contrib.staticfiles import 
+
 
 STAT_0o775 = ( stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR
              | stat.S_IRGRP | stat.S_IWGRP | stat.S_IXGRP
@@ -57,16 +66,10 @@ def main():
 # main()
 
 
-from pathlib import Path
-
-from .info import *
-import os
-# from pathlib import Path
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# print(BASE_DIR)
 env = environ.Env()
 environ.Env.read_env(env_file=str(BASE_DIR / ".env"))
 
@@ -129,86 +132,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
-    # 'sorl.thumbnail',
     'django.contrib.sitemaps',
     'newsfeed',
     'tinymce',
     'core'
 ]
-
-
-TINYMCE_DEFAULT_CONFIG = {
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'silver',
-    'menu': { 'favs': { 'title': 'My Favorites', 'items': 'code visualaid | searchreplace | emoticons' }
-    },
-    'menubar': 'favs file edit view insert format tools table help',
-    'plugins': '''
-            textcolor save link image media preview codesample contextmenu
-            table code lists fullscreen  insertdatetime  nonbreaking
-            contextmenu directionality searchreplace wordcount visualblocks
-            visualchars code fullscreen autolink lists  charmap print  hr
-            anchor pagebreak  emoticons,  accordion  lists advlist  searchreplace 
-            preview quickbars
-            ''',
-    'toolbar1': '''
-            fullscreen preview bold italic underline | fontselect,
-            fontsizeselect  | forecolor backcolor | alignleft alignright |
-            aligncenter alignjustify | indent outdent | bullist numlist table |
-            | link image media | codesample | emoticons | accordion | 
-            lists advlist | searchreplace | preview |
-            ''',
-    'toolbar2': '''
-            visualblocks visualchars | accordion |
-            charmap hr pagebreak nonbreaking anchor |  code | quickimage | quicktable |
-            ''',
-    'contextmenu': 'formats | link image',
-    # 'menubar': True,
-    'statusbar': True,
-    "image_caption": True,
-    'file_picker_types': 'file image media',
-    'automatic_uploads': True,
-    'image_advtab': True,
-    'image_uploadtab': True,
-    'object_resizing': True,
-    'file_picker_callback': '''(cb, value, meta) => {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-
-    input.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-
-      const reader = new FileReader();
-      reader.addEventListener('load', () => {
-        /*
-          Note: Now we need to register the blob in TinyMCEs image blob
-          registry. In the next release this part hopefully won't be
-          necessary, as we are looking to handle it internally.
-        */
-        const id = 'blobid' + (new Date()).getTime();
-        const blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-        const base64 = reader.result.split(',')[1];
-        const blobInfo = blobCache.create(id, file, base64);
-        blobCache.add(blobInfo);
-
-        /* call the callback and populate the Title field with the file name */
-        cb(blobInfo.blobUri(), { title: file.name });
-      });
-      reader.readAsDataURL(file);
-    });
-
-    input.click();
-  }''',
-#   'image_list': '''(success) => {
-#     success([
-#       { title: 'Dog', value: 'mydog.jpg' },
-#       { title: 'Cat', value: 'mycat.gif' }
-#     ]);
-#   }'''
-}
 
 
 MIDDLEWARE = [
@@ -244,6 +172,8 @@ WSGI_APPLICATION = 'bolda.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+
 
 DB_NAME = env("DB_NAME")
 DB_USER = env("DB_USER")
@@ -304,6 +234,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+# SESSION_COOKIE_HTTPONLY = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -315,6 +246,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 # MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# print()
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -329,4 +262,80 @@ ADMINS = [("Ramiro kaffo", "ramirokaffo@icloud.com"), ]
 # NEWSLETTER_THUMBNAIL = 'easy-thumbnails'
 
 # NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
+
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'menu': { 'favs': { 'title': 'My Favorites', 'items': 'code visualaid | searchreplace | emoticons' }
+    },
+    'menubar': 'favs file edit view insert format tools table help restoredraft',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak  emoticons,  accordion  lists advlist  searchreplace 
+            preview quickbars autosave directionality importcss
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample | emoticons | accordion | 
+            lists advlist | searchreplace | preview | restoredraft | ltr rtl
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars | accordion |
+            charmap hr pagebreak nonbreaking anchor |  code | quickimage | quicktable |
+            ''',
+    'contextmenu': 'formats | link image image media | codesample',
+    'ui_mode': 'split',
+    'min_height': 500,
+    'statusbar': True,
+    "image_caption": True,
+    'file_picker_types': 'file image media',
+    'automatic_uploads': True,
+    'image_advtab': True,
+    'image_uploadtab': True,
+    'object_resizing': True,
+    'autosave_retention': '1440m',
+    "content_css": [os.path.join("/", STATIC_URL, "css", "myTinyCME.css"),'document'],
+    # "content_css": 'document',
+    'importcss_append': True,
+    'autosave_restore_when_empty': True,
+    'file_picker_callback': '''(cb, value, meta) => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        /*
+          Note: Now we need to register the blob in TinyMCEs image blob
+          registry. In the next release this part hopefully won't be
+          necessary, as we are looking to handle it internally.
+        */
+        const id = 'blobid' + (new Date()).getTime();
+        const blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+        const base64 = reader.result.split(',')[1];
+        const blobInfo = blobCache.create(id, file, base64);
+        blobCache.add(blobInfo);
+
+        /* call the callback and populate the Title field with the file name */
+        cb(blobInfo.blobUri(), { title: file.name });
+      });
+      reader.readAsDataURL(file);
+    });
+
+    input.click();
+  }''',
+  'image_advtab': True,
+  'image_list': '''/get_images_url'''
+}
 

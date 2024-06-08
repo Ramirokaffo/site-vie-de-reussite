@@ -48,9 +48,10 @@ sendMessage = async () => {
 
 
 
-window.onload = (event) => {
+window.onload = async (event) => {
 
-
+    
+    // getImagesUrl()
 
     submitBtn = document.getElementById("contact-submit-id");
     submitBtn.addEventListener("click", (event)=>{
