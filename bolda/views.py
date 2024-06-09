@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import os
 from bolda.settings import MEDIA_ROOT
-from py_script import get_images_url as get_images_url_func
+from .py_script import get_images_url as get_images_url_func
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
