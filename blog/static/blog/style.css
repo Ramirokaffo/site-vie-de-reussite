@@ -105,13 +105,16 @@
   /* box-sizing: content-box; */
   display: flex;
   justify-content: space-between;
+  /* background-color: red; */
 }
 
 .blog-head-div h1 {
   font-weight: bold;
   color: var(--second-color1);
-  display: inline;
+  /* display: inline; */
   /* background-color: blue; */
+  padding: 0px;
+  margin: 0px;
 }
 
 
@@ -120,7 +123,7 @@
   justify-content: center;
   /* background-color: green; */
   /* scale: 0.8; */
-  margin: auto;
+  /* margin: auto; */
   /* width: 90%; */
   padding: 0px 20px;
   box-sizing: border-box;
@@ -137,6 +140,7 @@
   border: 2px solid var(--second-color2);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
   /* box-sizing: border-box; */
+  /* background-color: yellow; */
 
 }
 
@@ -292,6 +296,7 @@
 
 .blog-head-div h1 {
   font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .search-section {
