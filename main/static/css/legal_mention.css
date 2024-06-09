@@ -8,6 +8,16 @@
     background-color: white;
     border-radius: 10px;
     padding: 20px;
+    border-top: 15px solid var(--second-color4);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px 1px rgba(0, 0, 0, 0.2);
+    
+
+
+}
+
+.super-h1 {
+    font-weight: bold;
+    /* font-size: ; */
 }
 
 .main-content article h1 {
