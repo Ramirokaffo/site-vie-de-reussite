@@ -72,7 +72,6 @@ class FormationVideoAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     autocomplete_fields = ["formation"]
     search_help_text = "Rechercher une vidéo de formation via son titre, ou le nom de la formation"
-    save_on_top = True
 
     actions = ["make_published", "make_no_published"]
 

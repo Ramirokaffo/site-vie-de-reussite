@@ -49,42 +49,32 @@ def ebook(request):
 
 @login_required
 def detail(request, formation_id: int):
-    my_formations = Formation.objects.annotate(
-        user=F("saleformation__user__id"),
-        isPaid=F("saleformation__isPaid"),
-        video_count=Count('formationvideo')
-    )
-    formation = my_formations.filter(user=request.user.id, isPaid=True, id=formation_id)
-    if formation:
-        formation_videos = FormationVideo.objects.filter(formation__id=formation_id).order_by("order")
-        current_v_index = request.GET.get("current_v_index")
-        current_video = None
-        next_video = None
-        prev_video = None
-        if current_v_index is None:
-            current_v_index = formation_videos[0].id if len(formation_videos) != 0 else None
-        for i, vid in enumerate(formation_videos):
-            if vid.id == int(current_v_index):
-                current_video = vid
-                if not i+1 == len(formation_videos):
-                    next_video = formation_videos[i+1]
-                if i != 0:
-                    prev_video = formation_videos[i-1]
-                break
-        video_comments = VideoComment.objects.filter(video__id=current_video.id, published=True)
+    formation_videos = FormationVideo.objects.filter(formation__id=formation_id).order_by("order")
+    current_v_index = request.GET.get("current_v_index")
+    current_video = None
+    next_video = None
+    prev_video = None
+    if current_v_index is None:
+        current_v_index = formation_videos[0].id if len(formation_videos) != 0 else None
+    for i, vid in enumerate(formation_videos):
+        if vid.id == int(current_v_index):
+            current_video = vid
+            if not i+1 == len(formation_videos):
+                next_video = formation_videos[i+1]
+            if i != 0:
+                prev_video = formation_videos[i-1]
+            break
+    video_comments = VideoComment.objects.filter(video__id=current_video.id, published=True)
 
-        context = {
-            "videos": formation_videos,
-            "current_video": current_video,
-            "prev_video": prev_video,
-            "next_video": next_video,
-            "current_tab": "formation",
-            "title": current_video.formation.title,
-            "video_comments": video_comments,
-            "profil_title": current_video.formation.title
-        }
-        return render(request, "profil/details.html",  context=context)
-    else:
-        return render(request, "profil/unauthorised.html")
-
+    context = {
+        "videos": formation_videos,
+        "current_video": current_video,
+        "prev_video": prev_video,
+        "next_video": next_video,
+        "current_tab": "formation",
+        "title": current_video.formation.title,
+        "video_comments": video_comments,
+        "profil_title": current_video.formation.title
+    }
+    return render(request, "profil/details.html",  context=context)
 

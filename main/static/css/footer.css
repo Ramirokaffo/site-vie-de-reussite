@@ -471,11 +471,15 @@ footer h3 {
   }
 
   .bottom-footer-div em {
-    color: white;
     text-align: center;
     margin: auto;
     display: block;
     color: var(--color4);
+
+  }
+
+  .bottom-footer-div em a {
+    color: white;
 
   }
 

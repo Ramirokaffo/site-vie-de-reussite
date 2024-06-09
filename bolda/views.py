@@ -9,13 +9,6 @@ from core.models import SiteVideoModel
 from django.contrib.auth import login
 from django.core.handlers.wsgi import WSGIRequest
 from datetime import datetime, timedelta
-from django.views.decorators.csrf import csrf_exempt
-import os
-from .py_script import get_images_url as get_images_url_func
-from django.http import JsonResponse
-from .settings import MEDIA_ROOT
-from django.core.serializers import serialize
-
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
@@ -65,30 +58,28 @@ def index(request: WSGIRequest):
     return render(request=request, template_name="index.html", context=context)
 
 
-@csrf_exempt
-def about(request: WSGIRequest):
-    if request.method == 'POST':
-        mon_fichier = request.FILES.get('file')
-        print(mon_fichier)
-        if mon_fichier:
-            nom_fichier = mon_fichier.name
-            chemin_fichier = os.path.join('media/', nom_fichier)
 
-            with open(chemin_fichier, 'wb') as destination:
-                for morceau in mon_fichier.chunks():
-                    destination.write(morceau)
+def about(request):
     context = {
         "title": "À propos de nous"
     }
     return render(request=request, template_name="about.html", context=context)
+    # return render(request=request, template_name="404.html", context=context)
 
 
-@csrf_exempt
-def get_images_url(request: WSGIRequest):
-    image_list = get_images_url_func(os.path.join(MEDIA_ROOT, "images"))
-    return JsonResponse(image_list, content_type='application/json', safe=False)
+    
+
+def privacy(request):
+    context = {
+        "title": "Politique de confidendialité"
+    }
+    return render(request=request, template_name="privacy.html", context=context)
 
 
-
+def legal_notice(request):
+    context = {
+        "title": "Mentions légales"
+    }
+    return render(request=request, template_name="legal_mention.html", context=context)
 
 

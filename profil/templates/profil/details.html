@@ -4,7 +4,9 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'profil/details.css' %}">
-
+<script id="video-script" src="https://www.youtube.com/iframe_api"></script>
+<script id="video-script"></script>
+<script id="video-script" src="{% static 'profil/script.js' %}"></script>
 <div class="main-content">
     <section class="left-section">
         <div class="video-frame">
@@ -150,8 +152,4 @@
     </section>
 
 </div>
-
-<script id="video-script" src="https://www.youtube.com/iframe_api"></script>
-<script id="video-script"></script>
-<script id="video-script" src="{% static 'profil/script.js' %}"></script>
 {% endblock content %}

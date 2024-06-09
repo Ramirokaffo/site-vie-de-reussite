@@ -43,7 +43,8 @@ google_analytic_view = RedirectView.as_view(url='/static/google955276c8e840c68a.
 urlpatterns = [
     path("", views.index, name="index"),
     path("about/", views.about, name="about"),
-    path("get_images_url/", views.get_images_url, name="get_images_url"),
+    path("privacy-policy/", views.privacy, name="privacy"),
+    path("legal-notice/", views.legal_notice, name="legal_notice"),
     path("blog/", include("blog.urls")),
     path("ebook/", include("ebook.urls")),
     path("formation/", include("formation.urls")),

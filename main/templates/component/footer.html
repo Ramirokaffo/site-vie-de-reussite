@@ -114,7 +114,7 @@
     </div>
     <div class="bottom-footer-div">
         {% now "Y" as current_year %}
-        <em> &copy; {{ current_year }}. Tous droits réservés</em>
+        <em> &copy; {{ current_year }}. Tous droits réservés | <a href="{% url 'privacy' %}">Politique de confidentialité</a> | <a href="{% url 'legal_notice' %}">Mentions légales</a></em>
 
     </div>
 </footer>
