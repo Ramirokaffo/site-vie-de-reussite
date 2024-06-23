@@ -68,7 +68,8 @@ def about(request):
     context = {
         "title": "À propos de nous"
     }
-    return render(request=request, template_name="about.html", context=context)
+    # return render(=request, template_name="about.html", context=context)
+    return render(request, template_name="testimony/create.html", context=context)
     # return render(request=request, template_name="404.html", context=context)
 
 

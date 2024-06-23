@@ -19,7 +19,6 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<script src="{% static 'js/script.js' %}"></script>
 <div class="welcome-bg-image" style="background-image: url('static/images/african-investment.jpg');">
     <div class="welcome-glass-cart">
         <H1 class="welcome-main-activity">
@@ -86,7 +85,7 @@
                             style="background-image: url('{{ ebook.illustration_image.url }}');">
                         </div>
                     </div>
-                    <div class="ebook-bottom-title-bar">toto</div>
+                    <div class="ebook-bottom-title-bar">{{ ebook.title }}</div>
                 </div>
                 <div class="content">
                     <div class="one-best-seller-book-content-img"
@@ -511,5 +510,6 @@
 </div>
 
 {% endif %}
+<script src="{% static 'js/script.js' %}"></script>
 
 {% endblock %}

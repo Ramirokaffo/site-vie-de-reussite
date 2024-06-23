@@ -4,11 +4,19 @@ from django.contrib.auth.models import User
 
 
 class TestimonyModel(models.Model):
-    content = models.TextField(blank=False, null=False, verbose_name="Contenu", max_length=500)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur du témoignage")
-    is_visible = models.BooleanField(default=False, null=False, blank=False, verbose_name="Est-ce visible sur le site ?")
-    last_updated = models.DateTimeField(auto_now_add=True, verbose_name="Modifié le")
-    created_at = models.DateField(blank=True, auto_now=True, null=True, verbose_name="Créé le")
+    RATE_LEVEL = (
+        (0, "Très mécontent", ),
+        (1, "Mécontent", ),
+        (2, "Indifférent",),
+        (3, "Satisfait",),
+        (4, "Très Satisfait",),
+        )
+    content = models.TextField(blank=False, null=False, verbose_name="contenu", max_length=500)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="auteur du témoignage")
+    is_visible = models.BooleanField(default=False, null=False, blank=False, verbose_name="est-ce visible sur le site ?")
+    last_updated = models.DateTimeField(auto_now_add=True, verbose_name="modifié le")
+    created_at = models.DateField(blank=True, auto_now=True, null=True, verbose_name="créé le")
+    rate = models.CharField(max_length=10, choices=RATE_LEVEL, verbose_name="note", default=4)
 
     class Meta:
         ordering = ['-created_at']

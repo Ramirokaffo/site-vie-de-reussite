@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'testimony/css/create.css' %}">
+<div class="create_testimony_div">
+    <div class="testbox">
+        <form class="my_form" action="{% url 'testimony:create' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p id="h1">Formulaire de Feedback</p>
+            <div id="profile">
+                <div class="dashes"></div>
+                <label>Selectionner ou glissez et déposez votre photo de profil ici</label>
+            </div>
+            <input type="file" id="profilImage" name="profilImage" accept="image/*" required/>
+            <h4>Hi, {{ request.user }}</h4>
+            <hr>
+            <p id="h4">Nom<span>*</span></p>
+            <input placeholder="Entrez votre nom ici" type="text" class="input" value="{{ request.user.first_name }}" name="first_name" required>
+            <p id="h4">Prénom</p>
+            <input placeholder="Entrez votre prénom ici" type="text" class="input" value="{{ request.user.last_name }}" name="last_name">
+            <p id="h4">Quelle est votre niveau de satisfaction sur le service qui vous a été rendu ?<span>*</span></p>
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="first-col"></th>
+                        <th>Très Satisfait</th>
+                        <th>Satisfait</th>
+                        <th>Indifférent</th>
+                        <th>Mécontent</th>
+                        <th>Très mécontent</th>
+                    </tr>
+                    <tr>
+                        <td class="first-col">Satisfaction</td>
+                        <td><input name="rate" value="4" type="radio"></td>
+                        <td><input name="rate" value="3" type="radio" checked></td>
+                        <td><input name="rate" value="2" type="radio"></td>
+                        <td><input name="rate" value="1" type="radio"></td>
+                        <td><input name="rate" value="0" type="radio"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="h4">Laissez nous un témoignage<span>*</span></p>
+            <textarea rows="5" name="content"></textarea>
+            <hr>
+            <div class="btn-block">
+                <!-- <button href="/" type="submit">Send Feedback</button> -->
+                <button class="submit_feedback_btn" type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<script src="{% static 'testimony/js/create.js' %}"></script>
+
+
+
+
+{% endblock %}

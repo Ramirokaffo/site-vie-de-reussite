@@ -14,6 +14,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'formation/details.css' %}">
+{% include 'payment_modal.html' with rsrc=formation type="formation" %}
 
 <main class="formation-main">
 
@@ -58,7 +59,7 @@
                         <span>Un support de cours pdf</span>
                     </li>
                 </ul>
-                <a type="button" class="action">Acheter cette formation</a>
+                <a href="#modal-payment" class="action" uk-toggle>Acheter cette formation</a>
             </div>
         </div>
 

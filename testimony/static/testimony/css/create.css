@@ -1,0 +1,261 @@
+.create_testimony_div {
+  /* height: 900px; */
+  background-color: rgba(4, 52, 77, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+.testbox {
+  width: 50%;
+
+  padding: 80px;
+  /* background-color: blue; */
+  /* box-sizing: border-box; */
+  /* margin: 180px; */
+
+}
+
+.my_form {
+  padding: 20px;
+  background: #EBEBE1;
+  box-shadow: 0px 2px 5px #ccc;
+  background-color: white;
+  border-top: 20px solid var(--second-color2);
+  box-sizing: border-box;
+  /* background-color: red; */
+  border-radius: 10px;
+
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+#profilImage {
+  position: absolute;
+  top: -1000px;
+}
+
+#profile {
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  position: relative;
+  cursor: pointer;
+  background: #f4f4f4;
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 5px 8px rgba(black, 0.35);
+
+  .dashes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    border: 4px dashed #ddd;
+    /* border: 4px dashed var(--color3); */
+    opacity: 1;
+  }
+
+  label {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 30px;
+    color: grey;
+    opacity: 1;
+    color: var(--color3);
+  }
+
+  &.dragging {
+    background-image: none !important;
+
+    .dashes {
+      animation-duration: 10s;
+      animation-name: spin;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      opacity: 1 !important;
+    }
+
+    label {
+      opacity: 0.5 !important;
+    }
+  }
+
+  &.hasImage {
+
+    .dashes,
+    label {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}
+
+.my_form h4 {
+  text-align: center;
+  margin: 0px;
+}
+
+.my_form
+p {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  line-height: 13px;
+  border-radius: 10px;
+}
+
+#h1 {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+#h4 {
+  margin: 20px 0 2px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.my_form .input {
+  width: 100%;
+  padding: 15px;
+  /* border: 1px solid #000; */
+  border-radius: 3px;
+  vertical-align: middle;
+  background-color: #F7F7F7;
+  background-color: rgba(4, 52, 77, 0.1);
+  border: none;
+  /* height: 50px; */
+
+
+}
+
+.my_form .input:hover,
+.my_form textarea:hover {
+  outline: none;
+  border: 1px solid #000;
+}
+
+.first-name {
+  margin-bottom: 5px;
+}
+
+
+.my_form th,
+.my_form td {
+  width: 21%;
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  vertical-align: set;
+  line-height: 18px;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.my_form th {
+  font-size: 13px;
+}
+
+.first-col {
+  width: 16%;
+  text-align: left;
+}
+
+.my_form table {
+  width: 100%;
+}
+
+.my_form textarea {
+  width: 100%;
+  background: #F7F7F7;
+  border-radius: 5px;
+  background-color: rgba(4, 52, 77, 0.1);
+  border: none;
+  height: 150px;
+
+}
+
+.btn-block {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+.submit_feedback_btn {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 5.5em;
+  background: rgba(4, 52, 77, 0.1);
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 2px 2px 2px rgba(4, 52, 77, 1), -6px -6px 12px #ffffff;
+  width: 100%;
+  font-weight: bold;
+}
+
+.submit_feedback_btn:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.submit_feedback_btn:hover {
+  background-color: rgba(4, 52, 77, 1);
+  border: 1px solid rgba(4, 52, 77, 1);
+  color: white;
+
+}
+
+
+
+
+@media (min-width: 568px) {
+
+  .my_form th,
+  .my_form td {
+    word-break: keep-all;
+  }
+}

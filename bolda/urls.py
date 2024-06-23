@@ -54,6 +54,7 @@ urlpatterns = [
     path("profil/", include("profil.urls")),
     path("auth/", include("authentification.urls")),
     path("message/", include("message.urls")),
+    path("testimony/", include("testimony.urls")),
     path("appointment/", include("appointment.urls")),
     path('newsfeed/', include('newsfeed.urls', namespace='newsfeed')),
     path('admin/', admin.site.urls),

@@ -88,3 +88,6 @@ def detail(request, formation_id: int):
         return render(request, "profil/unauthorised.html")
 
 
+
+
+
