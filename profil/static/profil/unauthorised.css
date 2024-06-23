@@ -1,0 +1,49 @@
+
+.unauthorised_div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    background-color: white;
+    margin-top: 50px;
+    width: 60%;
+    height: 80vh;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.unauthorised_div h5 {
+    width: 80%;
+    text-align: center;
+    display: inline-flex;
+    gap: 20px;
+    padding: 40px;
+    color: var(--second-color1);
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    height: 500px;
+    width: 500px;
+}
+
+
+
+@media screen and (max-width: 901px) {
+.unauthorised_div {
+    width: 90%;
+    margin-top: 20px;
+    height: 90vh;
+    margin-bottom: 20px;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    margin: auto;
+}
+
+
+}

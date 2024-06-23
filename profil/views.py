@@ -20,7 +20,7 @@ def formation(request):
         isPaid=F("saleformation__isPaid"),
         video_count=Count('formationvideo')
     )
-    formations = my_formations.filter(user=request.user.id, isPaid=True)
+    formations = my_formations.filter(user=request.user.id, isPaid=True, published=True)
     context = {
         "formations": formations,
         "title": "Mes formations | Site vie de réussite",
@@ -35,9 +35,9 @@ def ebook(request):
     # mail_admins(subject="Le mail de test Django", message="Le contenu de ce mail")
     my_ebook = EbookModel.objects.annotate(
         user=F("saleebook__user__id"),
-        # video_count=Count('formationvideo')
+        isPaid=F("saleebook__isPaid"),
     )
-    ebooks = my_ebook.filter(user=request.user.id, published=True)
+    ebooks = my_ebook.filter(user=request.user.id, published=True, isPaid=True)
     context = {
         "ebooks": ebooks,
         "current_tab": "ebook",
