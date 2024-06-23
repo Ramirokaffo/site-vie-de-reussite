@@ -39,6 +39,29 @@ class EbookAdmin(admin.ModelAdmin):
 
 
 
+class SaleEbookAdmin(admin.ModelAdmin):
+
+
+    list_display = ("ebook", "user", "amount", "isPaid", "my_reference", "created_at", "last_updated")
+    # list_editable = ("published", )
+    list_filter = ["ebook", "user", "isPaid"]
+    search_fields = ["ebook__title", "user__username"]
+    search_help_text = "Rechercher un ouvrage vendu via son titre ou le nom du client"
+
+    # actions = ["make_published", "make_no_published"]
+
+    # @admin.action(description="Définir les ouvrages selectionnés")
+    # def make_published(self, request, queryset):
+    #     queryset.update(isPaid=True)
+
+
+
+    # @admin.action(description="Ne pas publier les ouvrages selectionnés")
+    # def make_no_published(self, request, queryset):
+    #     queryset.update(published=False)
+
+
+
 
 admin.site.register(EbookModel, EbookAdmin)
-admin.site.register(SaleEbook)
+admin.site.register(SaleEbook, SaleEbookAdmin)

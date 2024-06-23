@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
+import uuid
 
 
 def validate_video_file(value):
@@ -35,7 +36,7 @@ class EbookModel(models.Model):
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/ebook/%Y/%m/%d', verbose_name="Image d'illustration")
     illustration_video = models.CharField(blank=True, null=True, max_length=20, verbose_name="identifiant vers la vidéo d'illustration")
     normal_price = models.FloatField(verbose_name="prix barré", null=False)
-    promo_price = models.FloatField(verbose_name="prix de vente")
+    promo_price = models.FloatField(verbose_name="prix de vente/facturé")
     published = models.BooleanField(default=True, verbose_name="publié")
     availability = models.CharField(max_length=10, choices=AVAILIBILITY_TYPE, verbose_name="version disponible", default="both")
     
@@ -53,18 +54,22 @@ class EbookModel(models.Model):
 
 
 class SaleEbook(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Acheté par")
-    ebook = models.ForeignKey(EbookModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Livre acheté")
-    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date d'achat")
-    isPaid = models.BooleanField(default=False, verbose_name="Payé ?")
-    amount = models.FloatField(blank=False, null=False, verbose_name="Montant facturé")
-
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="acheté par")
+    ebook = models.ForeignKey(EbookModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="livre acheté")
+    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date d'achat")
+    isPaid = models.BooleanField(default=False, verbose_name="payé ?")
+    amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
+    my_reference = models.CharField(max_length=255, blank=False, null=False, verbose_name="reference de la transaction", default=uuid.uuid4)
+    notch_pay_reference = models.CharField(max_length=255, blank=True, null=True, verbose_name="reference de notchpay")
+    status = models.CharField(max_length=255, blank=True, null=True, verbose_name="le status du paiement")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
+    
     def __str__(self):
         return f"{self.user} - {self.ebook}"
     
     class Meta:
-        verbose_name = "Livre vendu"
-        verbose_name_plural = "Livres vendus"
+        verbose_name = "livre vendu"
+        verbose_name_plural = "livres vendus"
 
 
 

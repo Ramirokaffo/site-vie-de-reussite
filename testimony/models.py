@@ -12,7 +12,8 @@ class TestimonyModel(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name = "Témoignage"
+        verbose_name = "témoignage"
+        verbose_name_plural = "témoignages"
     
     def save(self, *args, **kwargs):
         self.last_updated = timezone.now()

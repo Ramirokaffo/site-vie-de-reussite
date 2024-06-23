@@ -275,9 +275,8 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
   align-items: center;
   justify-content: center;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  position: relative;
+
 
 }
 
@@ -296,15 +295,10 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* display: none; */
-  /* width: 100px;
-  height: 100px; */
-  /* padding: 5px; */
-  /* background-color: var(--second-color3); */
-  
+
 }
 
-.one-best-seller-book-sous-div .front-content p {
+/* .one-best-seller-book-sous-div .front-content p {
   font-size: 32px;
   font-weight: 700;
   opacity: 1;
@@ -313,7 +307,18 @@ box-shadow: 2px 2px 2px 1px rgba(4, 52, 77, 0.9)
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+} */
+
+.ebook-bottom-title-bar {
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: var(--color2);
 }
+
 
 .one-best-seller-book-sous-div .content {
   position: absolute;

@@ -76,7 +76,7 @@ def about(request):
 
 def privacy(request):
     context = {
-        "title": "Politique de confidendialité"
+        "title": "Politique de confidentialité"
     }
     return render(request=request, template_name="privacy.html", context=context)
 
