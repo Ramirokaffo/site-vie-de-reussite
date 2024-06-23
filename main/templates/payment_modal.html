@@ -7,11 +7,15 @@
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">{{ rsrc_title }}</h2>
+            <h2 class="uk-modal-title">{{ rsrc.title }}</h2>
         </div>
         <div class="uk-modal-body payemnt-modal-div">
             <h3>Veuillez choisir une option...</h3>
-            <a href="">Acheter la version numérique</a>
+            {% if type == "ebook" %}
+            <a href="{% url 'ebook:buy' %}/{{ rsrc.id }}">Acheter la version numérique</a>
+            {% else %}
+            <a href="{% url 'formation:buy' %}/{{ rsrc.id }}">Acheter la version numérique</a>
+            {% endif %}
             <a id="to-modal-payment-command" href="#modal-payment-command" uk-toggle>Commander la version physique</a>
         </div>
         <div class="uk-modal-footer uk-text-left">

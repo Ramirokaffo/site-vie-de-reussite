@@ -14,7 +14,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'ebook/detail.css' %}">
-{% include 'payment_modal.html' with rsrc_title=ebook.title %}
+{% include 'payment_modal.html' with rsrc=ebook type="ebook" %}
 <main class="ebook-main">
 
     <div class="sup-ebook-banner" style="background-image: url('{{ ebook.illustration_image.url }}');">

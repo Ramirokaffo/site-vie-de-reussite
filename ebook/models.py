@@ -54,6 +54,10 @@ class EbookModel(models.Model):
 
 
 class SaleEbook(models.Model):
+    BUY_VERSION = (
+        ("numeric", "Uniquement la version physique", ),
+        ("physic", "Uniquement la version numérique", ),
+        )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="acheté par")
     ebook = models.ForeignKey(EbookModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="livre acheté")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date d'achat")
@@ -63,6 +67,7 @@ class SaleEbook(models.Model):
     notch_pay_reference = models.CharField(max_length=255, blank=True, null=True, verbose_name="reference de notchpay")
     status = models.CharField(max_length=255, blank=True, null=True, verbose_name="le status du paiement")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
+    buy_version = models.CharField(max_length=10, choices=BUY_VERSION, verbose_name="version achetée", default="numeric")
     
     def __str__(self):
         return f"{self.user} - {self.ebook}"

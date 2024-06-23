@@ -5,6 +5,7 @@ from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
 from django.db.models import Max
+from uuid import uuid4
 
 
 def validate_video_file(value):
@@ -79,8 +80,8 @@ class VideoComment(models.Model):
         return self.content
     
     class Meta:
-        verbose_name = "Commentaire de vidéo"
-        verbose_name_plural = "Commentaires de vidéo"
+        verbose_name = "commentaire de vidéo"
+        verbose_name_plural = "commentaires de vidéo"
 
 
 class SaleFormation(models.Model):
@@ -89,6 +90,10 @@ class SaleFormation(models.Model):
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date d'achat")
     isPaid = models.BooleanField(default=False, verbose_name="payé ?")
     amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
+    my_reference = models.CharField(max_length=255, blank=False, null=False, verbose_name="reference de la transaction", default=uuid4)
+    notch_pay_reference = models.CharField(max_length=255, blank=True, null=True, verbose_name="reference de notchpay")
+    status = models.CharField(max_length=255, blank=True, null=True, verbose_name="le status du paiement")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
     
     def __str__(self):
         return f"{self.user} - {self.formation}"
