@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
-import uuid
+from uuid import uuid4
 
 
 def validate_video_file(value):
@@ -59,7 +59,7 @@ class SaleEbook(models.Model):
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date d'achat")
     isPaid = models.BooleanField(default=False, verbose_name="payé ?")
     amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
-    my_reference = models.CharField(max_length=255, blank=False, null=False, verbose_name="reference de la transaction", default=uuid.uuid4)
+    my_reference = models.CharField(max_length=255, blank=False, null=False, verbose_name="reference de la transaction", default=uuid4)
     notch_pay_reference = models.CharField(max_length=255, blank=True, null=True, verbose_name="reference de notchpay")
     status = models.CharField(max_length=255, blank=True, null=True, verbose_name="le status du paiement")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")

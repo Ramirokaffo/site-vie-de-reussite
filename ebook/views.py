@@ -8,10 +8,10 @@ from django.template import loader
 from django.urls import reverse
 from core.models import CategoryModel
 from django.core.paginator import Paginator
-import requests
+from requests import post
 from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from django.contrib import messages
-import uuid
+from uuid import uuid4
 from django.urls import reverse
 
 def index(request: WSGIRequest):
@@ -42,7 +42,7 @@ def buy(request: WSGIRequest, ebook_id: int):
     if request.user.is_authenticated:
         target_ebook = EbookModel.objects.get(id=ebook_id)
         url = "https://api.notchpay.co/payments/initialize"
-        reference = uuid.uuid4()
+        reference = uuid4()
 
         callback = request.build_absolute_uri(reverse('ebook:ebook_buy_callback'))
         data = {
@@ -61,7 +61,7 @@ def buy(request: WSGIRequest, ebook_id: int):
         }
 
         # Send POST request with data and headers
-        response = requests.post(url, data=data, headers=headers)
+        response = post(url, data=data, headers=headers)
 
         # Check for successful response (usually status code 200)
         print(response.json())
