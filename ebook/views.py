@@ -75,7 +75,7 @@ def buy(request: WSGIRequest, ebook_id: int):
             messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat")
             return redirect(f'/ebook/{ebook_id}')
     else:
-        return redirect("/auth/register")
+        return redirect(f"/auth/register?next={ '/ebook/buy/' + str(ebook_id) }")
 
 def ebook_buy_callback(request: WSGIRequest):
     reference = request.GET.get('reference')

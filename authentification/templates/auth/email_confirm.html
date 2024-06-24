@@ -153,7 +153,12 @@ main {
                     Pour des raisons de sécurité, ce lien n'est valable que pendant 24 heures. Si le lien expire et que vous souhaitiez vous connecter, vous pouvez demander un nouveau lien sur le site Web Vie de réussite.
                 </p>
                 <p>Si vous n'avez pas demandé à recevoir ce mail, veuillez tout simplement l'ignorer !</p>
+                {% if next %}
+                <a class="confirmation-btn" href="{{ request.scheme }}://{{ request.get_host }}{% url 'auth:activate' uidb64=uid token=token %}?next={{ next }}">CONFIRMER MON E-MAIL</a>
+                {% else %}
                 <a class="confirmation-btn" href="{{ request.scheme }}://{{ request.get_host }}{% url 'auth:activate' uidb64=uid token=token %}">CONFIRMER MON E-MAIL</a>
+                {% endif %}
+                
             </section>
         </div>
        

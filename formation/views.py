@@ -96,7 +96,7 @@ def buy(request: WSGIRequest, formation_id: int):
             messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat")
             return redirect(f'/formation/{formation_id}')
     else:
-        return redirect("/auth/register")
+        return redirect(f"/auth/register?next={ '/formation/buy/' + str(formation_id) }")
 
 def formation_buy_callback(request: WSGIRequest):
     reference = request.GET.get('reference')

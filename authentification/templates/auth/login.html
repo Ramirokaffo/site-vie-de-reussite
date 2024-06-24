@@ -16,7 +16,14 @@
 <link rel="stylesheet" href="{% static 'auth/login.css' %}">
 
 <div class="form-div">
-    <form class="form" action="{% url 'auth:login' %}" method="post">
+{% if next %}
+<form class="form" action="{% url 'auth:login' %}?next={{ next }}" method="post">
+  
+{% else %}
+<form class="form" action="{% url 'auth:login' %}" method="post">
+  
+{% endif %}
+
         {% csrf_token %}
         <div class="header">Connexion</div>
         <div class="inputs">
@@ -34,8 +41,17 @@
         <a class="forget" href="#">Mot de passe oublié ?</a>
 
         </div>
+        {% if next %}
+        <a href="{% url 'auth:authMail' %}?next={{ next }}" class="ask-activation-link-a">Besoin d'un lien d'activation de compte ?</a>
+        <p class="signup-link">Vous n'avez pas de compte ? <a href="{% url 'auth:register' %}?next={{ next }}">Créer-en un</a></p>
+          
+        {% else %}
         <a href="{% url 'auth:authMail' %}" class="ask-activation-link-a">Besoin d'un lien d'activation de compte ?</a>
         <p class="signup-link">Vous n'avez pas de compte ? <a href="{% url 'auth:register' %}">Créer-en un</a></p>
+          
+        {% endif %}
+        
+        
         </div>
     </form>
 </div>

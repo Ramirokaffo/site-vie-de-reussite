@@ -1,43 +1,53 @@
-
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'profil/component/user_profil.css' %}">
 
-    <div class="header-right-div">
-        {% if request.user.first_name or request.user.last_name %}
-        
-          <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
-        {% else %}
-          <p>{{ request.user.username }}</p>
-        {% endif %}
+<div class="header-right-div">
+  {% if request.user.first_name or request.user.last_name %}
 
-          <svg  uk-toggle="target: #offcanvas-flip" height="50" width="50" xmlns="http://www.w3.org/2000/svg" fill="var(--color3)" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z" clip-rule="evenodd"/>
-          </svg>
-          <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
-            <div class="uk-offcanvas-bar">
-        
-                <button class="uk-offcanvas-close" type="button" uk-close></button>
-        
-                <h3>Profil</h3>
-                {% if request.user.username %}
-                <hr>
-                <h5>{{ request.user.username }}</h5>
-                {% endif %}
-                {% if request.user.email %}
-                <hr>
-                <h5>{{ request.user.email }}</h5>
-                {% endif %}
-                {% if request.user.first_name %}
-                <hr>
-                <h5>{{ request.user.first_name }}</h5>
-                {% endif %}
-                {% if request.user.last_name %}
-                <hr>
-                <h5>{{ request.user.last_name }}</h5>
-                {% endif %}
+  <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+  {% else %}
+  <p>{{ request.user.username }}</p>
+  {% endif %}
 
-            </div>
-        </div>
-          
+  {% if request.session.user_profile.profil_image %}
+  <div uk-toggle="target: #offcanvas-flip" class="user_profil_image" style="background-image: url('{{ request.session.user_profile.profil_image }}');">
+  </div>
+  {% else %}
+  <svg uk-toggle="target: #offcanvas-flip" height="50" width="50" xmlns="http://www.w3.org/2000/svg"
+    fill="var(--color3)" viewBox="0 0 24 24">
+    <path fill-rule="evenodd"
+      d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
+      clip-rule="evenodd" />
+  </svg>
+  {% endif %}
+
+
+
+  <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+      <h3>Profil</h3>
+      {% if request.user.username %}
+      <hr>
+      <h5>{{ request.user.username }}</h5>
+      {% endif %}
+      {% if request.user.email %}
+      <hr>
+      <h5>{{ request.user.email }}</h5>
+      {% endif %}
+      {% if request.user.first_name %}
+      <hr>
+      <h5>{{ request.user.first_name }}</h5>
+      {% endif %}
+      {% if request.user.last_name %}
+      <hr>
+      <h5>{{ request.user.last_name }}</h5>
+      {% endif %}
+
     </div>
+  </div>
+
+</div>

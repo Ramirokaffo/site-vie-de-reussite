@@ -127,7 +127,7 @@
     border: none;
     outline: none;
     display: inline-block;
-    border-radius: 0.25rem;
+    border-radius: 9.25rem;
     background-color: rgba(167, 139, 250, 1);
     background-color: var(--color3);
     padding-left: 1.25rem;
@@ -138,12 +138,16 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     color: rgba(17, 24, 39, 1);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+    transition: 0.3s all ease;
 
   }
 
 
   .action:hover {
     text-decoration: none;
+    scale: 1.01;
+    transition: 0.3s all ease;
   }
 
 
@@ -237,9 +241,6 @@
 
 }
 
-.right-cta-buy-price-area {
-
-}
 
 
 .container {
@@ -256,6 +257,7 @@
 .container:hover {
   transform: scale(1.03);
   width: 220px;
+  text-decoration: none;
 }
 
 .container:hover .left-side {
@@ -328,20 +330,6 @@
   margin-top: 7px;
 }
 
-/* @media only screen and (max-width: 480px) {
-  .container {
-    transform: scale(0.7);
-  }
-
-  .container:hover {
-    transform: scale(0.74);
-  }
-
-  .new {
-    font-size: 18px;
-    color: var(--color1) !important;
-  }
-} */
 
 .buttons {
   width: 8px;

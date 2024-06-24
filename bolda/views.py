@@ -17,7 +17,7 @@ from .py_script import get_images_url as get_images_url_func
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
-
+    # latest_post_list[0].author.get_full_name
     # Annoter le modèle EbookModel avec le nombre de ventes
     EbookModelWithSales = EbookModel.objects.annotate(
         sales_count=Count('saleebook__id')
@@ -34,8 +34,9 @@ def index(request: WSGIRequest):
     # Obtenir les 3 ebooks avec les plus grandes ventes
     top_2_formations = FormationModelWithSales.filter(published=True).order_by('-sales_count')[:2]
 
-    last_testimony_list = TestimonyModel.objects.filter(is_visible=True)[:10]
-
+    last_testimony_list = TestimonyModel.objects.filter(is_visible=True).select_related("author__userprofilmodel")[:10]
+    for pro in last_testimony_list:
+        print(pro.author)
     event_list = EventModel.objects.filter(published=True)[:8]
 
     site_videos = SiteVideoModel.objects.filter(published=True, show_where="home")[:6]

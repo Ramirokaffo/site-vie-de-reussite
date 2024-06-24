@@ -363,6 +363,7 @@
 <div class="home-list-videos">
     {% include "core/site_videos.html" %}
 
+
 </div>
 {% if last_testimony_list %}
 <div class="sup-testimony-div">
@@ -378,9 +379,16 @@
                         <ul class="uk-slider-items uk-child-width-1-4@s uk-grid event-grid">
                             {% for testimony in last_testimony_list %}
                             <li>
+
                                 <div class="testimony-card">
                                     <div class="header">
                                         <div class="image">
+                                            {% if testimony.get_user_profil.profil_image %}
+                                            <div style="background-image: url('{{ testimony.get_user_profil.profil_image.url }}');">
+
+                                            </div>
+
+                                            {% else %}
                                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 24 24">
@@ -388,6 +396,8 @@
                                                     d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
                                                     clip-rule="evenodd" />
                                             </svg>
+                                            {% endif %}
+
                                         </div>
                                         <div>
                                             <div class="stars">
@@ -399,6 +409,8 @@
                                                 </svg>
                                                 {% endfor %}
                                             </div>
+
+
                                             <p class="name">{{testimony.author.last_name}}
                                                 {{testimony.author.first_name}}</p>
                                         </div>

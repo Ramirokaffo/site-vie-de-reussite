@@ -16,6 +16,17 @@
     box-sizing: border-box;
 }
 
+.user_profil_image {
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.user_profil_image:hover {
+    cursor: pointer;
+}
+
 .header-right-div > p {
     padding: 0px;
     margin: 0px;
@@ -35,6 +46,9 @@
     padding: 0px;
 }
 
+.user_profil_image {
+    scale: 0.95;
+}
 .header-right-div svg {
     scale: 0.8;
 }

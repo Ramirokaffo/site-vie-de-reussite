@@ -27,9 +27,7 @@
   width: 50%;
 
   padding: 80px;
-  /* background-color: blue; */
-  /* box-sizing: border-box; */
-  /* margin: 180px; */
+
 
 }
 
@@ -213,6 +211,7 @@ p {
   background-color: rgba(4, 52, 77, 0.1);
   border: none;
   height: 150px;
+  padding: 15px;
 
 }
 
@@ -252,10 +251,30 @@ p {
 
 
 
-@media (min-width: 568px) {
+@media screen and (max-width: 901px) {
 
+  .testbox {
+    width: 90%;
+    padding: 20px 0px;
+    /* background-color: red; */
+
+  }
+
+  #h1 {
+    font-size: 23px;
+
+  }
+
+  .first-col {
+    display: none;
+  }
+  
   .my_form th,
   .my_form td {
     word-break: keep-all;
+  }
+
+  .my_form th {
+    font-size: 11px;
   }
 }

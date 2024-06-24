@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+from profil.models import UserProfilModel
 
 class TestimonyModel(models.Model):
     RATE_LEVEL = (
@@ -30,4 +30,5 @@ class TestimonyModel(models.Model):
     def __str__(self) -> str:
         return self.content[:100] + "..."
     
-
+    def get_user_profil(self):
+        return UserProfilModel.objects.get(user=self.author)
