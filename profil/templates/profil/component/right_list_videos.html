@@ -8,7 +8,7 @@
     </li>
 
     {% else %}
-    <li>
+    <li class="{% cycle 'odd_li' 'even_li' %}">
         <a href="{% url 'profil:detail' video.formation_id %}?current_v_index={{ video.id }}">
             {{ video.title }}</a>
     </li>

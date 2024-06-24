@@ -55,6 +55,7 @@ def index(request: WSGIRequest):
 
 def detail(request, post_id):
     target_post = BlogPost.objects.get(id=post_id)
+    post_comments = BlogComment.objects.filter(post=target_post).order_by("-created_at")[:5]
     related_post_category = BlogPost.objects.filter(category=target_post.category.id, published=True).exclude(id=target_post.id)[:20]
     formation_list = Formation.objects.filter(published=True).order_by("category").annotate(
         video_count=Count('formationvideo__id'))[:2]
@@ -71,6 +72,7 @@ def detail(request, post_id):
         "ebooks": top_3_ebooks,
         "title": target_post.title,
         "formations": formation_list,
+        "post_comments": post_comments,
         "related_post_category": related_post_category,
     }
     return render(request, "blog/details.html", context)

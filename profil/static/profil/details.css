@@ -140,10 +140,6 @@
     display: none;
   }
 
-/* .left-section {
-    height: 500px;
-} */
-
 
     
 
@@ -188,9 +184,6 @@
     border: none;
 }
 
-.description-btn-tab {
-
-}
 
 .selected-tab {
     background-color: var(--second-color1);
@@ -198,14 +191,10 @@
 }
 
 .video-descriptiion {
-    /* background-color: red; */
     padding: 10px;
 
 }
 
-#shortcut_to_comment {
-    /* color: blue; */
-}
 
 .comment-div {
     padding: 10px;
@@ -221,12 +210,10 @@
 .one-comment-div {
     display: flex;
     gap: 10px;
-    /* align-items: start; */
 }
 
 .one-comment-icon-div {
     min-width: 55px;
-    /* background-color: green; */
 }
  
 
@@ -245,12 +232,10 @@
 
 .one-comment-div-right-header  i {
     font-size: 12px;
-    /* align-items: center; */
     padding: 0px;
     margin: 0px;
     align-content: center;
     opacity: 0.8;
-    /* background-color: red; */
 }
 
 #userComment {
@@ -268,7 +253,6 @@
 .send-comment-div {
     display: flex;
     justify-content: end;
-    /* background-color: rebeccapurple; */
 }
 
 #sendCommentBtn {
@@ -321,6 +305,7 @@
     background-color: white;
     border-radius: 10px;
     padding: 10px 0px;
+    border: 2px solid rgba(4, 52, 77, 0.3);
 }
 
 .right-section ul {
@@ -333,19 +318,28 @@
     margin: 0px;
 }
 
+.right-section ul li a {
+    color: var(--second-color1);
+
+}
+
+.even_li {
+    background-color: rgba(0, 0, 0, .15);
+}
+
 .current_video {
     /* background-color: rgba(0, 0, 0, 0.3); */
     background-color: var(--second-color1);
     /* border: 1px solid var(--second-color1); */
     /* animation-timing-function: cubic-bezier(0.54, 0, 1, 1.61);
 animation-duration: 1s */
-border-left: 3px solid var(--color3);
-border-right: 3px solid var(--color3);
+/* border-left: 3px solid var(--color3);
+border-right: 3px solid var(--color3); */
 
 }
 
 .current_video a {
-    color: white;
+    color: white !important;
 
 }
 
@@ -556,9 +550,6 @@ border-right: 3px solid var(--color3);
         padding: 0px 5px;
     }
 
-    .next-prev-div a {
-        /* font-size: 10px; */
-    }
 
     .title-span {
         display: none;
@@ -604,10 +595,28 @@ border-right: 3px solid var(--color3);
 
 .right-section {
     display: none;
+    
+}
+.modal-body {
+    overflow-y: scroll;
+}
+.modal-body ul li {
+    padding: 10px 10px;
+    margin: 0px;
+    overflow-y: scroll;
+
+}
+.modal-body ul li a {
+    border: none;
+    /* padding: 0px 10px; */
+    margin: 0px;
+
 }
 
 
-
+/* .right-section {
+    border: none;
+} */
 
 
 

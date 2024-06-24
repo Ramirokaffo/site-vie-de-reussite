@@ -21,4 +21,5 @@ class UserProfilModel(models.Model):
     def __str__(self) -> str:
         return str(self.user)
     
-
+    def get_full_name(self):
+        return self.user.get_full_name()

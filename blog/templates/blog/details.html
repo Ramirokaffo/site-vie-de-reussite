@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% load myfilter %}
-
 {% block meta %}
 
 <meta property="og:title" content="Post: {{ post.title }}" />
@@ -43,14 +42,18 @@
                 alt="logo site vie de réussite">
             <div class="card-post-site-autor-date">
                 <h3>Dr. Tara Bolda</h3>
-                <p><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-                    <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
-                  </svg>
-                  {{ post.created_at }}</p>
-                <p><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-                    <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                  </svg>
-                  5 Minutes de lecture environ</p>
+                <p><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                    </svg>
+                    {{ post.created_at }}</p>
+                <p><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <path stroke="var(--color3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    5 Minutes de lecture environ</p>
 
             </div>
         </div>
@@ -74,6 +77,62 @@
                 </div>
 
             </div>
+            <div class="post_comment_section">
+                <h3>Commentaires</h3>
+                <hr>
+                {% for comment in post_comments %}
+
+                <div class="one_post_comment_element">
+                    <div class="one_post_comment_element_head">
+                        <div class="one_post_comment_element_head">
+                            <div class="one_post_comment_author_profil"
+                                style="background-image: url('{{ comment.author.profil_image.url }}');">
+                            </div>
+                            <div class="one_post_comment_head_title">
+                                <h5>{{ comment.author.get_full_name }}</h5>
+                                <p>{{ comment.created_at|date:"l, d F à H:i" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>{{ comment.content }}</p>
+                    <hr>
+                </div>
+                {% empty %}
+                <p>Aucun commentaire</p>
+
+                {% endfor %}
+                <h3>Ajouter votre commentaire</h3>
+                <form class="add_comment_div">
+                    <div class="add_comment_div_top">
+                        <div class="add_comment_div_top_author"
+                            style="background-image: url('{{ request.session.user_profile.profil_image }}');">
+                        </div>
+                        <p>{{ request.user.get_full_name }}</p>
+
+                    </div>
+                    <textarea placeholder="Ecrivez votre commentaire ici..." name="comment" id="new_comment"
+                        cols="30"></textarea>
+                    <div class="add_comment_div_bottom">
+                        <button type="submit">  <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <span>Envoyer</span></button>
+                    </div>
+                </form>
+            </div>
             {% include "ebook/bottom_ebook_cards.html" %}
 
         </section>
@@ -83,7 +142,10 @@
                 <div class="semi-line"></div>
                 <ul>
                     {% for category_post in related_post_category %}
-                    <li><a href="{% url 'blog:detail' category_post.id %}">{{ category_post.title }}</a></li>
+                    <li class="{% cycle 'post_odd' post_even %}">
+                        <a href="{% url 'blog:detail' category_post.id %}">
+                            {{category_post.title }}</a>
+                    </li>
                     {% endfor %}
                 </ul>
             </section>

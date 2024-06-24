@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
-
+from profil.models import UserProfilModel
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name="Titre")
@@ -39,20 +39,21 @@ class BlogPost(models.Model):
 
 
 class BlogComment(models.Model):
-    post = models.ForeignKey(BlogPost, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Publication")
-    content = models.TextField(max_length=200, verbose_name="Contenu")
+    post = models.ForeignKey(BlogPost, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="publication")
+    content = models.TextField(max_length=500, verbose_name="contenu")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True)
-    published = models.BooleanField(default=True, verbose_name="Publié")
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur")
+    published = models.BooleanField(default=True, verbose_name="publié")
+    author = models.ForeignKey(UserProfilModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="auteur")
     replies = models.ManyToManyField(
         'self', related_name='responses', symmetrical=False, blank=True
     )
 
     def __str__(self):
+        # self.author.get_full_name
         return self.content
     
     class Meta:
-        verbose_name = "Commentaire de post"
-        verbose_name_plural = "Commentaires de post"
+        verbose_name = "commentaire de post"
+        verbose_name_plural = "commentaires de post"
 
 

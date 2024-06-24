@@ -37,7 +37,8 @@ class Formation(models.Model):
     def get_absolute_url(self):
         return reverse('formation:detail', kwargs={'formation_id': self.id})
 
-
+    def get_videos_count(self) -> int:
+        return FormationVideo.objects.filter(formation=self).count()
 
 class FormationVideo(models.Model):
     title = models.CharField(unique=True, max_length=255, verbose_name="Titre de la vidéo")

@@ -24,9 +24,10 @@ from django.contrib import messages
 def index(request: WSGIRequest):
     category_list = CategoryModel.objects.filter(formation__isnull=False, formation__published=True)
     context = {}
-    formation_list = Formation.objects.filter(published=True).order_by("category").annotate(
-        video_count=Count('formationvideo__id')
-    )
+    formation_list = Formation.objects.filter(published=True).order_by("category")
+    # .annotate(
+    #     video_count=Count('formationvideo__id')
+    # )
     context["formations"] = formation_list
     context["formation_category_list"] = category_list
     context["title"] = "Formations | Site vie de réussite"
