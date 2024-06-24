@@ -101,6 +101,7 @@
                 <p>Aucun commentaire</p>
 
                 {% endfor %}
+                {% if request.user.is_authenticated %}
                 <h3>Ajouter votre commentaire</h3>
                 <form class="add_comment_div">
                     <div class="add_comment_div_top">
@@ -132,6 +133,7 @@
                           <span>Envoyer</span></button>
                     </div>
                 </form>
+                {% endif %}
             </div>
             {% include "ebook/bottom_ebook_cards.html" %}
 

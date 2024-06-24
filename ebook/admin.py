@@ -42,9 +42,9 @@ class EbookAdmin(admin.ModelAdmin):
 class SaleEbookAdmin(admin.ModelAdmin):
 
 
-    list_display = ("ebook", "user", "amount", "isPaid", "my_reference", "created_at", "last_updated")
+    list_display = ("ebook", "user", "amount", "isPaid", "status", "my_reference", "created_at", "last_updated")
     # list_editable = ("published", )
-    list_filter = ["ebook", "user", "isPaid"]
+    list_filter = ["ebook", "isPaid", "status", "user"]
     search_fields = ["ebook__title", "user__username"]
     search_help_text = "Rechercher un ouvrage vendu via son titre ou le nom du client"
 

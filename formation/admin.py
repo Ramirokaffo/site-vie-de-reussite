@@ -109,9 +109,9 @@ class VideoCommentAdmin(admin.ModelAdmin):
 
 
 class SaleFormationAdmin(admin.ModelAdmin):
-    list_display = ("formation", "user", "isPaid", "amount", "created_at")
+    list_display = ("formation", "user", "isPaid", "amount", "status", "created_at")
 
-    list_filter = ["isPaid", "formation"]
+    list_filter = ["isPaid", "formation", "status", "user"]
     search_fields = ["user__firstname", "user__lastname", "formation__title"]
     date_hierarchy = "created_at"
     autocomplete_fields = ["formation", "user"]

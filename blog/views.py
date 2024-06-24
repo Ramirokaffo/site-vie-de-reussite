@@ -59,7 +59,6 @@ def detail(request, post_id):
     related_post_category = BlogPost.objects.filter(category=target_post.category.id, published=True).exclude(id=target_post.id)[:20]
     formation_list = Formation.objects.filter(published=True).order_by("category").annotate(
         video_count=Count('formationvideo__id'))[:2]
-    
     EbookModelWithSales = EbookModel.objects.annotate(
         sales_count=Count('saleebook__id')
     )
