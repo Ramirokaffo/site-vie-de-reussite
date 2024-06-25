@@ -4,7 +4,7 @@
 const profileElement = document.getElementById('profile');
 const mediaFileInput = document.getElementById('profilImage');
 const userProfilUrl = document.getElementById('userProfilUrlId');
-if (profileElement) {
+if (userProfilUrl) {
 const userProfilUrl = userProfilUrl.getAttribute("userProfilUrl");
   profileElement.style.backgroundImage = `url(${userProfilUrl})`;
   profileElement.classList.add('hasImage');
