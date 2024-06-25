@@ -2102,6 +2102,14 @@
     padding: 0px 10px;
   }
 
+.best-seller-book-div {
+  padding-top: 0px;
+}
+
+.best-seller-book-div h2 {
+  /* margin: 0px; */
+}
+
   .one-best-seller-book-sous-div:hover {
     scale: 1.02;
     animation: all 0.5s ease;
