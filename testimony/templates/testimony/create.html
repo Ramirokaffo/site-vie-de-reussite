@@ -16,7 +16,14 @@
                 <label>Selectionner ou glissez et déposez votre photo de profil ici</label>
             </div>
             <input type="file" id="profilImage" name="profilImage" accept="image/*" required/>
+            {% if request.user.get_full_name %}
+            <h4>Hi, {{ request.user.get_full_name }}</h4>
+              
+            {% else %}
             <h4>Hi, {{ request.user }}</h4>
+              
+            {% endif %}
+            
             <hr>
             <p id="h4">Nom<span>*</span></p>
             <input placeholder="Entrez votre nom ici" type="text" class="input" value="{{ request.user.first_name }}" name="first_name" required>
