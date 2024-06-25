@@ -19,7 +19,11 @@
   color: var(--color3);
 }
 
+.blog-sub-main {
+    background-color: rgba(0, 0, 0, 0.01);
+    padding-bottom: 40px;
 
+  }
 
 .blog-main {
     display: flex;
@@ -28,9 +32,10 @@
     margin: 0px 50px;
     padding: 30px;
     gap: 30px;
-    background-color: rgba(0, 0, 0, 0.01);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    /* border-top-left-radius: 30px;
+    border-top-right-radius: 30px; */
+    border-radius: 30px;
+    /* background-color: red; */
 }
 
 

@@ -3,6 +3,9 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'testimony/css/create.css' %}">
+{% if request.session.user_profile.profil_image %}
+<div id="userProfilUrlId" userProfilUrl="{{ request.session.user_profile.profil_image }}"></div>
+{% endif %}
 <div class="create_testimony_div">
     <div class="testbox">
         <form class="my_form" action="{% url 'testimony:create' %}" method="post" enctype="multipart/form-data">
@@ -30,7 +33,7 @@
                         <th>Mécontent</th>
                         <th>Très mécontent</th>
                     </tr>
-                    <tr>
+                    <tr class="value_tr">
                         <td class="first-col">Satisfaction</td>
                         <td><input name="rate" value="4" type="radio"></td>
                         <td><input name="rate" value="3" type="radio" checked></td>
@@ -41,7 +44,8 @@
                 </tbody>
             </table>
             <p id="h4">Laissez nous un témoignage<span>*</span></p>
-            <textarea rows="5" name="content"></textarea>
+            <textarea rows="5" name="content" placeholder="Décrivez ici vos impressions par rapport aux services qui vous ont été rendus"></textarea>
+            <i>Vos impréssions seront rendues publique après vérification et approbation</i>
             <hr>
             <div class="btn-block">
                 <!-- <button href="/" type="submit">Send Feedback</button> -->

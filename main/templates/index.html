@@ -40,27 +40,7 @@
     </div>
 </div>
 
-<div class="business-presentation-div" {% comment %}
-    uk-parallax="start: 100%; end: 100%; background-color: var(--second-color4), white" {% endcomment %}>
-    <div class="presentation-div-left-side">
-        <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">QUI EST DR. TARA BOLDA ?</h2>
-        <i>
-            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200">
-                Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il
-                trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le
-                rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à
-                un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en
-                étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable
-                du Lorem
-            </p>
-        </i>
-    </div>
-    <div class="presentation-div-right-side">
-        <img uk-scrollspy="cls: uk-animation-fade; delay: 200" src="{% static 'images/femme-affaires-689x1024.png' %}"
-            alt="">
 
-    </div>
-</div>
 {% if ebooks %}
 <div class="best-seller-book-div" uk-parallax="start: 100%; end: 100%; background-color: white;">
     <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">NOS LIVRES POPULAIRES</h2>
@@ -300,6 +280,7 @@
 </div>
 
 
+
 <div class="contact-us-div">
     <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">CONTACT</h2>
     <div class="sous-contact-us-div">
@@ -341,6 +322,27 @@
 
     </div>
 </div>
+<div class="business-presentation-div" {% comment %}
+    uk-parallax="start: 100%; end: 100%; background-color: var(--second-color4), white" {% endcomment %}>
+    <div class="presentation-div-left-side">
+        <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">QUI EST DR. TARA BOLDA ?</h2>
+        <i>
+            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200">
+                Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il
+                trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le
+                rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à
+                un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en
+                étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable
+                du Lorem
+            </p>
+        </i>
+    </div>
+    <div class="presentation-div-right-side">
+        <img uk-scrollspy="cls: uk-animation-fade; delay: 200" src="{% static 'images/femme-affaires-689x1024.png' %}"
+            alt="">
+
+    </div>
+</div>
 <div class="home-list-videos">
     {% include "core/site_videos.html" %}
 
@@ -359,7 +361,6 @@
                         <ul class="uk-slider-items uk-child-width-1-4@s uk-grid event-grid">
                             {% for testimony in last_testimony_list %}
                             <li>
-
                                 <div class="testimony-card">
                                     <div class="header">
                                         <div class="image">
@@ -370,30 +371,47 @@
                                             </div>
 
                                             {% else %}
-                                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white"
                                                 viewBox="0 0 24 24">
                                                 <path fill-rule="evenodd"
                                                     d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
                                                     clip-rule="evenodd" />
                                             </svg>
                                             {% endif %}
-
                                         </div>
-                                        <div>
+                                        <div class="testimony-header-author">
+                                            {% if testimony.author.get_full_name %}
+                                            <p class="name">{{testimony.author.get_full_name}}</p>
+                                            {% else %}
+                                            <p class="name">{{testimony.author.username}}</p>
+                                            {% endif %}
                                             <div class="stars">
-                                                {% for _ in "xxxxx"|rjust:"5" %} <svg fill="currentColor"
-                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                {% for rate_list in testimony.rate|make_rate_list %}
+                                                {% if forloop.first %}
+                                                {% for _ in rate_list %}
+                                                <svg fill="var(--color3)" viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                                                     </path>
                                                 </svg>
                                                 {% endfor %}
+
+                                                {% endif %}
+                                                {% if forloop.last %}
+                                                {% for _ in rate_list %}
+                                                <svg fill="rgba(0, 0, 0, 0.05)" viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                                    </path>
+                                                </svg>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                {% endfor %}
                                             </div>
-
-
-                                            <p class="name">{{testimony.author.last_name}}
-                                                {{testimony.author.first_name}}</p>
+                                            <!-- <hr> -->
                                         </div>
                                     </div>
                                     <p class="message"><i><q>{{ testimony.content }}</q></i></p>
@@ -413,12 +431,11 @@
                 </div>
             </ul>
         </div>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
     </div>
 
-    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 </div>
-<!-- </div> -->
-<!-- </div> -->
 
 {% endif %}
 

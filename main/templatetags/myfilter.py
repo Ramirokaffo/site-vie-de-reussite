@@ -90,6 +90,14 @@ def filter_selected(value, selected_type):
     return "" if selected_type != value else "selected"
 
 
+
+@register.filter("make_rate_list")
+@stringfilter
+def make_rate_list(value):
+    value = int(value) + 1
+    return [[i for i in range(value)], [i for i in range(5 - value)]]
+
+
 @register.filter("value_in_list")
 def value_in_list(lites: list[dict], value: str):
     return [date_maker(val[value]) for val in lites]

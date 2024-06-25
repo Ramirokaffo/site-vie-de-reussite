@@ -3,9 +3,10 @@ from django.contrib import admin
 from .models import TestimonyModel
 
 class TestimonyAdmin(admin.ModelAdmin):
-    list_display = (str, "is_visible")
+    list_display = (str, "author", "is_visible", "rate", "created_at")
+    list_editable = ("is_visible", )
     date_hierarchy = "created_at"
-    list_filter = ["author", "is_visible"]
+    list_filter = ["author", "is_visible", "rate"]
     search_fields = ["content"]
     search_help_text = "Rechercher dans les témoignages"
 

@@ -34,9 +34,7 @@ def index(request: WSGIRequest):
     # Obtenir les 3 ebooks avec les plus grandes ventes
     top_2_formations = FormationModelWithSales.filter(published=True).order_by('-sales_count')[:2]
 
-    last_testimony_list = TestimonyModel.objects.filter(is_visible=True).select_related("author__userprofilmodel")[:10]
-    for pro in last_testimony_list:
-        print(pro.author)
+    last_testimony_list = TestimonyModel.objects.filter(is_visible=True).select_related("author__userprofilmodel").order_by("-created_at")[:10]
     event_list = EventModel.objects.filter(published=True)[:8]
 
     site_videos = SiteVideoModel.objects.filter(published=True, show_where="home")[:6]
@@ -51,9 +49,6 @@ def index(request: WSGIRequest):
         "title": "Coaching et développement personnel avec Dr. Tara Bolda | Vie de réussite",
     }
     last_navigation = request.session.get("last_navigation")
-    # print(last_navigation)
-    # request.session["last_navigation"] = None
-    # print(request.session.get("last_navigation"))
 
     if (last_navigation is None) or (datetime.fromisoformat(last_navigation) + timedelta(days=1) < datetime.now()):
         request.session["last_navigation"] = datetime.now().isoformat()

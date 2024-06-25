@@ -12,11 +12,11 @@ class TestimonyModel(models.Model):
         (4, "Très Satisfait",),
         )
     content = models.TextField(blank=False, null=False, verbose_name="contenu", max_length=500)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="auteur du témoignage")
-    is_visible = models.BooleanField(default=False, null=False, blank=False, verbose_name="est-ce visible sur le site ?")
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="auteur")
+    is_visible = models.BooleanField(default=False, null=False, blank=False, verbose_name="publié ?")
     last_updated = models.DateTimeField(auto_now_add=True, verbose_name="modifié le")
     created_at = models.DateField(blank=True, auto_now=True, null=True, verbose_name="créé le")
-    rate = models.CharField(max_length=10, choices=RATE_LEVEL, verbose_name="note", default=4)
+    rate = models.IntegerField(choices=RATE_LEVEL, verbose_name="note", default=4)
 
     class Meta:
         ordering = ['-created_at']
@@ -28,7 +28,7 @@ class TestimonyModel(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return self.content[:100] + "..."
+        return self.content[:100] + "..." if len(self.content) > 100 else self.content
     
     def get_user_profil(self):
         return UserProfilModel.objects.get(user=self.author)
