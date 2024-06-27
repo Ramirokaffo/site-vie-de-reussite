@@ -81,56 +81,50 @@
                 <h3>Commentaires</h3>
                 <hr>
                 {% for comment in post_comments %}
-
-                <div class="one_post_comment_element">
-                    <div class="one_post_comment_element_head">
-                        <div class="one_post_comment_element_head">
-                            <div class="one_post_comment_author_profil"
-                                style="background-image: url('{{ comment.author.profil_image.url }}');">
-                            </div>
-                            <div class="one_post_comment_head_title">
-                                <h5>{{ comment.author.get_full_name }}</h5>
-                                <p>{{ comment.created_at|date:"l, d F à H:i" }}</p>
-                            </div>
-                        </div>
+                {% include "blog/comment.html" %}
+                {% for reply in comment.get_replies %}
+                <div class="comment_reply_main_component">
+                    {% include "blog/comment.html" with comment=reply %}
+                    {% for next_reply in reply.get_replies %}
+                    <div class="comment_reply_main_component_n3">
+                        {% include "blog/comment.html" with comment=next_reply %}
                     </div>
-                    <p>{{ comment.content }}</p>
-                    <hr>
+
+                    {% endfor %}
                 </div>
+
+
+                {% endfor %}
                 {% empty %}
                 <p>Aucun commentaire</p>
 
                 {% endfor %}
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated and request.session.user_profile %}
                 <h3>Ajouter votre commentaire</h3>
-                <form class="add_comment_div">
+                <form action="{% url 'blog:comment' post.id %}" method="post" class="add_comment_div">
+                    {% csrf_token %}
                     <div class="add_comment_div_top">
                         <div class="add_comment_div_top_author"
                             style="background-image: url('{{ request.session.user_profile.profil_image }}');">
                         </div>
                         <p>{{ request.user.get_full_name }}</p>
-
                     </div>
-                    <textarea placeholder="Ecrivez votre commentaire ici..." name="comment" id="new_comment"
+                    <textarea placeholder="Ecrivez votre commentaire ici..." name="content" id="new_comment"
                         cols="30"></textarea>
                     <div class="add_comment_div_bottom">
-                        <button type="submit">  <div class="svg-wrapper-1">
-                            <div class="svg-wrapper">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                              >
-                                <path fill="none" d="M0 0h24v24H0z"></path>
-                                <path
-                                  fill="currentColor"
-                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                                ></path>
-                              </svg>
+                        <button type="submit">
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path fill="currentColor"
+                                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                                        </path>
+                                    </svg>
+                                </div>
                             </div>
-                          </div>
-                          <span>Envoyer</span></button>
+                            <span>Envoyer</span>
+                        </button>
                     </div>
                 </form>
                 {% endif %}

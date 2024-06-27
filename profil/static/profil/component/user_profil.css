@@ -37,6 +37,176 @@
     cursor: pointer;
 }
 
+.profil_label_line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_profil_edit_btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--color3);
+    border-radius: 3px;
+    margin-top: 40px;
+    padding: 5px;
+    transition: 0.3s all ease;
+}
+
+.user_profil_edit_btn:hover {
+    text-decoration: none;
+    scale: 0.97;
+    transition: 0.3s all ease;
+}
+
+.form_sub_div {
+    background-color: rgba(4, 52, 77, 0.1);
+}
+
+.form_sub_div form {
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+}
+
+
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  
+  #profilImage {
+    position: absolute;
+    top: -1000px;
+  }
+  
+  #profile {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    /* margin-top: 20px; */
+    position: relative;
+    cursor: pointer;
+    background: #f4f4f4;
+    display: table;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 5px 8px rgba(black, 0.95);
+  
+    .dashes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 100%;
+      width: 100%;
+      height: 100%;
+      border: 4px dashed #ddd;
+      /* border: 4px dashed var(--color3); */
+      opacity: 1;
+    }
+  
+    label {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0 30px;
+      color: grey;
+      opacity: 1;
+      color: var(--color3);
+    }
+  
+    &.dragging {
+      background-image: none !important;
+  
+      .dashes {
+        animation-duration: 10s;
+        animation-name: spin;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        opacity: 1 !important;
+      }
+  
+      label {
+        opacity: 0.5 !important;
+      }
+    }
+  
+    &.hasImage {
+      .dashes,
+      label {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+  }
+
+
+  .profile_sub_div {
+    position: relative;
+    background-color: rgba(4, 52, 77, 0.1);
+    border-radius: 5px;
+    padding: 5px 0px;
+
+  }
+
+  .edit-profil-icon {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 197, 27, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+.form_sub_div form input {
+    background-color: rgba(4, 52, 77, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    padding: 10px;
+}
+
+
+.form_sub_div form h5 {
+font-weight: bold;
+margin: 0px;
+margin-top: 10px;
+margin-bottom: 3px;
+}
+
+
+.edit_profil_submit_btn {
+    background-color: var(--second-color1);
+}
+
+
+.edit_profil_submit_btn:hover {
+    background-color: var(--second-color2);
+}
+
+
+
+
+
 
 @media screen and (max-width: 901px) {
 

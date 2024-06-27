@@ -16,17 +16,14 @@ def create(request: WSGIRequest):
     rate = request.POST.get('rate')
     uploaded_image = request.FILES.get('profilImage')
     user_profil = request.session.get("user_profile")
-    print(user_profil)
-    print(type(user_profil))
     if user_profil is None:
        new_user_profil = UserProfilModel.objects.create(user=author)
     else:
        new_user_profil = UserProfilModel.objects.get(id=user_profil.get("id"))
     if uploaded_image:
-        image_filename = f'user_image_{request.user.id}.jpg'  # Example filename
+        image_filename = f'images/profil/user_image_{request.user.id}.jpg'  # Example filename
         image_path = default_storage.save(image_filename, uploaded_image)
         new_user_profil.profil_image = image_path
-        # request.session.update({"user_profile": {"id": }})
         
     my_testimony = TestimonyModel.objects.create(author=author, content=content, rate=int(rate))
     author.first_name = first_name

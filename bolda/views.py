@@ -46,6 +46,7 @@ def index(request: WSGIRequest):
         "formations": top_2_formations,
         "posts": latest_post_list,
         "site_videos": site_videos,
+        "selected_tab": "home",
         "title": "Coaching et développement personnel avec Dr. Tara Bolda | Vie de réussite",
     }
     last_navigation = request.session.get("last_navigation")
@@ -62,6 +63,7 @@ def index(request: WSGIRequest):
 
 def about(request):
     context = {
+        "selected_tab": "about",
         "title": "À propos de nous"
     }
     # return render(=request, template_name="about.html", context=context)

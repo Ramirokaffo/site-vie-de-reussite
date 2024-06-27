@@ -1,4 +1,5 @@
 {% load static %}
+{% load myfilter %}
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 
@@ -14,20 +15,20 @@
                             <img class="header-site-logo" src="{% static 'images/logo_site_vie_reussie.jpeg' %}"
                                 alt="logo site vie de réussite">
                         </a>
-                        <li class="uk-active"><a href="/">Accueil</a></li>
+                        <li class="{{ selected_tab|filter_selected:'home' }}"><a href="/">Accueil</a></li>
                         <li>
                             <a href="#">Produits et services<span uk-navbar-parent-icon></span></a>
                             <div uk-dropdown="animation: slide-top; animate-out: true; duration: 700">
                                 <ul class=" uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-active"><a href="{% url 'ebook:index' %}">Ebook</a></li>
-                                    <li><a href="{% url 'formation:index' %}">Formation</a></li>
+                                    <li class="{{ selected_tab|filter_selected:'ebook' }}"><a href="{% url 'ebook:index' %}">Ebook</a></li>
+                                    <li class="{{ selected_tab|filter_selected:'formation' }}"><a href="{% url 'formation:index' %}">Formation</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="{% url 'blog:index' %}">Blog</a></li>
-                        <li><a href="{% url 'event:index' %}">Évènements</a></li>
-                        <li><a href="/about">À propos</a></li>
-                        <li><a href="{% url 'faq:index' %}">Faq</a></li>
+                        <li class="{{ selected_tab|filter_selected:'blog' }}"><a href="{% url 'blog:index' %}">Blog</a></li>
+                        <li class="{{ selected_tab|filter_selected:'event' }}"><a href="{% url 'event:index' %}">Évènements</a></li>
+                        <li class="{{ selected_tab|filter_selected:'about' }}"><a href="/about">À propos</a></li>
+                        <li class="{{ selected_tab|filter_selected:'faq' }}"><a href="{% url 'faq:index' %}">Faq</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-right">

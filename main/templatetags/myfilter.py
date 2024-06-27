@@ -86,8 +86,7 @@ def wrap_content(value, count):
 @register.filter("filter_selected")
 @stringfilter
 def filter_selected(value, selected_type):
-
-    return "" if selected_type != value else "selected"
+    return selected_type if selected_type != value else "uk-active"
 
 
 

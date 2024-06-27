@@ -31,7 +31,8 @@ def index(request: WSGIRequest):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number if page_number is not None else 1)
 
-    context["events"] = page_obj
+    context["event"] = page_obj
+    context["selected_tab"] = "event"
     context["title"] = "Évènements | Site vie de réussite"
     context["event_category_list"] = event_category_list
     return render(request, "event/index.html", context)
@@ -50,6 +51,7 @@ def detail(request, event_id):
 
     context = {
         "event": target_event,
+        "selected_tab": "event",
         "title": target_event.title,
         "show_inscription_link": show_inscription_link,
     }

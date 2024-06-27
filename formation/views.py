@@ -14,6 +14,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.core.serializers import serialize
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from uuid import uuid4
 from django.urls import reverse
 from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
@@ -25,10 +26,8 @@ def index(request: WSGIRequest):
     category_list = CategoryModel.objects.filter(formation__isnull=False, formation__published=True)
     context = {}
     formation_list = Formation.objects.filter(published=True).order_by("category")
-    # .annotate(
-    #     video_count=Count('formationvideo__id')
-    # )
     context["formations"] = formation_list
+    context["selected_tab"] = "formation"
     context["formation_category_list"] = category_list
     context["title"] = "Formations | Site vie de réussite"
     return render(request, "formation/index.html", context)
@@ -43,6 +42,7 @@ def detail(request, formation_id):
         related_formation_category = Formation.objects.all().exclude(id=target_formation.id)[:4]
     context = {
         "formation": target_formation,
+        "selected_tab": "formation",
         "title": target_formation.title,
         "related_formation_category": related_formation_category,
     }
@@ -50,6 +50,7 @@ def detail(request, formation_id):
 
 
 @csrf_exempt
+@login_required
 def comment(request: WSGIRequest):
     data = request.body.decode()
     data = json.loads(data)
@@ -74,7 +75,6 @@ def buy(request: WSGIRequest, formation_id: int):
             "description": f"Paiement de la formation {target_formation.title} | Site vie de réussite",  # Optional
             "reference": reference,
             "callback": callback
-            # "callback": "https://webhook.site/fec75097-ec63-48bc-8e52-e17f51ea2316"
         }
 
         headers = {

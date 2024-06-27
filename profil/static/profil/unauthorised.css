@@ -1,4 +1,12 @@
 
+.sup_unauthorised_div {
+    overflow-y: scroll;
+    height: 80vh;
+   
+    padding-top: 50px;
+
+}
+
 .unauthorised_div {
     display: flex;
     justify-content: center;
@@ -6,11 +14,11 @@
     align-items: center;
     margin: auto;
     background-color: white;
-    margin-top: 50px;
     width: 60%;
-    height: 80vh;
     box-sizing: border-box;
     border-radius: 5px;
+    /* height: 100%; */
+    padding-bottom: 20px;
 }
 
 .unauthorised_div h5 {

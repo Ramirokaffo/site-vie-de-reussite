@@ -44,9 +44,11 @@ class BlogComment(models.Model):
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True)
     published = models.BooleanField(default=True, verbose_name="publié")
     author = models.ForeignKey(UserProfilModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="auteur")
-    replies = models.ManyToManyField(
-        'self', related_name='responses', symmetrical=False, blank=True
-    )
+    reply_of = models.ForeignKey("self",  blank=True, null=True, on_delete=models.SET_NULL, verbose_name="réponse de")
+
+    # replies = models.ManyToManyField(
+    #     'self', related_name='responses', symmetrical=False, blank=True
+    # )
 
     def __str__(self):
         # self.author.get_full_name
@@ -56,4 +58,6 @@ class BlogComment(models.Model):
         verbose_name = "commentaire de post"
         verbose_name_plural = "commentaires de post"
 
-
+    def get_replies(self):
+        replies = BlogComment.objects.filter(reply_of=self)
+        return replies

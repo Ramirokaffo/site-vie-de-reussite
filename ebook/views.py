@@ -20,6 +20,7 @@ def index(request: WSGIRequest):
 
     context["ebooks"] = EbookModel.objects.filter(published=True).order_by("category")
     context["post_category_list"] = category_list
+    context["selected_tab"] = "ebook"
     context["title"] = "Ebooks | Site vie de réussite"
     return render(request, "ebook/index.html", context)
 
@@ -31,6 +32,7 @@ def detail(request, ebook_id):
 
     context = {
         "ebook": target_ebook,
+        "selected_tab": "ebook",
         "title": target_ebook.title,
         "related_ebook_category": related_ebook_category,
     }

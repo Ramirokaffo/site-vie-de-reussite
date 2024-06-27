@@ -60,12 +60,21 @@ margin: 0px 25%;
   top: -1000px;
 }
 
+.sub_profile {
+  position: relative;
+  background-color: rgba(4, 52, 77, 0.05);
+  border-radius: 5px;
+  padding: 10px 0px;
+  margin: 20px 0px;
+}
+
+
 #profile {
   border-radius: 100%;
   width: 200px;
   height: 200px;
   margin: 0 auto;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   position: relative;
   cursor: pointer;
   background: #f4f4f4;

@@ -1,8 +1,12 @@
+// alert("Je suis")
 
 
 const profileElement = document.getElementById('profile');
 const mediaFileInput = document.getElementById('profilImage');
 var userProfilUrl = document.getElementById('userProfilUrlId');
+var editProfilIcon = document.getElementById('edit-profil-icon');
+
+
 if (userProfilUrl) {
   userProfilUrl = userProfilUrl.getAttribute("userProfilUrl");
   profileElement.style.backgroundImage = `url(${userProfilUrl})`;
@@ -35,7 +39,6 @@ profileElement.addEventListener('drop', function (event) {
 
     reader.readAsDataURL(file);
     reader.onload = function (event) {
-      console.log(reader.result);
       profileElement.style.backgroundImage = `url(${reader.result})`;
       profileElement.classList.add('hasImage');
     };
@@ -44,6 +47,11 @@ profileElement.addEventListener('drop', function (event) {
 
 // Handle profile click to open file input
 profileElement.addEventListener('click', function () {
+  mediaFileInput.click();
+});
+
+// Handle profile click to open file input
+editProfilIcon.addEventListener('click', function () {
   mediaFileInput.click();
 });
 
@@ -57,7 +65,6 @@ mediaFileInput.addEventListener('change', function (event) {
 
     reader.readAsDataURL(file);
     reader.onload = function (event) {
-      console.log(reader.result);
       profileElement.style.backgroundImage = `url(${reader.result})`;
       profileElement.classList.add('hasImage');
     };

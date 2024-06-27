@@ -8,5 +8,6 @@ def index(request: WSGIRequest):
 
     questions = FaqModel.objects.filter(published=True)
     context["questions"] = questions
+    context["selected_tab"] = "faq"
     context["title"] = "Foire aux questions | Site vie de réussite"
     return render(request, "faq/index.html", context)
