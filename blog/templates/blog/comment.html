@@ -31,7 +31,7 @@
                     <div class="uk-modal-dialog">
                         <button class="uk-modal-close-default" type="button" uk-close></button>
 
-                        <form action="{% url 'blog:reply' comment.id %}" method="post" class="add_comment_div">
+                        <form action="{% url 'blog:reply' comment.id %}" method="post" class="add_comment_div" >
 
                                 {% csrf_token %}
                                 <div class="add_comment_div_top">
@@ -41,7 +41,7 @@
                                     <p>{{ request.user.get_full_name }}</p>
                                 </div>
                                 <textarea placeholder="Ecrivez votre reponse ici..." name="reply_content" id="new_comment"
-                                    cols="30"></textarea>
+                                    cols="30" autofocus></textarea>
                                 <div class="add_comment_div_bottom">
                                     <button type="submit">
                                         <div class="svg-wrapper-1">
