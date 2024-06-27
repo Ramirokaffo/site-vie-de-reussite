@@ -94,7 +94,7 @@
     background-color: white;
     box-shadow: -1px 1px 2px var(--second-color1);
     /* box-shadow: 1px 1px 1px var(--second-color1), -1px -1px 8px var(--second-color1); */
-
+    /* background-color: green; */
 
 
 }
@@ -108,6 +108,7 @@
     /* background-color: red; */
     /* padding-bottom: 0px; */
     padding-top: 10px;
+
 }
 
 .left-section > h4 {
@@ -147,6 +148,8 @@
     /* border-radius: 30px; */
     box-sizing: border-box;
     /* background-color: red; */
+    /* background-color: green; */
+
 
 
 }
@@ -165,6 +168,7 @@
 
 .one-post-card-content-div {
     margin: 10px;
+    /* background-color: green; */
 
 }
 
@@ -190,6 +194,7 @@
 .post_comment_section {
     margin: 10px;
     margin-top: 20px;
+
 
 }
 
@@ -429,6 +434,144 @@
     cursor: pointer;
 }
 
+.share_post_div {
+    display: flex;
+    align-items: center;
+    /* background-color: rebeccapurple; */
+}
+
+.share_post_h4 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    color: var(--second-color1);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+
+
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+    /* height: 120px; */
+    /* width: 100%; */
+    /* padding-top: 40px; */
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
+  }
+  
+  .wrapper .twitter:hover,
+  .wrapper .twitter:hover .tooltip,
+  .wrapper .twitter:hover .tooltip::before {
+    background: #1da1f2;
+    color: #fff;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #e4405f;
+    color: #fff;
+  }
+  
+
+
+  
+  .wrapper .linkedin:hover,
+  .wrapper .linkedin:hover .tooltip,
+  .wrapper .linkedin:hover .tooltip::before {
+    background: #0077b5;
+    color: #fff;
+  }
+  
+
+  .linkedin_svg {
+    position: absolute;
+    top: 57%;
+    left: 73%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 50%;
+  }
+
+  .linkedin_svg path {
+    scale: 1.6;
+    /* fill: gray; */
+  }
+
+
+
+
+
+
+
+
+
 .right-section {
     flex: 1;
     background-color: white;
@@ -538,6 +681,39 @@
 
 
 }
+
+
+.share_post_div {
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.share_post_h4 {
+    gap: 10px;
+    justify-content: center;
+    /* background-color: blue; */
+    text-align: center;
+    margin-left: 10px;
+}
+
+.wrapper {
+    /* background-color: red; */
+    justify-content: start;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.share_facebook {
+    margin-left: 0px;
+}
+
+
+
+
 .right-section {
     border-radius: 0px;
     margin: 0px;
