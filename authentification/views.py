@@ -88,20 +88,20 @@ def activate(request: WSGIRequest, uidb64, token):
             myUser.is_active = True
             myUser.save()
             messages.success(request, "Votre adresse e-mail a été confirmée avec succès ! Vous pouvez vous connecter maintenant")
-            return redirect("/auth/login" if next is None else f"/auth/login?{ next }")
+            return redirect("/auth/login" if next is None else f"/auth/login?next={ next }")
         else:
             messages.error(request, "Le lien de confirmation n\'est pas valide ou a expiré.")
-        return redirect("/auth/login" if next is None else f"/auth/login?{ next }")
+        return redirect("/auth/login" if next is None else f"/auth/login?next={ next }")
     else:
         email = request.POST.get("email")
         try:
             expexted_user = User.objects.get(email=email)
         except (TypeError, ValueError, OverflowError, User.DoesNotExist):
             # expexted_user = User.objects.get(email=email)
-            return redirect("/auth/login" if next is None else f"/auth/login?{ next }")
+            return redirect("/auth/login" if next is None else f"/auth/login?next={ next }")
         confirm_subject = "Confirmation de mot de passe"
         sendActivationEmail(request=request, confirm_subject=confirm_subject, myUser=expexted_user, next=next)
-        return redirect("/auth/login" if next is None else f"/auth/login?{ next }")
+        return redirect("/auth/login" if next is None else f"/auth/login?next={ next }")
 
     
 
