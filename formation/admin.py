@@ -33,6 +33,7 @@ class FormationAdmin(admin.ModelAdmin):
     autocomplete_fields = ["category"]
     search_fields = ["title", "subtitle", "category__name"]
     search_help_text = "Rechercher une formation via son titre, sous-titre ou sa catégorie"
+    save_on_top = True
     
     
     actions = ["make_published", "make_no_published"]
