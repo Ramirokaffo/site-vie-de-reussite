@@ -33,3 +33,11 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+const site_cookies_div = document.getElementById("site_cookies_div")
+const agree_coockies_btn = document.getElementById("agree_coockies_btn")
+
+agree_coockies_btn.addEventListener("click", (event) => {
+  site_cookies_div.style.display = "none";
+  document.cookie = 'cookie_accepted=true';
+  // sessionStorage.setItem("cookie_accepted", "true");
+})

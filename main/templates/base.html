@@ -8,7 +8,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="{% static 'js/main.js' %}"></script>
     
     {% block title %}
     <title>{{ title }}</title>
@@ -88,6 +87,16 @@
         </div>
         {% include "component/footer.html" %}
     </div>
+    {% if not request.COOKIES.cookie_accepted %}
+    <div class="site_cookies" id="site_cookies_div">
+        <div>
+            Nous utilisons des cookies pour vous garantir la meilleure expérience de navigation sur notre site Internet. En utilisant notre site, vous reconnaissez avoir lu et compris notre politique en matière de <a href="{% url 'privacy' %}">cookies et notre politique de confidentialité.</a>
+        </div>
+        <span id="agree_coockies_btn">J'ai compris</span>
+    </div>
+    {% endif %}
+   
 </body>
+<script src="{% static 'js/main.js' %}"></script>
 
 </html>

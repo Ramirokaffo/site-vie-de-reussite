@@ -1,5 +1,4 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import BlogPost, BlogComment
 from django.template import loader
