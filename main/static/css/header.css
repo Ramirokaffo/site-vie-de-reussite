@@ -146,7 +146,7 @@
     height: 45px;
     width: 45px;
     background-size: cover;
-    background-color: red;
+    background-color: var(--second-color1);
     border-radius: 50%;
   }
 
@@ -236,7 +236,7 @@
 
     }
 
-    .left-mobile-header svg {
+    .first-action-button svg {
       display: none;
     }
 
@@ -281,5 +281,40 @@
       box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4)
 
     }
+
+    .public-user-profil p {
+      display: none;
+    }
+
+    .first-action-button, .connect-button {
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+  .header-right-div {
+    padding: 0px;
+    background: none;
+    gap: 0px;
+    margin: 0px;
+    box-shadow: none;
+    /* background-color: green; */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9); */
+
+  }
+
+  .header-right-div svg {
+    fill: var(--second-color2);
+    margin: 0px;
+    padding: 0px;
+    scale: 1.8;
+    height: 100px;
+    width: 100px;
+    /* stroke: red; */
+
+  }
 
   }

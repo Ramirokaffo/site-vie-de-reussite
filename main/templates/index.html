@@ -90,16 +90,10 @@
         {% endfor %}
 
     </div>
+
     <div class="all-ebook-btn-div">
-        <a class="more-post-button all-ebook-btn" href="{% url 'ebook:index' %}"
-            uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
-            <span class="hover-underline-animation">Consulter tous les ouvrages</span>
-            <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
-                <path id="Path_10" data-name="Path 10"
-                    d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)">
-                </path>
-            </svg>
-        </a>
+        <a href="{% url 'ebook:index' %}" class="all-ebook-button" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">Découvrir plus</a>
+        
     </div>
 </div>
 
@@ -109,19 +103,21 @@
 <div class="sup-last-post-div">
     <div class="last-post-div" uk-scrollspy="cls: uk-animation-fade; delay: 200">
         <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">DERNIERES PUBLICATIONS</h2>
-        <hr>
+        <!-- <hr> -->
         <div class="global-mini-post-div">
-            <div class="uk-slider-container-offset" uk-slider>
-                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+            <div class="uk-slider-container-offset" uk-slider="parallax: true">
+                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="parallax: true">
                     <ul class="uk-slider-items uk-child-width-1-3@s uk-grid event-grid">
                         {% for post in posts %}
                         <div class="mini-post-div">
-                            <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
                             <img src="{{ post.illustration_image.url }}" alt=" image {{ post.title }}"
                                 uk-scrollspy="cls: uk-animation-fade; delay: 200">
-                            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">
+                                <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
+                            
+                                <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">
                                 {{post.subtitle }}
                             </p>
+
                             <a class="more-post-button" href="{% url 'blog:detail' post.id %}"
                                 uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
                                 <span class="hover-underline-animation"> Lire la suite </span>
@@ -143,9 +139,36 @@
                     <a class="uk-position-center-right uk-position-small" href uk-slidenav-next uk-slider-item="next">
                     </a>
                 </div>
+                
                 <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                
             </div>
+            
         </div>
+        <a class="styled-button" href="{% url 'blog:index' %}">
+                        VISITER LE BLOG
+                        <div class="inner-button">
+                          <svg
+                            id="Arrow"
+                            viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="30px"
+                            width="30px"
+                            class="icon"
+                          >
+                            <defs>
+                              <!-- <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
+                                <stop style="stop-color:#FFFFFF;stop-opacity:1" offset="0%"></stop>
+                                <stop style="stop-color:#AAAAAA;stop-opacity:1" offset="100%"></stop>
+                              </linearGradient> -->
+                            </defs>
+                            <path
+                              fill="white"
+                              d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </a>
     </div>
 </div>
 
@@ -159,9 +182,12 @@
         <div class="sous-formation-div">
             <div class="sous-formation-div-text">
                 <p uk-scrollspy="cls: uk-animation-slide-top; delay: 100">{% lorem %}</p>
-                <a href="{% url 'formation:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">Voir
-                    toutes les formations</a>
+                <a href="{% url 'formation:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR
+                    TOUTES LES FORMATIONS</a>
+                    
             </div>
+            
+              
             <div class="sous-formation-div-list">
                 <div class="uk-slider-container-offset" uk-slider>
 
@@ -255,6 +281,10 @@
             </div>
 
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+        </div>
+        <div class="sub_show_all_event_div">
+            <a class="show_all_event_btn">VOIR TOUS LES ÉVÈNEMENTS</a>
 
         </div>
     </div>

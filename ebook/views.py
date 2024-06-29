@@ -54,7 +54,6 @@ def buy(request: WSGIRequest, ebook_id: int):
             "description": f"Paiement de l'ouvrage {target_ebook.title} | Site vie de réussite",  # Optional
             "reference": reference,
             "callback": callback
-            # "callback": "https://webhook.site/fec75097-ec63-48bc-8e52-e17f51ea2316"
         }
 
         headers = {
