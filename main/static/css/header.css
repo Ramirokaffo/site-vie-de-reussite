@@ -297,7 +297,7 @@
     gap: 0px;
     margin: 0px !important;
     box-shadow: none;
-    background-color: green;
+    /* background-color: green; */
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     height: 30px;
     width: 30px;

@@ -9,7 +9,7 @@
             <img class="footer-site-logo" src="{% static 'images/logo_site_vie_reussie.jpeg' %}" alt="">
             <p>Prenez le contrôle de votre vie et réalisez vos aspirations avec notre soutien et nos outils de
                 développement personnel.</p>
-            <a href="#appointment-modal-overflow" uk-toggle>
+            <a href="#appointment-modal-overflow" uk-toggle uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
                 <div id="pulsa" class="pulsa">
                     <button id="cta" class="cta">
                         Reserver mon coaching<div class="star a"></div>
@@ -105,9 +105,9 @@
             <h3>Newsletter</h3>
             <div class="subscribe">
                 <p>Souscrire</p>
-                <input placeholder="Votre adresse mail" class="subscribe-input" name="email" type="email">
+                <input id="newsletter_input" placeholder="Votre adresse mail" class="subscribe-input" name="email" type="email">
                 <br>
-                <div class="submit-btn">Envoyer</div>
+                <div class="submit-btn" id='subscribeBtn'>Envoyer</div>
               </div>
             
         </div>
@@ -118,3 +118,5 @@
 
     </div>
 </footer>
+
+<script src="{% static 'js/footer.js' %}"></script>

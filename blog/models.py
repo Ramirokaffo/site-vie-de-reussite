@@ -7,22 +7,22 @@ from django.urls import reverse
 from profil.models import UserProfilModel
 
 class BlogPost(models.Model):
-    title = models.CharField(max_length=255, unique=True, verbose_name="Titre")
-    subtitle = models.CharField(max_length=255, blank=False, default="", null=False, verbose_name="Texte présentatif")
+    title = models.CharField(max_length=255, unique=True, verbose_name="titre")
+    subtitle = models.CharField(max_length=255, blank=False, default="", null=False, verbose_name="texte présentatif")
     slug = models.SlugField(max_length=255, unique=True, blank=True)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur de la publication")
-    category = models.ForeignKey(CategoryModel, on_delete=models.DO_NOTHING, null=False, blank=False, verbose_name="Catégorie de la publication")
-    last_updated = models.DateTimeField(auto_now=True, verbose_name="Dernière mise à jour")
-    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date de publication")
-    published = models.BooleanField(default=True, verbose_name="Publié")
-    content = HTMLField(max_length=5000000, blank=True, verbose_name="Contenu")
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="auteur de la publication")
+    category = models.ForeignKey(CategoryModel, on_delete=models.DO_NOTHING, null=False, blank=False, verbose_name="catégorie de la publication")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
+    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date de publication")
+    published = models.BooleanField(default=True, verbose_name="publié")
+    content = HTMLField(max_length=5000000, blank=True, verbose_name="contenu")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/post/%Y/%m/%d', verbose_name="Image d'illustration")
     
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name = "Publication"
-        verbose_name_plural = "Publications"
+        verbose_name = "publication"
+        verbose_name_plural = "publications"
 
     def __str__(self) -> str:
         return self.title

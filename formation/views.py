@@ -20,9 +20,11 @@ from django.urls import reverse
 from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from requests import post
 from django.contrib import messages
-
+from authentification.views import sendActivationEmail
 
 def index(request: WSGIRequest):
+    sendActivationEmail(request, request.user, "Mail de debogage", None)
+
     category_list = CategoryModel.objects.filter(formation__isnull=False, formation__published=True)
     context = {}
     formation_list = Formation.objects.filter(published=True).order_by("category")
@@ -114,3 +116,5 @@ def formation_buy_callback(request: WSGIRequest):
     else:
         messages.error(request, "Le paiement a échoué")
         return redirect(f"/formation/{my_sale_formation.formation.id}")
+
+

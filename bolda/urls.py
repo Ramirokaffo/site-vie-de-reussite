@@ -27,6 +27,7 @@ from blog.sitemaps import BlogPostSitemap
 from ebook.sitemaps import EbookSitemap
 from event.sitemaps import EventSitemap
 from formation.sitemaps import FormationSitemap
+# from django.conf.urls import patterns
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -56,7 +57,7 @@ urlpatterns = [
     path("message/", include("message.urls")),
     path("testimony/", include("testimony.urls")),
     path("appointment/", include("appointment.urls")),
-    path('newsfeed/', include('newsfeed.urls', namespace='newsfeed')),
+    path("newsletter/", include("newsletter.urls")),
     path('admin/', admin.site.urls),
     re_path(r'^favicon\.ico$', favicon_view),
     re_path(r'^google955276c8e840c68a\.html$', google_analytic_view),
