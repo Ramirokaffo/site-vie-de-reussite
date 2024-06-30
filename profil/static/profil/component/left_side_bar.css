@@ -71,7 +71,7 @@
 }
 
 
-.selected-tab {
+.uk-active-tab {
     background-color: var(--second-color2);
     border-radius: 3px;
     border-left: 3px solid var(--color3);
