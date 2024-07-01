@@ -136,7 +136,6 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'tinymce',
     'newsletter',
-    'django_premailer',
     'core'
 ]
 
