@@ -96,7 +96,7 @@ def reset(request):
             return redirect("/auth/login" if next is None else f"/auth/login?next={next}")
         else:
             messages.error(request, "Compte introuvable !")
-            return render(request, "/auth/reset" if next is None else f"/auth/reset?next={next}")
+            return redirect("/auth/reset" if next is None else f"/auth/reset?next={next}")
     else:
         return render(request, "auth/reset_password.html", context={"title": "Mot de passe oublié", "next": next})
 
