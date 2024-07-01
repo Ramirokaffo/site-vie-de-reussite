@@ -23,7 +23,7 @@ from django.contrib import messages
 from authentification.views import sendActivationEmail
 
 def index(request: WSGIRequest):
-    sendActivationEmail(request, request.user, "Mail de debogage", None)
+    # sendActivationEmail(request, request.user, "Mail de debogage", None)
 
     category_list = CategoryModel.objects.filter(formation__isnull=False, formation__published=True)
     context = {}
