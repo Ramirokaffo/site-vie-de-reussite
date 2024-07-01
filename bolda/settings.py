@@ -31,7 +31,8 @@ import os
 import environ
 # from .py_script import get_images_url
 # from django.contrib.staticfiles import 
-
+PREMAILER_OPTIONS = dict(base_url='http://example.com',
+                         remove_classes=False)
 
 STAT_0o775 = ( stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR
              | stat.S_IRGRP | stat.S_IWGRP | stat.S_IXGRP
@@ -135,6 +136,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'tinymce',
     'newsletter',
+    'django_premailer',
     'core'
 ]
 

@@ -38,7 +38,14 @@
         <button class="sigin-btn" type="submit">Me connecter</button>
         <div class="forget-return-div">
         <a class="return" href="/">Retour à l'accueil</a>
-        <a class="forget" href="#">Mot de passe oublié ?</a>
+        {% if next %}
+        <a class="forget" href="{% url 'auth:reset' %}?next={{ next }}">Mot de passe oublié ?</a>
+          
+        {% else %}
+        <a class="forget" href="{% url 'auth:reset' %}">Mot de passe oublié ?</a>
+          
+        {% endif %}
+        
 
         </div>
         {% if next %}
