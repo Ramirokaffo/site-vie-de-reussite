@@ -31,7 +31,7 @@ def index(request: WSGIRequest):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number if page_number is not None else 1)
 
-    context["event"] = page_obj
+    context["events"] = page_obj
     context["selected_tab"] = "event"
     context["title"] = "Évènements | Site vie de réussite"
     context["event_category_list"] = event_category_list
