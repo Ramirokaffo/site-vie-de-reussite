@@ -92,8 +92,9 @@
     </div>
 
     <div class="all-ebook-btn-div">
-        <a href="{% url 'ebook:index' %}" class="all-ebook-button" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">Découvrir plus</a>
-        
+        <a href="{% url 'ebook:index' %}" class="all-ebook-button"
+            uk-scrollspy="cls: uk-animation-slide-left; delay: 200">Découvrir plus</a>
+
     </div>
 </div>
 
@@ -112,9 +113,9 @@
                         <div class="mini-post-div">
                             <img src="{{ post.illustration_image.url }}" alt=" image {{ post.title }}"
                                 uk-scrollspy="cls: uk-animation-fade; delay: 200">
-                                <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
-                            
-                                <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">
+                            <h4 uk-scrollspy="cls: uk-animation-fade; delay: 200">{{ post.title }}</h4>
+
+                            <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200" class="uk-text-break">
                                 {{post.subtitle }}
                             </p>
 
@@ -139,36 +140,29 @@
                     <a class="uk-position-center-right uk-position-small" href uk-slidenav-next uk-slider-item="next">
                     </a>
                 </div>
-                
+
                 <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-                
+
             </div>
-            
+
         </div>
         <a class="styled-button" href="{% url 'blog:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">
-                        VISITER LE BLOG
-                        <div class="inner-button">
-                          <svg
-                            id="Arrow"
-                            viewBox="0 0 32 32"
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="30px"
-                            width="30px"
-                            class="icon"
-                          >
-                            <defs>
-                              <!-- <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
+            VISITER LE BLOG
+            <div class="inner-button">
+                <svg id="Arrow" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" height="30px" width="30px"
+                    class="icon">
+                    <defs>
+                        <!-- <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
                                 <stop style="stop-color:#FFFFFF;stop-opacity:1" offset="0%"></stop>
                                 <stop style="stop-color:#AAAAAA;stop-opacity:1" offset="100%"></stop>
                               </linearGradient> -->
-                            </defs>
-                            <path
-                              fill="white"
-                              d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z"
-                            ></path>
-                          </svg>
-                        </div>
-                      </a>
+                    </defs>
+                    <path fill="white"
+                        d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z">
+                    </path>
+                </svg>
+            </div>
+        </a>
     </div>
 </div>
 
@@ -181,13 +175,19 @@
 
         <div class="sous-formation-div">
             <div class="sous-formation-div-text">
-                <p uk-scrollspy="cls: uk-animation-slide-top; delay: 100">{% lorem %}</p>
+                <p uk-scrollspy="cls: uk-animation-slide-top; delay: 100">
+                    Découvrez notre sélection de formations vidéo pour développer vos compétences dans différents
+                    domaines clés de votre vie. Que vous souhaitiez améliorer votre intelligence financière, renforcer
+                    votre intelligence émotionnelle, perfectionner votre art oratoire, booster votre confiance en vous
+                    ou simplement vous investir dans votre développement personnel, nos formations sont conçues pour
+                    vous accompagner sur le chemin de la réussite et du bien-être.
+                </p>
                 <a href="{% url 'formation:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR
                     TOUTES LES FORMATIONS</a>
-                    
+
             </div>
-            
-              
+
+
             <div class="sous-formation-div-list">
                 <div class="uk-slider-container-offset" uk-slider>
 
@@ -284,7 +284,8 @@
 
         </div>
         <div class="sub_show_all_event_div">
-            <a class="show_all_event_btn" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR TOUS LES ÉVÈNEMENTS</a>
+            <a class="show_all_event_btn" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR TOUS LES
+                ÉVÈNEMENTS</a>
 
         </div>
     </div>
@@ -358,12 +359,13 @@
         <h2 uk-scrollspy="cls: uk-animation-fade; delay: 200">QUI EST DR. TARA BOLDA ?</h2>
         <i>
             <p uk-scrollspy="cls: uk-animation-slide-bottom; delay: 200">
-                Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il
-                trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le
-                rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à
-                un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en
-                étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable
-                du Lorem
+                Le Dr. Tara Bolda est une coach renommée dans le domaine du développement personnel et de la croissance
+                personnelle. Avec une expertise approfondie en psychologie et en coaching, elle vous accompagne
+                vers l'épanouissement personnel et professionnel. Grâce à son approche bienveillante et personnalisée,
+                elle vous aide à surmonter vos blocages, à identifier vos objectifs et à mettre
+                en place des stratégies efficaces pour atteindre vos aspirations. Sa passion pour l'accompagnement et
+                sa capacité à inspirer le changement font d'elle une coach de confiance pour tous ceux qui souhaitent
+                transformer leur vie et réaliser leur plein potentiel.
             </p>
         </i>
     </div>

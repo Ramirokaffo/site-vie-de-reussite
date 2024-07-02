@@ -140,12 +140,14 @@
   margin: 80px 40px;
   margin-right: 0px;
   padding: 10px 0px;
-  padding-bottom: 0px;
+  /* padding-bottom: 0px; */
   align-items: center;
-  background-color: rgba(4, 52, 77, 0.1);
+  /* background-color: rgba(4, 52, 77, 0.1); */
   background-color: rgba(0, 0, 0, 0.05);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  /* background-color: red; */
+  box-sizing: border-box;
 }
 
 .presentation-div-left-side {
@@ -550,7 +552,7 @@
   color: #fff;
   background-image: linear-gradient(to bottom right, #00c6ff, #0072ff);
   border: none;
-  border-radius: 50px;
+  border-radius: 60px;
   box-shadow: 0px 4px 0px #0072ff;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -581,7 +583,7 @@
 .all-ebook-button:before {
   top: -3px;
   left: -3px;
-  border-radius: 40px;
+  border-radius: 60px;
   border-top: 3px solid #fff;
   border-left: 3px solid #fff;
 }
@@ -589,7 +591,7 @@
 .all-ebook-button:after {
   bottom: -3px;
   right: -3px;
-  border-radius: 40px;
+  border-radius: 60px;
   border-bottom: 3px solid #fff;
   border-right: 3px solid #fff;
 }
@@ -905,6 +907,7 @@
   color: white;
   background: linear-gradient(to top, var(--color3), var(--color3));
   scale: 0.95;
+
 }
 
 .styled-button::before {
@@ -914,11 +917,14 @@
   right: -1px;
   bottom: -1px;
   left: -1px;
-  background: linear-gradient(to bottom, #292929, #000000);
+  /* background: linear-gradient(to bottom, #292929, #000000); */
+  background: linear-gradient(to bottom, var(--second-color2), var(--second-color1));
   z-index: -1;
   border-radius: 9999px;
   transition: all 0.2s ease;
   opacity: 1;
+  /* background-color: red; */
+
 }
 
 .styled-button:active {
@@ -940,6 +946,16 @@
   /* box-shadow: 0 0 1px rgba(0, 0, 0, 1); */
   border: 1px solid white;
   transition: all 0.2s ease;
+  /* background-color: red; */
+
+
+}
+
+.styled-button:hover .inner-button {
+  background: linear-gradient(to bottom, var(--second-color2), var(--second-color1));
+  transition: all 0.4s ease-in-out;
+  /* transition: all 0.2s ease; */
+
 }
 
 .styled-button .inner-button::before {
@@ -965,6 +981,8 @@
   filter: drop-shadow(0 10px 20px rgba(50, 50, 50, 1))
     drop-shadow(0 0 20px rgba(2, 2, 2, 1));
   transform: rotate(-35deg);
+  /* background: linear-gradient(to bottom, var(--second-color2), var(--second-color1)); */
+
 }
 
 
@@ -1041,6 +1059,7 @@
   align-items: center;
   justify-content: center;
   transition: 0.3s all ease;
+  text-transform: uppercase;
 }
 
 .sous-formation-div-text a:hover:before {
