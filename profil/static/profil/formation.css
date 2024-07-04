@@ -78,6 +78,30 @@ hr {
 }
 
 
+.profil-consult-other-ebook {
+    border: 1px solid var(--second-color1);
+    border-radius: 40px;
+    padding: 10px 30px;
+    color: var(--second-color1);
+    background-color: white;
+}
+
+
+.profil-consult-other-ebook:hover {
+    text-decoration: none;
+}
+
+.profil-consult-other-ebook svg {
+    transition: 0.3s all ease;
+
+}
+
+.profil-consult-other-ebook:hover svg {
+    transform: translateX(5px);
+    transition: 0.3s all ease;
+}
+
+
 
 @media screen and (max-width: 901px) {
 

@@ -17,7 +17,7 @@ class BlogPost(models.Model):
     published = models.BooleanField(default=True, verbose_name="publié")
     content = HTMLField(max_length=5000000, blank=True, verbose_name="contenu")
     illustration_image = models.ImageField(blank=True, null=True, upload_to='images/post/%Y/%m/%d', verbose_name="Image d'illustration")
-    
+    # high_light_ebooks = models.ManyToOneRel
 
     class Meta:
         ordering = ['-created_at']
