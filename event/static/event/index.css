@@ -90,8 +90,27 @@ main {
     /* padding: 5px; */
 }
 
+
+.event-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* justify-content: space-around; */
+    /* background-color: red; */
+    height: 100%;
+    box-sizing: border-box;
+}
+
 .event-description h2 {
     font-weight: bold;
+    margin: 0px;
+
+}
+
+.event-description p {
+    margin: 0px;
+    justify-self: flex-end;
+    align-self: flex-end;
 }
 
 .event-last-line {
