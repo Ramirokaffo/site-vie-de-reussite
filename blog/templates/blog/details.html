@@ -176,7 +176,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <!-- <button class="button share_twitter" data-url="http://....">
                     Partager sur twitter
                 </button>
@@ -189,7 +189,7 @@
                 <button class="button share_linkedin" data-url="http://....">
                     Partager sur linkedin
                 </button> -->
-            
+
             </div>
 
             {% include "ebook/bottom_ebook_cards.html" %}
@@ -211,6 +211,59 @@
             <hr>
             {% include "blog/right_side_bar.html" %}
 
+            {% if post.high_light_ebooks.all  %}
+            <p class="pub-formation-text">Notre sélection d'ouvrages pour vous</h>
+
+            <section class="highligh_element mini-formation-div">
+                {% for highligh_ebook in post.high_light_ebooks.all %}
+
+                <div class="one-mini-formation-div">
+                    <div class="mini-formation-img"
+                        style="background-image: url('{{ highligh_ebook.illustration_image.url }}');">
+                    </div>
+                    <div class="mini-formation-bottom">
+                        <h3>{{ highligh_ebook.title }}</h3><a href="{% url 'ebook:detail' highligh_ebook.id %}">En
+                            savoir plus</a>
+                    </div>
+                </div>
+               
+                {% endfor %}
+
+
+            </section>
+            {% endif %}
+
+
+            {% for highligh_formation in post.high_light_formations.all %}
+            {% if forloop.first %}
+            <p class="pub-formation-text">Notre sélection de formations pour vous</h>
+
+            <section class="highligh_element mini-formation-div">
+                <div class="one-mini-formation-div">
+                    <div class="mini-formation-img"
+                        style="background-image: url('{{ highligh_formation.illustration_image.url }}');">
+                    </div>
+                    <div class="mini-formation-bottom">
+                        <h3>{{ highligh_formation.title }}</h3><a
+                            href="{% url 'formation:detail' highligh_formation.id %}">En
+                            savoir plus</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="one-mini-formation-div">
+                    <div class="mini-formation-img"
+                        style="background-image: url('{{ highligh_formation.illustration_image.url }}');">
+                    </div>
+                    <div class="mini-formation-bottom">
+                        <h3>{{ highligh_formation.title }}</h3><a
+                            href="{% url 'formation:detail' highligh_formation.id %}">En
+                            savoir plus</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% endfor %}
+            </section>
         </section>
     </div>
 </main>

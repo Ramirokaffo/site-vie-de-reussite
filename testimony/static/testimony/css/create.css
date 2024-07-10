@@ -1,5 +1,4 @@
 .create_testimony_div {
-  /* height: 900px; */
   background-color: rgba(4, 52, 77, 0.1);
   display: flex;
   justify-content: center;
@@ -24,8 +23,6 @@
 
 
 .testbox {
-  /* width: 50%; */
-
   padding: 80px;
 margin: 0px 25%;
 
@@ -38,7 +35,6 @@ margin: 0px 25%;
   background-color: white;
   border-top: 20px solid var(--second-color2);
   box-sizing: border-box;
-  /* background-color: red; */
   border-radius: 10px;
 
 }
@@ -74,7 +70,6 @@ margin: 0px 25%;
   width: 200px;
   height: 200px;
   margin: 0 auto;
-  /* margin-top: 20px; */
   position: relative;
   cursor: pointer;
   background: #f4f4f4;
@@ -91,7 +86,6 @@ margin: 0px 25%;
     width: 100%;
     height: 100%;
     border: 4px dashed #ddd;
-    /* border: 4px dashed var(--color3); */
     opacity: 1;
   }
 
@@ -165,7 +159,6 @@ p {
 .my_form .input {
   width: 100%;
   padding: 15px;
-  /* border: 1px solid #000; */
   border-radius: 3px;
   vertical-align: middle;
   background-color: #F7F7F7;
@@ -211,7 +204,6 @@ p {
 .first-col {
   width: 16%;
   text-align: left;
-  /* padding: 0px 2px; */
 }
 
 .my_form table {
@@ -274,16 +266,12 @@ p {
   .testbox {
     width: 100%;
     padding: 20px 0px;
-    /* background-color: red; */
     box-sizing: border-box;
     margin: 0px 5%;
 
   }
 
-  .my_form {
-    /* box-sizing: border-box; */
 
-  }
 
   #h1 {
     font-size: 23px;

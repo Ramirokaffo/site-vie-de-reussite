@@ -2,7 +2,6 @@
 
 .main-div {
     padding: 40px;
-    /* padding-bottom: 0px; */
 }
 
 h1 {
@@ -12,8 +11,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 3px;
-    /* background-color: rgba(255, 255, 255, 0.8); */
-    /* border-radius: 5px; */
+
 }
 
 hr {
@@ -35,7 +33,6 @@ hr {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
-    /* justify-content: center; */
 }
 
 .profil-ebook-card {
@@ -46,7 +43,6 @@ hr {
     padding: 10px;
     border-radius: 5px;
     transition: 0.2s all ease;
-    /* flex-wrap: wrap; */
 
 }
 
@@ -133,8 +129,6 @@ hr {
 }
 
 .ebook-foot-div {
-    /* background-color: yellow; */
-    /* padding: 20px; */
     margin-top: 30px;
 
 }
@@ -142,9 +136,7 @@ hr {
 .profil-consult-other-ebook {
     font-size: 12px;
     margin: auto;
-    /* margin-bottom: 60px !important; */
-    /* margin-top: 50px; */
-    /* background-color: red; */
+
 }
 
 

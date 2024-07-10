@@ -1,8 +1,7 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.template import loader
-from django.urls import reverse
 from core.models import CategoryModel
 from django.core.paginator import Paginator
 from formation.models import Formation

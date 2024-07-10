@@ -5,6 +5,8 @@ from core.models import CategoryModel
 from tinymce.models import HTMLField
 from django.urls import reverse
 from profil.models import UserProfilModel
+from ebook.models import EbookModel
+from formation.models import Formation
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name="titre")
@@ -16,8 +18,14 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date de publication")
     published = models.BooleanField(default=True, verbose_name="publié")
     content = HTMLField(max_length=5000000, blank=True, verbose_name="contenu")
-    illustration_image = models.ImageField(blank=True, null=True, upload_to='images/post/%Y/%m/%d', verbose_name="Image d'illustration")
-    # high_light_ebooks = models.ManyToOneRel
+    illustration_image = models.ImageField(blank=True, null=True, upload_to='images/post/%Y/%m/%d', verbose_name="image d'illustration")
+    high_light_ebooks = models.ManyToManyField(
+        EbookModel, related_name='high_light_ebooks', symmetrical=False, blank=True, verbose_name='livres mis en avant'
+    )
+    high_light_formations = models.ManyToManyField(
+        Formation, related_name='high_light_formations', symmetrical=False, blank=True, verbose_name='formations mis en avant'
+    )
+
 
     class Meta:
         ordering = ['-created_at']

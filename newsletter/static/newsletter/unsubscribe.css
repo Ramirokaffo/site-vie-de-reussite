@@ -1,0 +1,51 @@
+
+body {
+  background-color: rgba(4, 52, 77, 0.1);
+
+}
+
+main {
+    margin: 30px 30%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  box-shadow: 0px 2px 5px #ccc;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input {
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    padding: 10px;
+
+}
+
+form i {
+    color: red;
+    
+}
+
+
+form button {
+    border-radius: 40px;
+    padding: 10px;
+    background-color: rgba(4, 52, 77, 0.1);
+    border: 3px solid var(--second-color2);
+    transition: 0.2s ease-in all;
+
+}
+
+form button:hover {
+    box-shadow: 0px 2px 5px #ccc;
+    background-color: var(--second-color2);
+    color: white;
+    transition: 0.2s ease-in all;
+    cursor: pointer;
+}
+

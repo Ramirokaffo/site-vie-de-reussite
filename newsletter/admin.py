@@ -2,6 +2,7 @@ from django.contrib import admin
 from bolda.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
+from django.core.handlers.wsgi import WSGIRequest
 
 from .models import *
 
@@ -66,18 +67,16 @@ class NewsLetterAdmin(admin.ModelAdmin):
     actions = ["make_diffuse"]
 
     @admin.action(description="Diffuser les messages selectionnées")
-    def make_diffuse(self, request, queryset):
-        # for new in queryset:
+    def make_diffuse(self, request: WSGIRequest, queryset):
 
-        #     plain_message = strip_tags(new.content)
-        #     email_list = [subscriber.email for subscriber in new.subscribers.all()]
-        #     for subscribers_group in new.subscribers_group.all():
-
-        #         email_list += [subscriber.email for subscriber in subscribers_group]
         for newsletter in queryset:
             email_list = []
             plain_message = strip_tags(newsletter.content)
-
+            # print(newsletter.content)
+            # print(newsletter.add_unsubscribe_link)
+            unsubscribe_link = f'{request.scheme }://{request.get_host() }/newsletter/unsubscribe'
+            newsletter.load_unsubscribe_link(unsubscribe_link)
+            # continue
             # Add emails from subscribers field
             for subscriber in newsletter.subscribers.all():
                 email_list.append(subscriber.email)

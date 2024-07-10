@@ -132,7 +132,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
     'tinymce',
     'newsletter',
@@ -258,7 +258,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = "/auth/login"
 
+
+SERVER_EMAIL = "tarabolda138@gmail.com"
+
 ADMINS = [("Ramiro kaffo", "ramirokaffo@icloud.com"), ]
+
+MANAGERS = [("Tara Bolda", "tarabolda138@gmail.com"), ]
 
 
 # NEWSLETTER_THUMBNAIL = 'easy-thumbnails'
