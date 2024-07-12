@@ -10,7 +10,7 @@
 
 
 .div-404-animated {
-    background-color: red;
+    /* background-color: red; */
 }
 
 
@@ -197,3 +197,26 @@
 
 
 
+  @media screen and (max-width: 901px) {
+
+.main-404-div {
+    /* height: 150vh; */
+    gap: 50px;
+}
+
+.obj {
+  /* width: 100px; */
+  /* height: 100px; */
+  scale: 0.5;
+}
+
+.main-404-div h1 {
+  width: 80%;
+  /* text-align: center; */
+  /* color: var(--second-color1); */
+  /* font-weight: bold; */
+  font-size: 25px;
+}
+
+
+  }

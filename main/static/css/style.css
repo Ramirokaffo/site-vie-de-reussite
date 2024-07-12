@@ -562,7 +562,7 @@
   padding: 40px;
   border-top-right-radius: 60px;
   border-top-left-radius: 60px;
-  background-color: var(--color1);
+  /* background-color: var(--color1); */
   background-color: var(--second-color1);
   display: flex;
   flex-direction: column;
@@ -829,6 +829,7 @@
 .sous-formation-div {
   display: flex;
   justify-content: space-evenly;
+  border: 0px;
 }
 
 .sous-formation-div-text {
@@ -2196,7 +2197,7 @@
 }
 
   .sub-formation-div {
-    background-color: var(--color1);
+    background-color: var(--second-color1);
   }
 
 

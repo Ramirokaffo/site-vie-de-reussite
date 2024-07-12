@@ -67,7 +67,7 @@ def about(request):
         "title": "À propos de nous"
     }
     return render(request, template_name="about.html", context=context)
-    # return render(request, template_name="testimony/create.html", context=context)
+    # return render(request, template_name="appointment/add_success.html", context=context)
     # return render(request=request, template_name="404.html", context=context)
 
 
@@ -91,3 +91,5 @@ def legal_notice(request):
 def get_images_url(request: WSGIRequest):
     image_list = get_images_url_func(os.path.join(MEDIA_ROOT, "images"))
     return JsonResponse(image_list, content_type='application/json', safe=False)
+
+

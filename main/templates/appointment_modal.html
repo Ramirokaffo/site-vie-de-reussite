@@ -12,28 +12,28 @@
         </div>
         <div class="uk-modal-body" uk-overflow-auto>
             <section class="my-container">
-                <form class="form" action="appointment/add" method="post" id="appointment-form">
+                <form class="form" action="{% url 'appointment:add' %}" method="post" id="appointment-form">
                     {% csrf_token %}
                     <div class="input-box">
                         <label>Nom complet</label>
-                        <input required placeholder="Entrez votre nom complet" type="text" name="full_name">
+                        <input required placeholder="Entrez votre nom complet" type="text" name="full_name" required>
                     </div>
                     <div class="column">
                         <div class="input-box">
                             <label>Numéro de téléphone</label>
                             <input required placeholder="Entrez votre numéro de téléphone" type="telephone"
-                                name="phone_number">
+                                name="phone_number" required>
                         </div>
                         <div class="input-box">
                             <label>Date souhaitée du rendez-vous</label>
-                            <input placeholder="Entrez une date" type="date" name="my_date">
+                            <input placeholder="Entrez une date" type="date" name="my_date" required>
                         </div>
                     </div>
                     <div class="gender-box">
                         <label>Sexe</label>
                         <div class="gender-option">
                             <div class="gender">
-                                <input checked="" name="gender" id="check-male" type="radio" value="H">
+                                <input checked="" name="gender" id="check-male" type="radio" value="H" >
                                 <label for="check-male">Homme</label>
                             </div>
                             <div class="gender">

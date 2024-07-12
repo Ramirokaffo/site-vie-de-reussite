@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau rendez-vous</title>
+</head>
+<body>
+    <h1>Bonjour {{ manager }}</h1>
+    <p>Vous avez reçu une nouvelle demande de rendez-vous de coaching sur le site web.</p>
+
+<h3>Informations sur le client:</h3>
+    <ul>
+        <li>Nom complet: {{ appointment.full_name }}</li>
+        <li>Numéro de téléphone: {{ appointment.phone_number }}</li>
+        <li>Date du rendez-vous: {{ appointment.my_date }}</li>
+        <li>Genre: {{ appointment.gender }}</li>
+        <li>Pays: {{ appointment.country }}</li>
+        <li>Ville: {{ appointment.city }}</li>
+        <li>Adresse e-mail: {{ appointment.email }}</li>
+        <li>Objectif du coaching: {{ appointment.objectif }}</li>
+    </ul>
+    <p>Vous recevez ce mail parceque vous êtes manager du site Vie de Réussite</p>
+</body>
+</html>

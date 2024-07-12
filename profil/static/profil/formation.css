@@ -2,6 +2,7 @@
 
 .main-div {
     padding: 40px;
+    /* background-color: purple; */
 }
 
 h1 {
@@ -107,7 +108,6 @@ hr {
 
 h1 {
     font-size: 15px;
-
 }
 
 .no-formation-p {
@@ -117,19 +117,16 @@ h1 {
 }
 
 .one-formation-card {
-
     margin: auto;
     margin-bottom: 30px;
     width: 100%;
+    /* background-color: green; */
 }
-
 
 
 .one-formation-card-header {
     padding: 10px;
     text-align: center;
-
-
 }
 
 .one-formation-card h4 {
@@ -138,18 +135,22 @@ h1 {
 
 .one-formation-card > a {
     padding: 10px 10px;
-
 }
 
 .main-div hr {
-    display: none;
+    /* display: none; */
 }
-
 
 
 .formation-info-line span {
     display: flex;
     flex-direction: column;
+}
+
+.profil-consult-other-ebook {
+    padding: 10px;
+    margin-bottom: 20px;
+    /* background-color: red; */
 }
 
 }

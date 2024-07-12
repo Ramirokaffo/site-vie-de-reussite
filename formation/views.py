@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
 
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from .models import Formation, SaleFormation, VideoComment, FormationVideo
-from django.template import loader
 from django.urls import reverse
 from core.models import CategoryModel
-from django.core.paginator import Paginator
 from django.db.models import Count
 import json
 from django.http import JsonResponse
@@ -20,7 +17,6 @@ from django.urls import reverse
 from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from requests import post
 from django.contrib import messages
-from authentification.views import sendActivationEmail
 
 def index(request: WSGIRequest):
     # sendActivationEmail(request, request.user, "Mail de debogage", None)

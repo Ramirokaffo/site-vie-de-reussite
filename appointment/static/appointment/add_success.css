@@ -11,3 +11,28 @@ main {
 h2 {
     font-size: 40px;
 }
+
+
+
+@media screen and (max-width: 901px) {
+
+    main {
+    height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    main svg {
+        height: 100px;
+        width: 100px;
+
+    }
+
+    h2 {
+        font-size: 20px;
+        margin: 0px;
+    }
+
+}
