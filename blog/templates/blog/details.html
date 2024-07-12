@@ -99,7 +99,6 @@
                 <p>Aucun commentaire</p>
 
                 {% endfor %}
-                {% if request.user.is_authenticated and request.session.user_profile %}
                 <h3>Ajouter votre commentaire</h3>
                 <form action="{% url 'blog:comment' post.id %}" method="post" class="add_comment_div">
                     {% csrf_token %}
@@ -127,7 +126,6 @@
                         </button>
                     </div>
                 </form>
-                {% endif %}
 
                 <div class="share_post_div">
                     <h4 class="share_post_h4">Partager l'article sur<svg class="w-6 h-6 text-gray-800 dark:text-white"
