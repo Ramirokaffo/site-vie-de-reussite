@@ -400,7 +400,7 @@ footer h3 {
     height: 0;
     border-left: 0px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #1a044e;
+    border-bottom: 10px solid var(--second-color1);;
   }
   
   .subscribe p {
@@ -424,7 +424,7 @@ footer h3 {
   
   .subscribe input:focus {
     outline: none;
-    border-bottom: 1px solid #0d095e;
+    border-bottom: 1px solid var(--second-color1);;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
   }
   
@@ -433,7 +433,7 @@ footer h3 {
     border-radius: 30px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    background-color: #0f0092;
+    background-color: var(--second-color1);
     color: #FFF;
     padding: 12px 25px;
     display: inline-block;
@@ -448,7 +448,7 @@ footer h3 {
   }
   
   .subscribe .submit-btn:hover {
-    background-color: #07013d;
+    background-color: var(--second-color2);;
     box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
   }
 
@@ -463,8 +463,7 @@ footer h3 {
 
 
 .bottom-footer-div {
-    /* height: 50px; */
-    /* width: 100%; */
+
     background-color: var(--color1);
     background-color: var(--second-color2);
     padding: 10px;
