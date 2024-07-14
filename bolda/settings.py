@@ -266,11 +266,6 @@ ADMINS = [("Ramiro kaffo", "ramirokaffo@icloud.com"), ]
 MANAGERS = [("Tara Bolda", "tarabolda138@gmail.com"), ]
 
 
-# NEWSLETTER_THUMBNAIL = 'easy-thumbnails'
-
-# NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
-
-
 
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,

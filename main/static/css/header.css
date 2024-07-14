@@ -38,13 +38,17 @@
     font-size: 15px;
     color: var(--color2);
     color: white;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.9)
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.9);
+    background: linear-gradient(to top, var(--second-color1), var(--second-color2));
+  transition: 0.3s ease all;
   }
   
   .first-action-button:hover {
     background: var(--second-color3);
     color: white;
     text-decoration: none;
+    background: linear-gradient(to bottom, var(--second-color1), var(--second-color2));
+    transition: 0.3s ease all;
 
   }
   
@@ -74,16 +78,20 @@
     overflow: hidden;
     height: 3rem;
     padding: 0 2rem;
-    border-radius: 1.5rem;
-    background: white;
-    /* border: 1px solid var(--second-color2); */
+    border-radius: 50px;
+    /* background: white; */
+    border: 1px solid var(--second-color2);
+    border: 1px solid rgba(255, 255, 255, 1);
     /* color: var(--color4); */
+    color: white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.5);
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5)
+    /* box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.5); */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+    /* background: linear-gradient(to top, var(--second-color1), var(--second-color2)); */
+
 
   }
   
@@ -94,8 +102,12 @@
   .connect-button-content {
     position: relative;
     z-index: 1;
-    color: var(--second-color2);
+    /* color: var(--second-color2); */
     font-weight: bold;
+  }
+
+  .uk-navbar-sticky   .connect-button-content {
+    color: var(--second-color1);
   }
 
   .connect-button:hover {
@@ -131,6 +143,7 @@
     gap: 5px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
     transition: 0.2s all ease;
+    background: linear-gradient(to top, var(--second-color1), var(--second-color2));
 
 
   }
@@ -139,6 +152,7 @@
     text-decoration: none;
     background-color: var(--second-color3);
     transition: 0.2s all ease;
+    background: linear-gradient(to bottom, var(--second-color1), var(--second-color2));
 
   }
 
@@ -278,9 +292,12 @@
     }
 
     .connect-button {
-      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4)
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+      color: var(--second-color1) !important;
 
     }
+
+
 
     .public-user-profil p {
       display: none;

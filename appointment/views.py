@@ -5,11 +5,8 @@ from appointment.models import AppointmentModel
 
 from bolda.settings import EMAIL_HOST_USER, MANAGERS
 from django.core.mail import send_mail
-from django.utils.http import  urlsafe_base64_encode
-from django.utils.encoding import force_bytes
 from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
-from django.contrib.sites.shortcuts import get_current_site
 from django.utils.html import strip_tags
 
 
@@ -37,7 +34,6 @@ def add(request: WSGIRequest):
 
 
 def notifiedManager(request, appointment: AppointmentModel):
-    print(MANAGERS)
     for manager in MANAGERS:
         confirm_maessage = render_to_string("appointment/appointment_snippet.html", {
             "appointment": appointment,
