@@ -68,8 +68,6 @@ class FormationVideo(models.Model):
 class VideoComment(models.Model):
     video = models.ForeignKey(FormationVideo, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Vidéo")
     content = models.TextField(max_length=200, verbose_name="Contenu", null=False, blank=False)
-    # decription = models.TextField(null=True, blank=True)
-
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True)
     published = models.BooleanField(default=True, verbose_name="Publié")
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur")
@@ -87,7 +85,7 @@ class VideoComment(models.Model):
 
 class SaleFormation(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="acheté par")
-    formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="livre acheté")
+    formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="formation achetée")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date d'achat")
     isPaid = models.BooleanField(default=False, verbose_name="payé ?")
     amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
@@ -102,4 +100,21 @@ class SaleFormation(models.Model):
     class Meta:
         verbose_name = "formation commandée"
         verbose_name_plural = "formations commandées"
+
+
+
+class PhysicFormationCmd(models.Model):
+    formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="formation achetée")
+    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date de commande")
+    isPaid = models.BooleanField(default=False, verbose_name="payé ?")
+    amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
+    phone_number = models.CharField(max_length=255, blank=True, null=True, verbose_name="Téléphone client")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
+    
+    def __str__(self):
+        return f"{self.phone_number} - {self.formation}"
+    
+    class Meta:
+        verbose_name = "commande physique"
+        verbose_name_plural = "commandes physiques"
 

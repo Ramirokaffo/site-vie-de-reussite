@@ -78,4 +78,20 @@ class SaleEbook(models.Model):
 
 
 
+class PhysicEbookCmd(models.Model):
+    ebook = models.ForeignKey(EbookModel, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="livre acheté")
+    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date de commande")
+    isPaid = models.BooleanField(default=False, verbose_name="payé ?")
+    amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
+    phone_number = models.CharField(max_length=255, blank=True, null=True, verbose_name="Téléphone client")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
+    
+    def __str__(self):
+        return f"{self.phone_number} - {self.ebook}"
+    
+    class Meta:
+        verbose_name = "commande physique"
+        verbose_name_plural = "commandes physiques"
+
+
 

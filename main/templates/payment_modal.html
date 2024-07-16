@@ -30,19 +30,26 @@
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Commander : {{ rsrc_title }}</h2>
+            <h2 class="uk-modal-title">Commander : {{ rsrc.title }}</h2>
         </div>
         <div class="uk-modal-body">
-            <p>Vous avez choisi la version physique de votre livre, et c'est un excellent choix ! Le livre papier offre une expérience de lecture unique et enrichissante.</p>
+            <p>Vous avez choisi la version physique de votre livre, et c'est un excellent choix !</p>
             <p>Contactez l'un des numéros ci-dessous pour commander votre ouvrage</p>
             <ul>
-                <li><a href="">+237 672 27 99 46</a></li>
-                <li><a href="">+237 696 55 26 73</a></li>
+                <li><a href="tel:+237672279946">+237 672 27 99 46</a></li>
+                <li><a href="tel:+237696552673">+237 696 55 26 73</a></li>
             </ul>
             <p>Vous pouvez aussi nous laisser votre contact et on se chargera de vous contacter</p>
-        <form class="command-form" action="" method="post">
+            {% if type == "ebook"  %}
+        <form class="command-form" action="{% url 'ebook:physic_command' rsrc.id %}" method="post">
+              
+            {% else %}
+        <form class="command-form" action="{% url 'formation:physic_command' rsrc.id %}" method="post">
+              
+            {% endif %}
+            
             {% csrf_token %}
-            <input type="text" placeholder="Entrez votre numéro de téléphone" required>
+            <input type="tel" placeholder="Entrez votre numéro de téléphone" name="phone_number" required>
             <button type="submit">Envoyer</button>
         </form>
         </div>

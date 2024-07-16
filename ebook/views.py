@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from .models import EbookModel, SaleEbook
+from .models import EbookModel, SaleEbook, PhysicEbookCmd
 from django.template import loader
 from django.urls import reverse
 from core.models import CategoryModel
@@ -13,6 +13,13 @@ from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from django.contrib import messages
 from uuid import uuid4
 from django.urls import reverse
+
+from bolda.settings import EMAIL_HOST_USER, MANAGERS
+from django.core.mail import send_mail
+from django.core.handlers.wsgi import WSGIRequest
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 def index(request: WSGIRequest):
     category_list = CategoryModel.objects.filter(ebookmodel__isnull=False)
@@ -93,3 +100,41 @@ def ebook_buy_callback(request: WSGIRequest):
     else:
         messages.error(request, "Le paiement a échoué")
         return redirect(f"/ebook/{my_sale_ebook.ebook.id}")
+
+
+
+def physic_command(request: WSGIRequest, ebook_id: int):
+    if request.POST:
+        ebooks = EbookModel.objects.filter(id=ebook_id)
+        phone_number = request.POST.get("phone_number")
+        if ebooks:
+            ebook = ebooks[0]
+            cmd = PhysicEbookCmd.objects.create(ebook=ebook, 
+                                                    phone_number=phone_number,
+                                                    amount=ebook.promo_price)
+            cmd.save()
+            notifiedManager(request, cmd)
+    messages.success(request, "Votre commande a été enregistrée avec succès. Nous vous contacterons dans un plus brief délai")
+    return redirect(f"/ebook/{ebook_id}")
+
+
+def notifiedManager(request, cmd: PhysicEbookCmd):
+    for manager in MANAGERS:
+        confirm_maessage = render_to_string("formation/cmd_snippet.html", {
+            "cmd": cmd,
+            "rsrc_title": cmd.ebook.title,
+            "request": request,
+            "manager": manager[0]
+        })
+    
+        plain_message = strip_tags(confirm_maessage)
+        send_mail(
+        subject=f"Nouvelle commande ~ {cmd.phone_number}",
+        message=plain_message,
+        from_email=EMAIL_HOST_USER,
+        recipient_list=[manager[1]],
+        html_message=confirm_maessage,
+        fail_silently=True
+    )
+
+

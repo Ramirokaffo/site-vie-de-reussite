@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Formation, FormationVideo, VideoComment, SaleFormation
+from .models import Formation, FormationVideo, VideoComment, SaleFormation, PhysicFormationCmd
 
 class FormationVideoInline(admin.StackedInline):
     model = FormationVideo
@@ -121,7 +121,20 @@ class SaleFormationAdmin(admin.ModelAdmin):
 
 
 
+class PhysicFormationCmdAdmin(admin.ModelAdmin):
+    list_display = ("formation", "phone_number", "isPaid", "amount", "created_at")
+
+    list_filter = ["isPaid", "formation"]
+    search_fields = ["phone_number", "formation__title"]
+    date_hierarchy = "created_at"
+    autocomplete_fields = ["formation"]
+    search_help_text = "Rechercher la commande via le numéro du client ou le nom de la formation"
+    save_on_top = True
+
+
+
 admin.site.register(Formation, FormationAdmin)
 admin.site.register(SaleFormation, SaleFormationAdmin)
 admin.site.register(FormationVideo, FormationVideoAdmin)
 admin.site.register(VideoComment, VideoCommentAdmin)
+admin.site.register(PhysicFormationCmd, PhysicFormationCmdAdmin)

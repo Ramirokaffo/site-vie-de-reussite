@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle commande</title>
+</head>
+<body>
+    <h1>Bonjour {{ manager }}</h1>
+    <p>Vous avez reçu une nouvelle commande sur le site web.</p>
+
+<h3>Informations de la commande:</h3>
+    <ul>
+        <li>Ressource: {{ rsrc_title }}</li>
+        <li>Numéro de téléphone client: {{ cmd.phone_number }}</li>
+        <li>Date: {{ cmd.created_at }}</li>
+        <li>Payé: {{ cmd.isPaid }}</li>
+        <li>Montant: {{ cmd.amount }}</li>
+    </ul>
+    <p>Vous recevez ce mail parceque vous êtes manager du site Vie de Réussite</p>
+</body>
+</html>

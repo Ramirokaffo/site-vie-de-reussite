@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import EbookModel, SaleEbook
+from .models import EbookModel, SaleEbook, PhysicEbookCmd
 from django.utils.html import format_html
 
 
@@ -61,7 +61,19 @@ class SaleEbookAdmin(admin.ModelAdmin):
     #     queryset.update(published=False)
 
 
+class PhysicEbookCmdAdmin(admin.ModelAdmin):
+    list_display = ("ebook", "phone_number", "isPaid", "amount", "created_at")
+
+    list_filter = ["isPaid", "ebook"]
+    search_fields = ["phone_number", "ebook__title"]
+    date_hierarchy = "created_at"
+    autocomplete_fields = ["ebook"]
+    search_help_text = "Rechercher via le numéro du client ou le nom du livre"
+    save_on_top = True
 
 
+
+
+admin.site.register(PhysicEbookCmd, PhysicEbookCmdAdmin)
 admin.site.register(EbookModel, EbookAdmin)
 admin.site.register(SaleEbook, SaleEbookAdmin)

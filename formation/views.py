@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render
-from .models import Formation, SaleFormation, VideoComment, FormationVideo
+from .models import Formation, SaleFormation, VideoComment, FormationVideo, PhysicFormationCmd
 from django.urls import reverse
 from core.models import CategoryModel
 from django.db.models import Count
@@ -17,6 +17,13 @@ from django.urls import reverse
 from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from requests import post
 from django.contrib import messages
+
+from bolda.settings import EMAIL_HOST_USER, MANAGERS
+from django.core.mail import send_mail
+from django.core.handlers.wsgi import WSGIRequest
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 def index(request: WSGIRequest):
     # sendActivationEmail(request, request.user, "Mail de debogage", None)
@@ -58,6 +65,19 @@ def comment(request: WSGIRequest):
     serialized_user = serialize('json', [request.user])
     return JsonResponse({"status": "1", "comment": {"content": videoComment.content}, "author": serialized_user}, content_type='application/json')
 
+def physic_command(request: WSGIRequest, formation_id: int):
+    if request.POST:
+        formations = Formation.objects.filter(id=formation_id)
+        phone_number = request.POST.get("phone_number")
+        if formations:
+            formation = formations[0]
+            cmd = PhysicFormationCmd.objects.create(formation=formation, 
+                                                    phone_number=phone_number,
+                                                    amount=formation.promo_price)
+            cmd.save()
+            notifiedManager(request, cmd)
+    messages.success(request, "Votre commande a été enregistrée avec succès. Nous vous contacterons dans un plus brief délai")
+    return redirect(f"/formation/{formation_id}")
 
 def buy(request: WSGIRequest, formation_id: int):
     if request.user.is_authenticated:
@@ -114,3 +134,21 @@ def formation_buy_callback(request: WSGIRequest):
         return redirect(f"/formation/{my_sale_formation.formation.id}")
 
 
+def notifiedManager(request, cmd: PhysicFormationCmd):
+    for manager in MANAGERS:
+        confirm_maessage = render_to_string("formation/cmd_snippet.html", {
+            "cmd": cmd,
+            "rsrc_title": cmd.formation.title,
+            "request": request,
+            "manager": manager[0]
+        })
+    
+        plain_message = strip_tags(confirm_maessage)
+        send_mail(
+        subject=f"Nouvelle commande ~ {cmd.phone_number}",
+        message=plain_message,
+        from_email=EMAIL_HOST_USER,
+        recipient_list=[manager[1]],
+        html_message=confirm_maessage,
+        fail_silently=True
+    )
