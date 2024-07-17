@@ -136,7 +136,7 @@
                         </svg>
                     </h4>
                     <ul class="wrapper">
-                        <li class="icon facebook share_facebook" data-url="http://....">
+                        <li class="icon facebook share_facebook" data-url="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}">
                             <span class="tooltip">Facebook</span>
                             <svg viewBox="0 0 320 512" height="1.2em" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +145,7 @@
                                 </path>
                             </svg>
                         </li>
-                        <li class="icon twitter button share_twitter" data-url="http://....">
+                        <li class="icon twitter button share_twitter" data-url="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}">
                             <span class="tooltip">Twitter</span>
                             <svg height="1.8em" fill="currentColor" viewBox="0 0 48 48"
                                 xmlns="http://www.w3.org/2000/svg" class="twitter">
@@ -154,10 +154,10 @@
                                 </path>
                             </svg>
                         </li>
-                        <li class="icon linkedin share_linkedin" data-url="http://....">
+                        <li class="icon linkedin share_linkedin share_linkedin_link" data-url="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}">
                             <span class="tooltip">Linkedin</span>
                             <svg height="1.8em" fill="currentColor" viewBox="0 0 48 48"
-                                xmlns="http://www.w3.org/2000/svg" class="linkedin linkedin_svg ">
+                                xmlns="http://www.w3.org/2000/svg" class="linkedin linkedin_svg share_linkedin_link">
                                 <path fill="currentColor"
                                     d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" />
                                 <path fill="currentColor" d="M7.2 8.809H4V19.5h3.2V8.809Z" />
@@ -174,19 +174,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- <button class="button share_twitter" data-url="http://....">
-                    Partager sur twitter
-                </button>
-                <button class="button share_facebook" data-url="http://....">
-                    Partager sur facebook
-                </button>
-                <button class="button share_gplus" data-url="http://....">
-                    Partager sur google+
-                </button>
-                <button class="button share_linkedin" data-url="http://....">
-                    Partager sur linkedin
-                </button> -->
 
             </div>
 
@@ -288,9 +275,8 @@
             e.preventDefault();
             var url = this.getAttribute('data-url');
             var shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.title) +
-                "&via=Grafikart_fr" +
                 "&url=" + encodeURIComponent(url);
-            popupCenter(shareUrl, "Partager sur Twitter");
+            popupCenter(shareUrl, "Partager sur X");
         });
 
         document.querySelector('.share_facebook').addEventListener('click', function (e) {
@@ -300,12 +286,6 @@
             popupCenter(shareUrl, "Partager sur facebook");
         });
 
-        document.querySelector('.share_gplus').addEventListener('click', function (e) {
-            e.preventDefault();
-            var url = this.getAttribute('data-url');
-            var shareUrl = "https://plus.google.com/share?url=" + encodeURIComponent(url);
-            popupCenter(shareUrl, "Partager sur Google+");
-        });
 
         document.querySelector('.share_linkedin').addEventListener('click', function (e) {
             e.preventDefault();
