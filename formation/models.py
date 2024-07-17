@@ -106,7 +106,7 @@ class SaleFormation(models.Model):
 class PhysicFormationCmd(models.Model):
     formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="formation achetée")
     created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="date de commande")
-    isPaid = models.BooleanField(default=False, verbose_name="payé ?")
+    isPaid = models.BooleanField(default=False, verbose_name="payé?")
     amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
     phone_number = models.CharField(max_length=255, blank=True, null=True, verbose_name="Téléphone client")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
