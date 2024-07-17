@@ -183,9 +183,7 @@ DB_HOST = env("DB_HOST")
 DB_PORT = env("DB_PORT")
 NOTCH_PAY_PUBLIC_API_KEY = env("NOTCH_PAY_PUBLIC_API_KEY")
 
-
-if DEBUG is True:
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': DB_NAME,
@@ -195,13 +193,25 @@ if DEBUG is True:
         'PORT': DB_PORT,
     }
 }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
+# if DEBUG is True:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'PASSWORD': DB_PASSWORD,
+#         'HOST': DB_HOST,
+#         'PORT': DB_PORT,
+#     }
+# }
+# else:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 
