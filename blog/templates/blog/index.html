@@ -6,7 +6,8 @@
 
 <meta property="og:title" content="{{ title }}" />
 <meta name="description" content="Vous trouverez dans cette page tous les articles/actualités pupliés par la Coach" />
-<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
+<meta property="og:image"
+    content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo_site_vie_reussie.jpeg' %}" />
 <meta property="og:image:secure_url" content="{% static 'images/logo_site_vie_reussie.jpeg' %}" />
 <meta property="og:image:alt" content="Le logo du site" />
 
@@ -31,98 +32,98 @@
         <section class="search-section">
             <form action="" method="get">
                 {% csrf_token %}
-                <input uk-search-input type="search" placeholder="Keyword..." name="search_input" value="{{ search_input }}" required>
+                <input uk-search-input type="search" placeholder="Keyword..." name="search_input"
+                    value="{{ search_input }}" required>
                 <button type="submit">Rechercher</button>
             </form>
         </section>
     </div>
-<div class="blog-main">
-    <section class="blog-center-section">
-        {% if page_obj %}
-        <div class="uk-grid-small uk-child-width-1-2@s uk-flex-center uk-text-center" uk-grid>
-            {% for post in page_obj %}
-            <div>
-                <div class="one-post-card">
-                    {% if post.illustration_image %}
-                    <div class="one-post-card-img" style="background-image: url('{{ post.illustration_image.url }}');">
-                    </div>
-                    {% else %}
-                    <div class="one-post-card-empty-img"></div>
-                    {% endif %}
-                    <div class="one-post-card-bottom-div">
-                        <h3>{{ post.title }}</h3>
-                        <p>
-                            {% if post.illustration_image %}
-                            {{ post.subtitle }}...
-                            {% else %}
-                            {{ post.subtitle }}...
-                            {% endif %}
-                        </p>
-                        <a class="show-details-button" href="{% url 'blog:detail' post.id %}">Lire l'article
-                        </a>
+    <div class="blog-main">
+        <section class="blog-center-section">
+            {% if page_obj %}
+            <div class="uk-grid-small uk-child-width-1-2@s uk-flex-center uk-text-center" uk-grid>
+                {% for post in page_obj %}
+                <div>
+                    <div class="one-post-card">
+                        {% if post.illustration_image %}
+                        <div class="one-post-card-img"
+                            style="background-image: url('{{ post.illustration_image.url }}');">
+                        </div>
+                        {% else %}
+                        <div class="one-post-card-empty-img"></div>
+                        {% endif %}
+                        <div class="one-post-card-bottom-div">
+                            <h3>{{ post.title }}</h3>
+                            <p>
+                                {% if post.illustration_image %}
+                                {{ post.subtitle }}...
+                                {% else %}
+                                {{ post.subtitle }}...
+                                {% endif %}
+                            </p>
+                            <a class="show-details-button" href="{% url 'blog:detail' post.id %}">Lire l'article
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        {% else %}
-        <p class="no-post-p">Aucune publication disponible</p>
-        {% endif %}
-
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; Première page</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Page précédente</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
-                </span>
-
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Page suivante</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Dernière page &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
-
-        {% include "ebook/bottom_ebook_cards.html" %}
-
-    </section>
-
-
-    <section class="blog-right-section">
-        <div class="sup-category-list">
-            {% if post_category_list %}
-            <ol class="category-type-list">
-                {% if category %}
-                <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
-                {% else %}
-                <li class="selected-category"><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
-
-                {% endif %}
-
-                {% for myCategory in post_category_list %}
-                {% if myCategory.id == category.id %}
-                <li class="selected-category">
-                    <a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{myCategory.name }}</a>
-                </li>
-                {% else %}
-                <li><a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{ myCategory.name }}</a></li>
-                {% endif %}
-
                 {% endfor %}
-            </ol>
+            </div>
+
             {% else %}
-            <p>No post category available.</p>
+            <p class="no-post-p">Aucune publication disponible</p>
             {% endif %}
-        </div>
-        <hr>
-        {% include "blog/right_side_bar.html" %}
-    </section>
-</div>
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; Première page</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">Page précédente</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Page suivante</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Dernière page &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+            {% include "ebook/bottom_ebook_cards.html" %}
+
+        </section>
+        <section class="blog-right-section">
+            <div class="sup-category-list">
+                {% if post_category_list %}
+                <ol class="category-type-list">
+                    {% if category %}
+                    <li><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
+                    {% else %}
+                    <li class="selected-category"><a href="{% url 'blog:index' %}">Toutes les catégories</a></li>
+
+                    {% endif %}
+
+                    {% for myCategory in post_category_list %}
+                    {% if myCategory.id == category.id %}
+                    <li class="selected-category">
+                        <a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{myCategory.name }}</a>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'blog:index' %}?category_id={{ myCategory.id }}">{{ myCategory.name }}</a></li>
+                    {% endif %}
+
+                    {% endfor %}
+                </ol>
+                {% else %}
+                <p>No post category available.</p>
+                {% endif %}
+            </div>
+            <hr>
+            {% include "blog/right_side_bar.html" %}
+        </section>
+    </div>
 </main>
 
 {% endblock %}

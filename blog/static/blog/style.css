@@ -154,10 +154,10 @@
 
 .blog-center-section {
     flex: 3;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
-
+  /* background-color: red; */
 }
 
 
@@ -249,6 +249,7 @@
     padding: 0px 5px;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
+    /* background-color: green; */
 
 }
 
