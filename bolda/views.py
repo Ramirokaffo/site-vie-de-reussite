@@ -14,6 +14,7 @@ from django.http import JsonResponse
 import os
 from bolda.settings import MEDIA_ROOT
 from .py_script import get_images_url as get_images_url_func
+from .py_script import delete_migrations_files as delete_migrations_files_func
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
@@ -91,6 +92,12 @@ def legal_notice(request):
 def get_images_url(request: WSGIRequest):
     image_list = get_images_url_func(os.path.join(MEDIA_ROOT, "images"))
     return JsonResponse(image_list, content_type='application/json', safe=False)
+
+
+@csrf_exempt
+def delete_migrations_files(request: WSGIRequest):
+    delete_migrations_files_func()
+    return JsonResponse({"status": "ok"}, content_type='application/json', safe=False)
 
 
 def web_hooks_end_point(request: WSGIRequest):
