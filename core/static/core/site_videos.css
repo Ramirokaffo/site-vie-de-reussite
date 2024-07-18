@@ -10,12 +10,17 @@
     display: flex;
     justify-content: center;
     margin: 20px 0px;
+    flex-wrap: wrap;
+    /* width: 100%; */
+  /* background-color: red; */
+  /* padding: 10px; */
 }
 
 .mini-video-frame {
     display: inline;
     margin: 10px;
 }
+
 .mini-video-frame iframe {
     height: 250px;
     width: 400px;

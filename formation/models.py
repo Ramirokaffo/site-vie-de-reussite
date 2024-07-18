@@ -41,7 +41,7 @@ class Formation(models.Model):
         return FormationVideo.objects.filter(formation=self).count()
 
 class FormationVideo(models.Model):
-    title = models.CharField(unique=True, max_length=255, verbose_name="Titre de la vidéo")
+    title = models.CharField(unique=False, max_length=255, verbose_name="Titre de la vidéo")
     decription = HTMLField(null=True, blank=True)
     video = models.CharField(max_length=20, blank=True, null=True, verbose_name="Identifiant de la vidéo")
     formation = models.ForeignKey(Formation, on_delete=models.SET_NULL, null=True, blank=False, verbose_name="Formation")
