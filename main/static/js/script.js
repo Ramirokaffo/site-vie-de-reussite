@@ -45,11 +45,13 @@ sendMessage = async () => {
 
 }
 
+// submitBtn = document.getElementById("contact-submit-id");
 
+// console.log(submitBtn)
 
-
-window.onload = async (event) => {
-
+// window.onload = async (event) => {
+//     alert("toto")
+//     console.log("Ramiro")
     
     // getImagesUrl()
 
@@ -62,7 +64,7 @@ window.onload = async (event) => {
     welcomeEventModal = document.getElementById("welcomeEventModal")
 
     UIkit.modal(welcomeEventModal).show();
-}
+// }
 
 
 

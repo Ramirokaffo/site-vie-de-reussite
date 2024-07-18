@@ -26,6 +26,9 @@ sendComment = async () => {
     if (data.status == "1") {
         newsletter_input.value = "";
             UIkit.notification("La souscription a réussi", {status:'success'})
+        } else if (data.status == "0") {
+        newsletter_input.value = "";
+            UIkit.notification("Vous êtes déjà inscrit à notre newsletter", {status:'warning'})
         } else {
             UIkit.notification("La suscription a échoué, veuillez reéssayer", {status:'danger'});
         }

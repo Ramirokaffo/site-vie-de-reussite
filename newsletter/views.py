@@ -11,9 +11,12 @@ from django.contrib import messages
 def subscribe(request: WSGIRequest):
     data = request.body.decode()
     data = json.loads(data)
-    subscriber = Subscribers(email=data["email"])
-    subscriber.save()
-    return JsonResponse({"status": "1"}, content_type='application/json')
+    expected_subscriber = Subscribers.objects.filter(email=data["email"])
+    if not expected_subscriber:
+        subscriber = Subscribers(email=data["email"])
+        subscriber.save()
+        return JsonResponse({"status": "1"}, content_type='application/json')
+    return JsonResponse({"status": "0"}, content_type='application/json')
 
 
 
