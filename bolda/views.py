@@ -93,3 +93,12 @@ def get_images_url(request: WSGIRequest):
     return JsonResponse(image_list, content_type='application/json', safe=False)
 
 
+def web_hooks_end_point(request: WSGIRequest):
+    print(request.GET)
+    # reference = request.GET.get('reference')
+    # trxref = request.GET.get('trxref')
+    # notchpay_trxref = request.GET.get('notchpay_trxref')
+    # status = request.GET.get('status')
+    return JsonResponse({"status": "receive"})
+
+

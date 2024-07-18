@@ -47,6 +47,7 @@ urlpatterns = [
     path("privacy-policy/", views.privacy, name="privacy"),
     path("legal-notice/", views.legal_notice, name="legal_notice"),
     path("get_images_url/", views.get_images_url, name="get_images_url"),
+    path("web_hooks_end_point/", views.web_hooks_end_point, name="web_hooks_end_point"),
     path("blog/", include("blog.urls")),
     path("ebook/", include("ebook.urls")),
     path("formation/", include("formation.urls")),
