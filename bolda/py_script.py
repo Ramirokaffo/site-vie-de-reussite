@@ -46,4 +46,4 @@ def delete_migrations_files():
     #         list_files += get_images_url(myfile)
     # return list_files
 
-delete_migrations_files()
+# delete_migrations_files()
