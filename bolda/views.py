@@ -94,10 +94,10 @@ def get_images_url(request: WSGIRequest):
     return JsonResponse(image_list, content_type='application/json', safe=False)
 
 
-@csrf_exempt
-def delete_migrations_files(request: WSGIRequest):
-    delete_migrations_files_func()
-    return JsonResponse({"status": "ok"}, content_type='application/json', safe=False)
+# @csrf_exempt
+# def delete_migrations_files(request: WSGIRequest):
+#     delete_migrations_files_func()
+#     return JsonResponse({"status": "ok"}, content_type='application/json', safe=False)
 
 
 def web_hooks_end_point(request: WSGIRequest):

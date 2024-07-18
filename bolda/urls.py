@@ -48,7 +48,7 @@ urlpatterns = [
     path("legal-notice/", views.legal_notice, name="legal_notice"),
     path("get_images_url/", views.get_images_url, name="get_images_url"),
     path("web_hooks_end_point/", views.web_hooks_end_point, name="web_hooks_end_point"),
-    path("delete_migrations_files/", views.delete_migrations_files, name="delete_migrations_files"),
+    # path("delete_migrations_files/", views.delete_migrations_files, name="delete_migrations_files"),
     path("blog/", include("blog.urls")),
     path("ebook/", include("ebook.urls")),
     path("formation/", include("formation.urls")),
