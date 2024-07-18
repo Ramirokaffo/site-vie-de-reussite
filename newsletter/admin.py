@@ -68,14 +68,15 @@ class NewsLetterAdmin(admin.ModelAdmin):
 
     @admin.action(description="Diffuser les messages selectionnées")
     def make_diffuse(self, request: WSGIRequest, queryset):
-
+        newsletter: NewsLetter
         for newsletter in queryset:
             email_list = []
             plain_message = strip_tags(newsletter.content)
             # print(newsletter.content)
             # print(newsletter.add_unsubscribe_link)
             unsubscribe_link = f'{request.scheme }://{request.get_host() }/newsletter/unsubscribe'
-            newsletter.load_unsubscribe_link(unsubscribe_link)
+            if newsletter.add_unsubscribe_link:
+                newsletter.load_unsubscribe_link(unsubscribe_link)
             # continue
             # Add emails from subscribers field
             for subscriber in newsletter.subscribers.all():
@@ -93,7 +94,7 @@ class NewsLetterAdmin(admin.ModelAdmin):
             html_message=newsletter.content,
             fail_silently=True
             )
-        self.message_user(request, message="Message diffusé avec succès.")
+        self.message_user(request, message="Message(s) diffusé(s) avec succès.")
             
 
 

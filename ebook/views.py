@@ -48,6 +48,7 @@ def detail(request, ebook_id):
 
 
 def buy(request: WSGIRequest, ebook_id: int):
+
     if request.user.is_authenticated:
         target_ebook = EbookModel.objects.get(id=ebook_id)
         url = "https://api.notchpay.co/payments/initialize"

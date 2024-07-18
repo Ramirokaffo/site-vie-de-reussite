@@ -91,15 +91,15 @@ class SaleFormation(models.Model):
     amount = models.FloatField(blank=False, null=False, verbose_name="montant facturé")
     my_reference = models.CharField(max_length=255, blank=False, null=False, verbose_name="reference de la transaction", default=uuid4)
     notch_pay_reference = models.CharField(max_length=255, blank=True, null=True, verbose_name="reference de notchpay")
-    status = models.CharField(max_length=255, blank=True, null=True, verbose_name="le status du paiement")
+    status = models.CharField(max_length=255, blank=True, null=True, verbose_name="status du paiement")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="dernière mise à jour")
     
     def __str__(self):
         return f"{self.user} - {self.formation}"
     
     class Meta:
-        verbose_name = "formation commandée"
-        verbose_name_plural = "formations commandées"
+        verbose_name = "formation achetée"
+        verbose_name_plural = "formations achetées"
 
 
 

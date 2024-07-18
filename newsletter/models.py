@@ -37,7 +37,7 @@ class SubscribersGroup(models.Model):
     
 class NewsLetter(models.Model):
     object = models.CharField(max_length=255, verbose_name="objet")
-    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date de publication")
+    created_at = models.DateTimeField(blank=True, null=True, auto_created=True, auto_now_add=True, verbose_name="Date de souscription")
     content = HTMLField(max_length=5000000, blank=True, verbose_name="message")
     add_unsubscribe_link = models.BooleanField(default=True, verbose_name="Ajouter le lien de désinscription")
     subscribers_group = models.ManyToManyField(
