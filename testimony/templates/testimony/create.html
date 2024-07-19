@@ -8,7 +8,7 @@
 {% endif %}
 <div class="create_testimony_div">
     <div class="testbox">
-        <form class="my_form" action="{% url 'testimony:create' %}" method="post" enctype="multipart/form-data">
+        <form class="my_form" id="my_testimony_form" action="{% url 'testimony:create' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p id="h1">Formulaire de Feedback</p>
             <div class="sub_profile">
@@ -53,12 +53,12 @@
                 </tbody>
             </table>
             <p id="h4">Laissez nous un témoignage<span>*</span></p>
-            <textarea rows="5" name="content" placeholder="Décrivez ici vos impressions par rapport aux services qui vous ont été rendus"></textarea>
+            <textarea rows="5" name="content" placeholder="Décrivez ici vos impressions par rapport aux services qui vous ont été rendus" required></textarea>
             <i>Vos impréssions seront rendues publique après vérification et approbation</i>
             <hr>
             <div class="btn-block">
                 <!-- <button href="/" type="submit">Send Feedback</button> -->
-                <button class="submit_feedback_btn" type="submit">Envoyer</button>
+                <button class="submit_feedback_btn" id="submit_feedback_btn" type="submit">Envoyer</button>
             </div>
         </form>
     </div>

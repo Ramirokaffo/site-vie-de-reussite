@@ -1,6 +1,8 @@
 
 
 const profileElement = document.getElementById('profile');
+const my_testimony_form = document.getElementById('my_testimony_form');
+const submit_feedback_btn = document.getElementById('submit_feedback_btn');
 const mediaFileInput = document.getElementById('profilImage');
 var userProfilUrl = document.getElementById('userProfilUrlId');
 if (userProfilUrl) {
@@ -13,6 +15,17 @@ if (userProfilUrl) {
 // ----- On render -----
 profileElement.classList.add('dragging');
 profileElement.classList.remove('dragging');
+
+submit_feedback_btn.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  if (mediaFileInput.files.length === 0 && !profileElement.style.backgroundImage) {
+    UIkit.notification("Veuillez renseigner une photo de profil !", {status:'primary'})
+  } else {
+    my_testimony_form.submit();
+  }
+
+});
 
 // Handle drag events
 profileElement.addEventListener('dragover', function () {

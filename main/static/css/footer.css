@@ -277,7 +277,7 @@ footer h3 {
   .instagram {
     margin-top: 1.5em;
     margin-left: 1.2em;
-    fill: #cc39a4;
+    fill: #a5047a;
   }
   
   .card2 {
@@ -338,7 +338,7 @@ footer h3 {
   .card1:hover {
     cursor: pointer;
     scale: 1.1;
-    background-color: #cc39a4;
+    background-color: #a5047a;
   }
   
   .card1:hover .instagram {
