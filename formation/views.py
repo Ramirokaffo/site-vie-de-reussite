@@ -79,55 +79,73 @@ def physic_command(request: WSGIRequest, formation_id: int):
     messages.success(request, "Votre commande a été enregistrée avec succès. Nous vous contacterons dans un plus brief délai")
     return redirect(f"/formation/{formation_id}")
 
+
+
 def buy(request: WSGIRequest, formation_id: int):
+    """
+    Fonction qui initialise la transaction et redirige l'utilisateur vers la page de paiement
+    """
     if request.user.is_authenticated:
-        target_formation = Formation.objects.get(id=formation_id)
-        url = "https://api.notchpay.co/payments/initialize"
-        reference = uuid4()
+        try:
+            # Rechercher dans la base de données la formation que l'utilisateur veut acheter
+            target_formation = Formation.objects.get(id=formation_id) # Si la formation n'existe pas, cette fonction va lever une exception
+            url = "https://api.notchpay.co/payments/initialize"
+            # Generer une reference unique et aleatoire pour suivre la transaction
+            reference = uuid4()
+            # Generer le lien de redirection à utiliser une transaction terminée
+            callback = request.build_absolute_uri(reverse('formation:formation_buy_callback'))
+            data = {
+                "email": request.user.email,
+                "amount": target_formation.promo_price,
+                "currency": "XAF",
+                "description": f"Paiement de la formation {target_formation.title} | Site vie de réussite",  # Optional
+                "reference": reference,
+                "callback": callback
+            }
 
-        callback = request.build_absolute_uri(reverse('formation:formation_buy_callback'))
-        data = {
-            "email": request.user.email,
-            "amount": target_formation.promo_price,
-            "currency": "XAF",
-            "description": f"Paiement de la formation {target_formation.title} | Site vie de réussite",  # Optional
-            "reference": reference,
-            "callback": callback
-        }
+            headers = {
+                "Authorization": NOTCH_PAY_PUBLIC_API_KEY,
+                "Cache-Control": "no-cache"
+            }
 
-        headers = {
-            "Authorization": NOTCH_PAY_PUBLIC_API_KEY,
-            "Cache-Control": "no-cache"
-        }
+            # Envoyer les données de la transaction à l'API de Notch Pay
+            response = post(url, data=data, headers=headers)
 
-        # Send POST request with data and headers
-        response = post(url, data=data, headers=headers)
-
-        # Check for successful response (usually status code 200)
-        # print(response.json())
-        if response.status_code == 201:
-            payment_data = response.json()
-            my_sale_ebook = SaleFormation.objects.create(user=request.user, formation=target_formation, amount=target_formation.promo_price, my_reference=reference, notch_pay_reference=payment_data["transaction"]["reference"])
-            my_sale_ebook.save()
-
-            return redirect(payment_data["authorization_url"])
-        else:
+            # Vérifier si tous s'est bien passé
+            if response.status_code == 201:
+                payment_data = response.json()
+                # Enregistrer l'achat au préalable mais avec un statut NON PAYÉ
+                my_sale_ebook = SaleFormation.objects.create(user=request.user, formation=target_formation, amount=target_formation.promo_price, my_reference=reference, notch_pay_reference=payment_data["transaction"]["reference"])
+                my_sale_ebook.save()
+                # Rediriger l'utilisateur vers la page de paiement retourné par Notch Pay
+                return redirect(payment_data["authorization_url"])
+            else:
+                messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat")
+                return redirect(f'/formation/{formation_id}')
+        except:
             messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat")
             return redirect(f'/formation/{formation_id}')
     else:
         return redirect(f"/auth/register?next={ '/formation/buy/' + str(formation_id) }")
 
 def formation_buy_callback(request: WSGIRequest):
+    """
+    Fonction qui est appélée lorsque l'utilisateur termine ou annule sa transaction
+    """
+    # Recuperer la reference de Notch Pay
     reference = request.GET.get('reference')
-    # trxref = request.GET.get('trxref')
+    # Recuperer la reference de la transaction provenant de mon site [reference = uuid4()]
     notchpay_trxref = request.GET.get('notchpay_trxref')
+    # Recuperer le status de la transaction provenant de Notch Pay
     status = request.GET.get('status')
     my_sale_formation = SaleFormation.objects.get(my_reference=notchpay_trxref, notch_pay_reference=reference)
     my_sale_formation.status = status
+    # Si le statut de la transaction est [complete], cela veut dire que l'utilisateur a payé sa formation
     if status == "complete":
         my_sale_formation.isPaid = True
     my_sale_formation.save()
     if status == "complete":
+        # Rediriger l'utilisateur sur son profil (Page des formations achetées)
         return redirect("/profil/formation")
     else:
         messages.error(request, "Le paiement a échoué")
