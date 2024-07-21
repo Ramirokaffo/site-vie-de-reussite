@@ -109,15 +109,19 @@ def dict_values(value: dict):
 @register.filter("event_status")
 @stringfilter
 def event_status(startDate, endDate):
-    startDate = datetime.strptime(str(startDate)[:-6], "%Y-%m-%d %H:%M:%S")
-    endDate = datetime.strptime(str(endDate)[:-6], "%Y-%m-%d %H:%M:%S")
+    try:
+        startDate = datetime.strptime(str(startDate)[:-6], "%Y-%m-%d %H:%M:%S")
+        endDate = datetime.strptime(str(endDate)[:-6], "%Y-%m-%d %H:%M:%S")
 
-    startDate = timezone.make_aware(startDate, timezone.get_default_timezone())
-    endDate = timezone.make_aware(endDate, timezone.get_default_timezone())
-    now = timezone.now()
-    if startDate < now and now < endDate:
-        return "Évènement en cours"
-    if startDate > now:
-        return "Évènement à venir"
-    else:
+        startDate = timezone.make_aware(startDate, timezone.get_default_timezone())
+        endDate = timezone.make_aware(endDate, timezone.get_default_timezone())
+        now = timezone.now()
+        if startDate < now and now < endDate:
+            return "Évènement en cours"
+        if startDate > now:
+            return "Évènement à venir"
+        else:
+            return "Évènement passé" 
+    except:
         return "Évènement passé" 
+
