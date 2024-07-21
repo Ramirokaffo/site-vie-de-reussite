@@ -73,7 +73,7 @@ def buy(request: WSGIRequest, ebook_id: int):
         response = post(url, data=data, headers=headers)
 
         # Check for successful response (usually status code 200)
-        # print(response.json())
+        print(response.json())
         if response.status_code == 201:
             payment_data = response.json()
             my_sale_ebook = SaleEbook.objects.create(user=request.user, ebook=target_ebook, amount=target_ebook.promo_price, my_reference=reference, notch_pay_reference=payment_data["transaction"]["reference"])
@@ -81,7 +81,7 @@ def buy(request: WSGIRequest, ebook_id: int):
 
             return redirect(payment_data["authorization_url"])
         else:
-            messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat")
+            messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat" + response.json())
             return redirect(f'/ebook/{ebook_id}')
     else:
         return redirect(f"/auth/register?next={ '/ebook/buy/' + str(ebook_id) }")
