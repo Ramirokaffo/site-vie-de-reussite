@@ -50,14 +50,14 @@ def index(request: WSGIRequest):
         "selected_tab": "home",
         "title": "Coaching et développement personnel avec Dr. Tara Bolda | Vie de réussite",
     }
-    last_navigation = request.session.get("last_navigation")
-
-    if (last_navigation is None) or (datetime.fromisoformat(last_navigation) + timedelta(days=1) < datetime.now()):
-        request.session["last_navigation"] = datetime.now().isoformat()
-        event_to_show = EventModel.objects.filter(show_at_home=True)[:1]
-        context["event_to_show"] = event_to_show[0] if len(event_to_show) != 0 else None
-    
-
+    try:
+        last_navigation = request.session.get("last_navigation")
+        if (last_navigation is None) or (datetime.fromisoformat(last_navigation) + timedelta(days=1) < datetime.now()):
+            request.session["last_navigation"] = datetime.now().isoformat()
+            event_to_show = EventModel.objects.filter(show_at_home=True)[:1]
+            context["event_to_show"] = event_to_show[0] if len(event_to_show) != 0 else None
+    except:
+        pass
     return render(request=request, template_name="index.html", context=context)
 
 
