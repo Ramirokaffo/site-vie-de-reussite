@@ -11,6 +11,4 @@ urlpatterns = [
     path("buy/<int:formation_id>/", buy, name="buy"),
     path("physic_command/<int:formation_id>/", physic_command, name="physic_command"),
     path("formation_buy_callback/", formation_buy_callback, name="formation_buy_callback"),
-    
-
 ]

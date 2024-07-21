@@ -22,7 +22,6 @@
     position: relative;
     background-clip: border-box;
     background-color: var(--second-color1);
-    /* background-image: linear-gradient(to top right,#1e88e5,#42a5f5); */
     margin: 10px 0px;
     border-radius: 10px;
     overflow: hidden;
@@ -118,7 +117,6 @@
     text-align: center;
     padding: .75rem 1.5rem;
     background-color: var(--second-color1);
-    /* background-image: linear-gradient(to top right,#1e88e5,#42a5f5); */
     border-radius: 10px;
     width: 100%;
     outline: 0;
@@ -163,15 +161,10 @@
   
   .signup-link a, .forget {
     line-height: 1.5;
-    /* font-weight: 700; */
     font-size: .875rem;
     margin: 0px;
-    /* color: #1e88e5; */
   }
 
-  .signup-link a {
-
-  }
 
   @media screen and (max-width: 901px) {
     .form {
