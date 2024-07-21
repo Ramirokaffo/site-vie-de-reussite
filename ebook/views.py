@@ -81,7 +81,7 @@ def buy(request: WSGIRequest, ebook_id: int):
 
             return redirect(payment_data["authorization_url"])
         else:
-            messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat" + response.json())
+            messages.error(request, "Une erreur s'est produite lors de l'initialisation de votre achat" + str(response.json()))
             return redirect(f'/ebook/{ebook_id}')
     else:
         return redirect(f"/auth/register?next={ '/ebook/buy/' + str(ebook_id) }")
