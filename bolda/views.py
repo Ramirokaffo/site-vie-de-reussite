@@ -18,7 +18,6 @@ from .py_script import delete_migrations_files as delete_migrations_files_func
 
 def index(request: WSGIRequest):
     latest_post_list = BlogPost.objects.filter(published=True)[:3]
-    # latest_post_list[0].author.get_full_name
     # Annoter le modèle EbookModel avec le nombre de ventes
     EbookModelWithSales = EbookModel.objects.annotate(
         sales_count=Count('saleebook__id')
