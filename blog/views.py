@@ -79,6 +79,8 @@ def detail(request, post_id):
         "post_comments": post_comments,
         "related_post_category": related_post_category,
     }
+    print("************************=============================")
+    print("************************=============================")
     return render(request, "blog/details.html", context)
 
 @login_required

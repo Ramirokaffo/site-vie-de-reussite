@@ -10,7 +10,7 @@ from formation.models import Formation
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name="titre")
-    subtitle = models.CharField(max_length=255, blank=False, default="", null=False, verbose_name="texte présentatif")
+    subtitle = models.CharField(max_length=255, blank=False, null=False, verbose_name="texte présentatif")
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="auteur de la publication")
     category = models.ForeignKey(CategoryModel, on_delete=models.DO_NOTHING, null=False, blank=False, verbose_name="catégorie de la publication")
@@ -23,7 +23,7 @@ class BlogPost(models.Model):
         EbookModel, related_name='high_light_ebooks', symmetrical=False, blank=True, verbose_name='livres mis en avant'
     )
     high_light_formations = models.ManyToManyField(
-        Formation, related_name='high_light_formations', symmetrical=False, blank=True, verbose_name='formations mis en avant'
+        Formation, related_name='high_light_formations', symmetrical=False, blank=True, verbose_name='formations mises en avant'
     )
 
 
