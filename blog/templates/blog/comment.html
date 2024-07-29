@@ -6,9 +6,20 @@
 <div class="one_post_comment_element">
                     <div class="one_post_comment_element_head">
                         <div class="one_post_comment_element_head_left">
-                            <div class="one_post_comment_author_profil"
-                                style="background-image: url('{{ comment.author.profil_image.url }}');">
-                            </div>
+                        {% if comment.author.profil_image %}
+                        <div class="one_post_comment_author_profil"
+                        style="background-image: url('{{ comment.author.profil_image.url }}');">
+                    </div>
+                        {% else %}
+                        <svg uk-toggle="target: #offcanvas-flip" height="50" width="50" xmlns="http://www.w3.org/2000/svg"
+                        fill="var(--second-color2)" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                          d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
+                          clip-rule="evenodd" />
+                      </svg>
+                        {% endif %}
+                        
+                           
                             <div class="one_post_comment_head_title">
                                 <h5>{{ comment.author.get_full_name }}</h5>
                                 <p>{{ comment.created_at|date:"l, d F à H:i" }}</p>
