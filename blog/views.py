@@ -92,8 +92,8 @@ def comment(request: WSGIRequest, post_id: int):
         print(request.session.load())
         user_profil_session = request.session.get("user_profile")
         print(user_profil_session)
-        user_profil_id = user_profil_session.get("id")
-        user_profil = UserProfilModel.objects.get(id=user_profil_id)
+        # user_profil_id = user_profil_session.get("id")
+        user_profil = UserProfilModel.objects.get(user__id=request.user.id)
         print(user_profil)
 
         new_comment = BlogComment.objects.create(content=content, post=post, author=user_profil)
