@@ -23,6 +23,9 @@ def add_user_profile_to_session(sender, request: WSGIRequest, user, **kwargs):
         # Ajouter le profil à la session
         request.session['user_profile'] = {
             'id': user_profile.id,
+        }
+        if user_profile.profil_image:
+            request.session['user_profile'] = {
             "profil_image": user_profile.profil_image.url
         }
         request.session.save()
