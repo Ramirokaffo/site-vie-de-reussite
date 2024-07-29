@@ -79,8 +79,8 @@ def detail(request, post_id):
         "post_comments": post_comments,
         "related_post_category": related_post_category,
     }
-    print("************************============================= "+str(post_id))
-    print("************************============================= "+str(post_id))
+    # print("************************============================= "+str(post_id))
+    # print("************************============================= "+str(post_id))
     return render(request, "blog/details.html", context)
 
 @login_required
@@ -88,6 +88,8 @@ def comment(request: WSGIRequest, post_id: int):
     if request.POST:
         content: str = request.POST.get("content")
         post = BlogPost.objects.get(id=post_id)
+        print("le profil de l'utilisateur: ")
+        print(request.session.get("user_profile"))
         user_profil = UserProfilModel.objects.get(id=request.session.get("user_profile").get("id"))
         new_comment = BlogComment.objects.create(content=content, post=post, author=user_profil)
         new_comment.save()

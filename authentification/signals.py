@@ -11,8 +11,12 @@ def add_user_profile_to_session(sender, request, user, **kwargs):
 
     try:
         # Récupérer le profil associé à l'utilisateur
-        user_profile = UserProfilModel.objects.get(user=user)
-
+        expected_user_profile = UserProfilModel.objects.filter(user=user)
+        if expected_user_profile:
+            user_profile = expected_user_profile[0]
+        else:
+            user_profile = UserProfilModel.objects.create(user=user)
+            user_profile.save()
         # Ajouter le profil à la session
         request.session['user_profile'] = {
             'id': user_profile.id,

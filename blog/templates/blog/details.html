@@ -87,15 +87,11 @@
                     <div class="comment_reply_main_component_n3">
                         {% include "blog/comment.html" with comment=next_reply %}
                     </div>
-
                     {% endfor %}
                 </div>
-
-
                 {% endfor %}
                 {% empty %}
                 <p>Aucun commentaire</p>
-
                 {% endfor %}
                 <h3>Ajouter votre commentaire</h3>
                 <form action="{% url 'blog:comment' post.id %}" method="post" class="add_comment_div">
