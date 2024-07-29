@@ -89,7 +89,7 @@ def comment(request: WSGIRequest, post_id: int):
         content: str = request.POST.get("content")
         post = BlogPost.objects.get(id=post_id)
         print("le profil de l'utilisateur: ")
-        print(request.session)
+        print(request.session.load())
         user_profil_session = request.session.get("user_profile")
         print(user_profil_session)
         user_profil_id = user_profil_session.get("id")
