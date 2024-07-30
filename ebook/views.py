@@ -13,7 +13,7 @@ from bolda.settings import NOTCH_PAY_PUBLIC_API_KEY
 from django.contrib import messages
 from uuid import uuid4
 from django.urls import reverse
-
+from django.http import Http404
 from bolda.settings import EMAIL_HOST_USER, MANAGERS
 from django.core.mail import send_mail
 from django.core.handlers.wsgi import WSGIRequest
@@ -32,7 +32,11 @@ def index(request: WSGIRequest):
     return render(request, "ebook/index.html", context)
 
 def detail(request, ebook_id):
-    target_ebook = EbookModel.objects.get(id=ebook_id)
+    target_ebook = EbookModel.objects.filter(id=ebook_id)
+    if target_ebook:
+        target_ebook = target_ebook[0]
+    else:
+        raise Http404("Ouvrage non trouvé")
     related_ebook_category = EbookModel.objects.filter(category=target_ebook.category.id, published=True).exclude(id=target_ebook.id)[:4]
     if len(related_ebook_category) == 0:
         related_ebook_category = EbookModel.objects.filter(published=True).order_by("-created_at").exclude(id=target_ebook.id)[:4]

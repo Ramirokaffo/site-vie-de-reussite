@@ -23,6 +23,7 @@ from django.core.mail import send_mail
 from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.http import Http404
 
 
 def index(request: WSGIRequest):
@@ -42,6 +43,10 @@ def detail(request, formation_id):
         video_count=Count('formationvideo')
     )
     target_formation = target_formation.get(id=formation_id)
+    if target_formation:
+        target_formation = target_formation[0]
+    else:
+        raise Http404("Formation non trouvée")
     related_formation_category = Formation.objects.filter(category=target_formation.category.id).exclude(id=target_formation.id)
     if len(related_formation_category) == 0:
         related_formation_category = Formation.objects.all().exclude(id=target_formation.id)[:4]

@@ -11,6 +11,7 @@ from django.db.models import Q
 from django.contrib import messages
 from profil.models import UserProfilModel
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 def index(request: WSGIRequest):
     category_id = request.GET.get("category_id")
@@ -58,7 +59,11 @@ def index(request: WSGIRequest):
 
 
 def detail(request, post_id):
-    target_post = BlogPost.objects.get(id=post_id)
+    target_post = BlogPost.objects.filter(id=post_id)
+    if target_post:
+        target_post = target_post[0]
+    else:
+        raise Http404("Article non trouvé")
     post_comments = BlogComment.objects.filter(post=target_post, reply_of__isnull=True).order_by("-created_at")[:5]
     related_post_category = BlogPost.objects.filter(category=target_post.category.id, published=True).exclude(id=target_post.id)[:20]
     formation_list = Formation.objects.filter(published=True).order_by("category").annotate(
