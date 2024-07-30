@@ -271,7 +271,7 @@ LOGIN_URL = "/auth/login"
 
 SERVER_EMAIL = "tarabolda138@gmail.com"
 
-ADMINS = [("Ramiro kaffo", "ramirokaffo@icloud.com"), ]
+ADMINS = [("Ramiro kaffo", "kafforamiro@yahoo.com"), ]
 
 MANAGERS = [("Tara Bolda", "tarabolda138@gmail.com"), ]
 
