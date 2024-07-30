@@ -372,9 +372,12 @@
             alt="">
     </div>
 </div>
+{% if site_videos %}
 <div class="home-list-videos">
     {% include "core/site_videos.html" %}
 </div>
+{% endif %}
+
 {% if last_testimony_list %}
 <div class="sup-testimony-div">
     <h2>DES RETOURS À PROPOS DE NOUS ?</h2>
