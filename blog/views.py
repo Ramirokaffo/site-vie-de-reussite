@@ -93,14 +93,7 @@ def comment(request: WSGIRequest, post_id: int):
     if request.POST:
         content: str = request.POST.get("content")
         post = BlogPost.objects.get(id=post_id)
-        # print("le profil de l'utilisateur: ")
-        # print(request.session.load())
-        user_profil_session = request.session.get("user_profile")
-        # print(user_profil_session)
-        # user_profil_id = user_profil_session.get("id")
         user_profil = UserProfilModel.objects.get(user__id=request.user.id)
-        # print(user_profil)
-
         new_comment = BlogComment.objects.create(content=content, post=post, author=user_profil)
         new_comment.save()
         messages.success(request, "Votre commentaire a été ajouté avec succès")
@@ -114,12 +107,10 @@ def reply(request: WSGIRequest, comment_id: int):
     if request.POST:
         content: str = request.POST.get("reply_content")
         comment = BlogComment.objects.get(id=comment_id)
-        user_profil = UserProfilModel.objects.get(id=request.session.get("user_profile").get("id"))
+        user_profil = UserProfilModel.objects.get(user__id=request.user.id)
         new_comment = BlogComment.objects.create(content=content, post=comment.post, author=user_profil, reply_of=comment)
         new_comment.save()
-        # comment.reply_of
-        # comment.save()
-        messages.success(request, "Votre reponse a été ajouté avec succès")
+        messages.success(request, "Votre reponse a été ajoutée avec succès")
         return redirect(f"/blog/{comment.post.id}")
     else:
         return redirect(f"/blog/{comment.post.id}")
