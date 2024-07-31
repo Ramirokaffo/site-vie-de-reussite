@@ -1,16 +1,12 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.template import loader
 from core.models import CategoryModel
 from django.core.paginator import Paginator
-from formation.models import Formation
-from ebook.models import EbookModel
-from blog.models import BlogPost
 from event.models import EventModel
-from django.db.models import Count
 from datetime import datetime
 from django.utils import timezone
+from django.http import Http404
 
 
 def index(request: WSGIRequest):
@@ -37,7 +33,11 @@ def index(request: WSGIRequest):
     return render(request, "event/index.html", context)
 
 def detail(request, event_id):
-    target_event = EventModel.objects.get(id=event_id)
+    target_event = EventModel.objects.filter(id=event_id)
+    if target_event:
+        target_event = target_event[0]
+    else:
+        raise Http404("Évènement non trouvé")
     startDate = datetime.strptime(str(target_event.start_at)[:-6], "%Y-%m-%d %H:%M:%S")
     endDate = datetime.strptime(str(target_event.end_at)[:-6], "%Y-%m-%d %H:%M:%S")
 

@@ -220,6 +220,14 @@
   border-radius: 0px;
 }
 
+
+.price-badge {
+  width: 100%;
+  border-radius: 0px;
+  border-left: none;
+
+}
+
 /* .ebook-image::before {
   content: "Voir plus...";
   position: absolute;
