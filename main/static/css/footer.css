@@ -4,7 +4,7 @@ footer {
     /* height: 500px; */
     background-color: var(--second-color1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 10px;
-
+  border-top: 5px solid var(--second-color3);
 }
 
 

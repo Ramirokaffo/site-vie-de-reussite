@@ -42,7 +42,7 @@ def detail(request, formation_id):
     target_formation = Formation.objects.annotate(
         video_count=Count('formationvideo')
     )
-    target_formation = target_formation.get(id=formation_id)
+    target_formation = target_formation.filter(id=formation_id)
     if target_formation:
         target_formation = target_formation[0]
     else:

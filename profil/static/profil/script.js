@@ -142,7 +142,7 @@ const sendMessageSpinner = document.getElementById("dotSpinnerComment");
     submitBtn = document.getElementById("sendCommentBtn");
     submitBtn.addEventListener("click", (event)=>{
         sendComment(sendMessageSpinner);
-    })
+    });
 
     
     videoDescription = document.getElementById("video-descriptiion");
