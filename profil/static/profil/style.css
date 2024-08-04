@@ -65,6 +65,37 @@ body {
 
 
 
+.whatsap-chat-group-div-foot {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: var(--second-color2);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.whatsap-chat-group-div-foot a {
+    color: var(--color3);
+
+}
+
+.whatsap-chat-group-div-foot p {
+    color: red;
+}
+
+.whatsap-chat-group-div-foot p:hover {
+    cursor: pointer;
+}
+
+
+.whatsap-chat-group-div-foot a:hover {
+    text-decoration: none;
+}
 
 
 
@@ -72,5 +103,14 @@ body {
 
     .profil-left-section {
         display: none;
+    }
+
+    .whatsap-chat-group-div-foot {
+        justify-content: space-evenly;
+
+    }
+
+    .whatsap-chat-group-div-foot a, .whatsap-chat-group-div-foot p {
+        font-size: 13px;
     }
 }
