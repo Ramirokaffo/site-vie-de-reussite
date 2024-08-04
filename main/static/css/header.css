@@ -330,9 +330,9 @@
     fill: var(--second-color2);
     margin: 0px;
     padding: 0px;
-    scale: 1.8;
-    height: 100px;
-    width: 100px;
+    scale: 1.6;
+    /* height: 50px;
+    width: 50px; */
     /* stroke: red; */
 
   }
