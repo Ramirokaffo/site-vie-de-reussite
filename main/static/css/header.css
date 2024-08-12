@@ -2,7 +2,6 @@
 .sup-main-nav-bar {
     background-color: var(--second-color1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px 0px;
-    /* background-color: red; */
 
 }
 
@@ -79,18 +78,14 @@
     height: 3rem;
     padding: 0 2rem;
     border-radius: 50px;
-    /* background: white; */
     border: 1px solid var(--second-color2);
     border: 1px solid rgba(255, 255, 255, 1);
-    /* color: var(--color4); */
     color: white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.5); */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
-    /* background: linear-gradient(to top, var(--second-color1), var(--second-color2)); */
 
 
   }
@@ -102,7 +97,6 @@
   .connect-button-content {
     position: relative;
     z-index: 1;
-    /* color: var(--second-color2); */
     font-weight: bold;
   }
 
@@ -114,28 +108,9 @@
     text-decoration: none;
   }
   
-  /* .connect-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    width: 100%;
-    height: inherit;
-    border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      var(--color1) 10.8%,
-      var(--color2) 94.3%
-    );
-    transition: all 0.475s;
-  }
-   */
 
   .header-right-div {
     background-color: var(--second-color2);
-    /* background-color: var(--color2); */
     display: flex;
     border-radius: 40px;
     padding: 5px 20px;
@@ -207,7 +182,6 @@
       padding: 0px 0px;
       height: 50px; 
     margin: 0px;
-    /* background-color: white !important; */
 
   }
 
@@ -240,14 +214,8 @@
 
     .left-mobile-header {
       display: flex;
-      /* background-color: red; */
       gap: 10px;
-      /* justify-content: stretch !important; */
-      /* padding: 5px 0px !important; */
       margin: 0px !important;
-      /* align-items: stretch; */
-      /* box-sizing: border-box; */
-
     }
 
     .first-action-button svg {
@@ -255,23 +223,14 @@
     }
 
     .first-action-button, .public-user-profil, .header-right-div, .connect-button {
-      /* scale: 0.6; */
-      /* margin: 0px !important; */
-      /* background-color: green; */
     padding: 0px 7px !important;
-    /* margin: 0px !important; */
     height: 30px !important;
-    /* height: 3rem; */
-
     font-size: 10px !important;
     margin: 5px 0px;
       box-sizing: border-box;
     }
 
-    .first-action-button {
-      /* margin: 5px 0px; */
-      /* scale: 0.9; */
-    }
+
 
     .first-action-button .pc-text {
       display: none;
@@ -283,8 +242,6 @@
 
     .header-right-div {
     margin: 0px !important;
-    /* padding: 0px !important; */
-    /* background-color: red; */
     align-self: stretch;
     height: 30px !important;
 
@@ -314,16 +271,13 @@
     gap: 0px;
     margin: 0px !important;
     box-shadow: none;
-    /* background-color: green; */
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     height: 30px;
     width: 30px;
     border-radius: 50%;
     box-sizing: border-box;
-    /* position: static; */
     display: block;
-    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9); */
-    /* overflow: hidden; */
+
   }
 
   .header-right-div svg {
@@ -331,20 +285,11 @@
     margin: 0px;
     padding: 0px;
     scale: 1.6;
-    /* height: 50px;
-    width: 50px; */
-    /* stroke: red; */
-
   }
 
   .mobil_user_profil_image {
-    /* padding: 10px; */
-    /* background-color: red; */
     height: 30px;
     width: 30px;
-    /* max-height: 30px;
-    max-width: 30px; */
-    
     border-radius: 50%;
     background-size: contain;
     box-sizing: border-box;

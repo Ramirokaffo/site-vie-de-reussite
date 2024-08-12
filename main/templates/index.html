@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<div class="welcome-bg-image" style="background-image: url('static/images/african-investment.jpg');">
+<div class="welcome-bg-image" style="background-image: url('static/images/banner.jpeg');">
     <div class="welcome-glass-cart">
         <H1 class="welcome-main-activity">
             Coaching & Developpement Personnel
@@ -282,7 +282,7 @@
 
         </div>
         <div class="sub_show_all_event_div">
-            <a class="show_all_event_btn" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR TOUS LES
+            <a class="show_all_event_btn" href="{% url 'event:index' %}" uk-scrollspy="cls: uk-animation-slide-left; delay: 200">VOIR TOUS LES
                 ÉVÈNEMENTS</a>
 
         </div>
@@ -293,7 +293,7 @@
 
 <div class="parallax-div">
     <div class="uk-height-large uk-background-cover uk-light uk-flex img-parallax-div" uk-parallax="bgy: -500"
-        style="background-image: url('static/images/african-investment.jpg');">
+        style="background-image: url('static/images/parallax.jpeg'); background-position: top;">
         <div class="black-opacity">
             <div class="in-black-opacity" uk-scrollspy="cls: uk-animation-fade; delay: 200">
                 <h1>Osez le changement et découvrez une nouvelle version de vous-même grâce à notre accompagnement
