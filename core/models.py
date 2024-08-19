@@ -32,10 +32,10 @@ class SiteVideoModel(models.Model):
         
     title = models.CharField(max_length=255, null=True, unique=True, verbose_name="titre de la vidéo")
     video = models.CharField(max_length=255, null=True, unique=True, verbose_name="identifiant YouTube de la vidéo")
-    show_where = models.CharField(blank=False, null=False, max_length=15, default="home", verbose_name="Afficher où ?", choices=SHOW_WHERE_TYPE)
+    show_where = models.CharField(blank=False, null=False, max_length=15, default="home", verbose_name="afficher où ?", choices=SHOW_WHERE_TYPE)
     last_updated = models.DateTimeField(auto_now=True)
     created_at = models.DateField(blank=True, null=True, auto_created=True, auto_now_add=True)
-    published = models.BooleanField(default=True, verbose_name="Publié")
+    published = models.BooleanField(default=True, verbose_name="publié")
 
     def __str__(self):
         return self.title

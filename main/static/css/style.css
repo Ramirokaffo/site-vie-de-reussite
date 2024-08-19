@@ -1,4 +1,3 @@
-
 .welcome-bg-image {
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,18 +33,22 @@
   flex-direction: column;
   align-items: center;
   padding: 30px;
+  gap: 25px;
 }
 
 .welcome-main-activity {
   color: white;
   font-weight: bold;
   font-size: 60px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .welcome-glass-cart h3 {
   color: rgba(255, 255, 255, 0.5);
   color: var(--color4);
-
+  margin: 0px;
+  padding: 0px;
 }
 
 
@@ -122,7 +125,7 @@
   /* display: flex;
   flex-direction: column; */
   /* gap: 30px; */
-  
+
 }
 
 .business-presentation-div {
@@ -130,7 +133,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: stretch;
-  
+
   align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
   border-top-left-radius: 20px;
@@ -180,12 +183,21 @@
 
 .presentation-div-right-side {
   width: 350px;
+  height: 500px;
+  /* background-color: red; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotateY(180deg);
+
 }
 
 .presentation-div-right-side img {
   bottom: 0px;
   right: 0px;
 
+  transform: rotateY(180deg);
+  height: 100%;
 }
 
 
@@ -234,14 +246,12 @@
 .whatsapp-group-btn:hover {
   border: 1px solid var(--color3);
   text-decoration: none;
-  background: linear-gradient(
-    85deg,
-    var(--color2),
-    var(--color3),
-    var(--color4),
-    var(--color3),
-    var(--color2)
-  );
+  background: linear-gradient(85deg,
+      var(--color3),
+      var(--color3),
+      var(--color4),
+      var(--color3),
+      var(--color3));
   animation: wind 2s ease-in-out infinite;
 }
 
@@ -943,7 +953,8 @@
 }
 
 .styled-button .inner-button {
-  position: relative; /* Ensure relative positioning for pseudo-element */
+  position: relative;
+  /* Ensure relative positioning for pseudo-element */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -985,8 +996,7 @@
 }
 
 .styled-button .inner-button .icon:hover {
-  filter: drop-shadow(0 10px 20px rgba(50, 50, 50, 1))
-    drop-shadow(0 0 20px rgba(2, 2, 2, 1));
+  filter: drop-shadow(0 10px 20px rgba(50, 50, 50, 1)) drop-shadow(0 0 20px rgba(2, 2, 2, 1));
   transform: rotate(-35deg);
 
 }
@@ -1285,7 +1295,7 @@
 .parallax-div {
   background-color: black;
   border-top: 5px solid var(--second-color3);
-  
+
 }
 
 
@@ -1676,13 +1686,15 @@
 
 
 
-.testimony-div .uk-slidenav-previous, .testimony-div .uk-slidenav-next {
+.testimony-div .uk-slidenav-previous,
+.testimony-div .uk-slidenav-next {
   background-color: rgba(4, 52, 77, 0.4) !important;
   border-radius: 5px;
 }
 
 
-.uk-slidenav-previous, .uk-slidenav-next {
+.uk-slidenav-previous,
+.uk-slidenav-next {
   background-color: rgba(4, 52, 77, 0.4) !important;
   border-radius: 5px;
 }
@@ -2300,6 +2312,8 @@
 
   .presentation-div-right-side img {
     padding: 5px 10px;
+    right: auto;
+    left: 0px;
   }
 
 
@@ -2314,18 +2328,18 @@
   }
 
 
-.chat-group-whatsapp-btn-div {
-  align-items: center;
-}
+  .chat-group-whatsapp-btn-div {
+    align-items: center;
+  }
 
 
   .global-best-seller-book-div {
     padding: 0px 10px;
   }
 
-.best-seller-book-div {
-  padding-top: 0px;
-}
+  .best-seller-book-div {
+    padding-top: 0px;
+  }
 
 
   .one-best-seller-book-sous-div:hover {
@@ -2363,7 +2377,7 @@
   }
 
 
- 
+
 
   .all-ebook-btn-div svg {
     scale: 0.8;
@@ -2400,17 +2414,17 @@
 
   }
 
-.mini-post-div img {
-  margin-top: 20px;
-}
+  .mini-post-div img {
+    margin-top: 20px;
+  }
 
-.styled-button {
-  margin-top: 10px;
-  padding: 0.5rem 1rem;
-  align-self: flex-start;
+  .styled-button {
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    align-self: flex-start;
 
 
-}
+  }
 
   .sub-formation-div {
     background-color: var(--second-color1);
@@ -2432,10 +2446,10 @@
     gap: 0px;
   }
 
-.sous-formation-div-text a {
-  border: 2px solid white;
-  padding: 10px 20px;
-}
+  .sous-formation-div-text a {
+    border: 2px solid white;
+    padding: 10px 20px;
+  }
 
   .sub-one-formation-card {
     width: 100%;
@@ -2454,11 +2468,11 @@
     font-size: 12px;
   }
 
-.show_all_event_btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  
-}
+  .show_all_event_btn {
+    padding: 10px 20px;
+    font-size: 16px;
+
+  }
 
 
   .contact-us-div {
@@ -2489,13 +2503,15 @@
     padding: 0px !important;
     box-sizing: border-box;
   }
-  
+
   .testimony-div .uk-slideshow {
     margin: 0px !important;
     padding: 0px !important;
     box-sizing: border-box;
-  } 
-  .testimony-div .uk-slidenav-previous, .testimony-div .uk-slidenav-next {
+  }
+
+  .testimony-div .uk-slidenav-previous,
+  .testimony-div .uk-slidenav-next {
     background-color: rgba(4, 52, 77, 0.2) !important;
   }
 
