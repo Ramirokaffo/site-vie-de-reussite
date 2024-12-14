@@ -1,12 +1,8 @@
-.welcome-bg-image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 700px;
-  animation: myAnim 2s linear 0s 1 reverse both;
-  position: relative;
-}
+/* .welcome-bg-image {
+  height: 600px;
+} */
 
-@keyframes myAnim {
+/* @keyframes myAnim {
   0% {
     background-position: center top;
     background-size: 100%;
@@ -16,7 +12,23 @@
     background-position: center top;
     background-size: 150%;
   }
+} */
+
+.my-carou-item {
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  background-color: rgba(17, 21, 40, 0.36);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
+
+.my-carou-item-1 {
+  height: 100px;
+}
+
 
 
 .welcome-glass-cart {
@@ -27,6 +39,7 @@
   background-color: rgba(17, 21, 40, 0.36);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  /* border: 10px solid white; */
   top: 20px;
   left: 30px;
   display: inline-flex;
@@ -51,6 +64,36 @@
   padding: 0px;
 }
 
+
+.second-action-button2 {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  font-family: inherit;
+  /* margin-top: 50px; */
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em;
+  color: white;
+  background: linear-gradient(to bottom, var(--second-color1), var(--second-color2));
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 45px;
+}
+
+.second-action-button2:hover {
+  text-decoration: none;
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  color: white;
+  background: linear-gradient(to bottom, var(--second-color2), var(--second-color1));
+}
+
+.my-carou-item-1 .second-action-button2 {
+  width: 20%;
+
+}
 
 
 
@@ -475,6 +518,7 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px) saturate(280%);
+  text-wrap: balance;
 
 }
 
@@ -525,7 +569,7 @@
   color: var(--second-color1);
   padding: 0px;
   font-weight: bold;
-
+  text-wrap: balance;
 }
 
 .one-best-seller-book-content-bottom p {
@@ -2271,6 +2315,10 @@
     width: 95%;
     display: none;
 
+  }
+
+  .my-carou-item {
+    display: none;
   }
 
   .business-presentation-main-div {

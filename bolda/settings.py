@@ -26,9 +26,10 @@ import sys
 from django.core.files.storage import default_storage
 from os import path
 from pathlib import Path
-from .info import *
+# from .info import *
 import os
 import environ
+
 # from .py_script import get_images_url
 # from django.contrib.staticfiles import 
 PREMAILER_OPTIONS = dict(base_url='http://example.com',
@@ -70,24 +71,18 @@ def main():
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# print(BASE_DIR)
 env = environ.Env()
 environ.Env.read_env(env_file=str(BASE_DIR / ".env"))
 
 
 
-EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 # EMAIL_USE_SSL = EMAIL_USE_SSL
-EMAIL_HOST = EMAIL_HOST
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT
-EMAIL_BACKEND = EMAIL_BACKEND
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_BACKEND = env("EMAIL_BACKEND")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -259,7 +254,6 @@ MEDIA_URL = "/media/"
 # MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# print()
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
